@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#4338ca">
+<title>Quiz-Deck</title>
+<meta name="description" content="Short questions, checked answers, no account, no upload.">
+<meta name="author" content="Kristian Mario Miskovic (TekiDeki)">
+<meta name="robots" content="index, follow">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+<script>
+/* Paint the stored theme before the body exists, so a reload never flashes. */
+(function () {
+  try {
+    var saved = localStorage.getItem('quiz-deck:theme');
+    var dark = saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+}());
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main" data-i18n="skip">Skip to the question</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#main">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="6.5" y="4.5" width="19" height="23" rx="3" fill="none" stroke="currentColor" stroke-width="2.1"/><path d="M11.5 11.5h9M11.5 16h9M11.5 20.5h5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg></span>
+      <span class="brand-text">Quiz<span class="brand-dot">.</span>Deck</span>
+    </a>
+    <div class="tools">
+      <label class="sr" for="lang" data-i18n="uiLanguage">Interface language</label>
+      <select id="lang" class="select"></select>
+      <button id="theme" class="iconbtn" type="button" data-i18n-aria-label="theme" aria-label="Switch theme">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6 6l1.6 1.6M16.4 16.4L18 18M18 6l-1.6 1.6M7.6 16.4L6 18"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.4A8.4 8.4 0 0 1 9.6 4a8.4 8.4 0 1 0 10.4 10.4z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <section class="screen" id="screen-start" aria-labelledby="h1">
+    <div class="hero">
+      <h1 id="h1" data-i18n="h1">Short questions, checked answers</h1>
+      <p class="lede" id="lede" data-i18n="lede"></p>
+    </div>
+
+    <div class="banner" id="challenge" hidden>
+      <p class="banner-k" id="challenge-title"></p>
+      <p class="banner-d" data-i18n="challengeLede">Play the same questions and see where you land.</p>
+      <div class="row">
+        <button class="btn primary" id="btn-challenge" type="button" data-i18n="challengePlay">Play</button>
+        <button class="btn ghost" id="btn-challenge-close" type="button" data-i18n="challengeClose">Close</button>
+      </div>
+    </div>
+    <p class="banner bad" id="challenge-bad" hidden data-i18n="challengeBad"></p>
+
+    <div class="modes">
+      <button class="mode" id="btn-daily" type="button">
+        <span class="mode-k" data-i18n="startDaily">Today's round</span>
+        <span class="mode-d" data-i18n="startDailyNote"></span>
+        <span class="mode-meta" id="daily-meta"></span>
+      </button>
+      <button class="mode" id="btn-practice" type="button">
+        <span class="mode-k" data-i18n="startPractice">Practice</span>
+        <span class="mode-d" data-i18n="startPracticeNote"></span>
+      </button>
+    </div>
+
+    <p class="fine" id="round-note" data-i18n="dailyReset"></p>
+    <p class="fine" id="bank-line"></p>
+
+    <dl class="stats">
+      <div class="stat">
+        <dt data-i18n="streak">Days in a row</dt>
+        <dd id="stat-streak">0</dd>
+      </div>
+      <div class="stat">
+        <dt data-i18n="best">Record here</dt>
+        <dd id="stat-best">0</dd>
+      </div>
+    </dl>
+
+    <section class="panel" aria-labelledby="local-title">
+      <h2 class="panel-h" id="local-title" data-i18n="localTitle">Where the progress lives</h2>
+      <p class="panel-p" data-i18n="localNote"></p>
+      <div class="row">
+        <button class="btn" id="btn-export" type="button" data-i18n="export">Export</button>
+        <button class="btn" id="btn-import" type="button" data-i18n="import">Import</button>
+        <button class="btn ghost" id="btn-reset" type="button" data-i18n="reset">Erase progress</button>
+        <input id="file-import" type="file" accept="application/json,.json" hidden>
+      </div>
+      <div class="confirm" id="confirm" hidden>
+        <p id="confirm-text" data-i18n="resetAsk"></p>
+        <div class="row">
+          <button class="btn danger" id="btn-reset-yes" type="button" data-i18n="resetYes">Erase</button>
+          <button class="btn ghost" id="btn-reset-no" type="button" data-i18n="resetNo">Cancel</button>
+        </div>
+      </div>
+      <p class="status" id="local-status" role="status" aria-live="polite"></p>
+    </section>
+  </section>
+
+  <section class="screen" id="screen-quiz" aria-labelledby="q-text" hidden>
+    <div class="quiz-head">
+      <p class="pill" id="q-progress"></p>
+      <button class="linkbtn" id="btn-quit" type="button" data-i18n="quit">Leave the round</button>
+    </div>
+    <div class="bar" role="presentation"><span id="bar-fill"></span></div>
+
+    <article class="card qcard">
+      <p class="topic" id="q-topic"></p>
+      <h2 class="qtext" id="q-text" tabindex="-1"></h2>
+      <div class="options" id="q-options" role="group" aria-labelledby="q-text"></div>
+      <div class="feedback" id="q-feedback" hidden aria-live="polite">
+        <p class="verdict" id="fb-verdict"></p>
+        <p class="why" id="fb-why"></p>
+        <p class="meta"><span id="fb-source"></span><span class="dot">·</span><span id="fb-checked"></span></p>
+      </div>
+      <button class="btn primary wide" id="btn-next" type="button" hidden>Next</button>
+    </article>
+
+    <p class="fine center" data-i18n="keyboard">Keys 1 to 4 pick an answer, Enter moves on.</p>
+  </section>
+
+  <section class="screen" id="screen-end" hidden aria-labelledby="end-score">
+    <article class="card endcard">
+      <p class="kicker" id="end-kicker"></p>
+      <h2 class="bigscore" id="end-score"></h2>
+      <p class="muted" id="end-time"></p>
+      <p class="note" id="end-note"></p>
+      <div class="cmp" id="end-challenge" hidden></div>
+      <div class="row">
+        <button class="btn primary" id="btn-share" type="button" data-i18n="share">Copy the challenge</button>
+        <button class="btn" id="btn-replay" type="button" data-i18n="replayWrong">Replay the mistakes</button>
+        <button class="btn ghost" id="btn-again" type="button" data-i18n="again">One more round</button>
+      </div>
+      <p class="fine" id="share-note" hidden data-i18n="shareNote"></p>
+      <p class="status" id="share-status" role="status" aria-live="polite"></p>
+      <input class="sharelink" id="share-link" readonly hidden>
+    </article>
+
+    <section class="review" aria-labelledby="review-title">
+      <h3 class="review-h" id="review-title" data-i18n="reviewTitle">Where it went wrong</h3>
+      <ol class="review-list" id="review-list"></ol>
+    </section>
+
+    <div class="row center">
+      <button class="btn ghost" id="btn-home" type="button" data-i18n="home">Back to the start</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="fine"><a href="https://freehtml.dev">freehtml.dev</a> · <a href="https://github.com/TekiDeki/Quiz-Deck">GitHub</a></p>
+    <p class="fine" id="foot-note" data-i18n="offlineNote"></p>
+    <p class="fine"><a href="https://github.com/TekiDeki/Quiz-Deck/issues" data-i18n="report">Spotted a mistake? Report it on GitHub.</a></p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

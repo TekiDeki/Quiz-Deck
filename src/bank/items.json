@@ -1,0 +1,2758 @@
+{
+ "version": 1,
+ "checked": "2026-10-21",
+ "items": [
+  {
+   "id": "culture-dna-model",
+   "topic": "culture",
+   "q": {
+    "en": "In which decade was the double helix structure of DNA described?",
+    "ro": "În ce deceniu a fost descrisă structura dublu-helix a ADN-ului?",
+    "sr-latn": "U kojoj deceniji je opisana struktura dvostrukog heliksa DNK?"
+   },
+   "options": [
+    {
+     "en": "The 1930s",
+     "ro": "Anii 1930",
+     "sr-latn": "Tridesetih"
+    },
+    {
+     "en": "The 1950s",
+     "ro": "Anii 1950",
+     "sr-latn": "Pedesetih"
+    },
+    {
+     "en": "The 1970s",
+     "ro": "Anii 1970",
+     "sr-latn": "Sedamdesetih"
+    },
+    {
+     "en": "The 1990s",
+     "ro": "Anii 1990",
+     "sr-latn": "Devedesetih"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "Watson and Crick published the model in 1953, in the 1950s, building on X-ray work by Rosalind Franklin and Maurice Wilkins.",
+    "ro": "Watson și Crick au publicat modelul în 1953, adică în anii 1950, pornind de la lucrările cu raze X ale lui Rosalind Franklin și Maurice Wilkins.",
+    "sr-latn": "Votson i Krik su objavili model 1953, dakle pedesetih, na osnovu rendgenskih snimaka Rozalind Frenklin i Morisa Vilkinsa."
+   },
+   "source": "Nature, 25 April 1953"
+  },
+  {
+   "id": "culture-hardest-natural",
+   "topic": "culture",
+   "q": {
+    "en": "Which of these is the hardest natural substance?",
+    "ro": "Care dintre acestea este cea mai dură substanță naturală?",
+    "sr-latn": "Koja od ovih supstanci je najtvrđa u prirodi?"
+   },
+   "options": [
+    {
+     "en": "Diamond",
+     "ro": "Diamantul",
+     "sr-latn": "Dijamant"
+    },
+    {
+     "en": "Quartz",
+     "ro": "Cuarțul",
+     "sr-latn": "Kvarc"
+    },
+    {
+     "en": "Steel",
+     "ro": "Oțelul",
+     "sr-latn": "Čelik"
+    },
+    {
+     "en": "Gold",
+     "ro": "Aurul",
+     "sr-latn": "Zlato"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "On the Mohs scale diamond sits at 10, the top of the list for natural minerals.",
+    "ro": "Pe scara Mohs, diamantul stă la 10, vârful listei pentru mineralele naturale.",
+    "sr-latn": "Na Mosovoj skali dijamant stoji na 10, na vrhu liste prirodnih minerala."
+   },
+   "source": {
+    "en": "Mohs scale of mineral hardness",
+    "ro": "Scara Mohs a durității mineralelor",
+    "sr-latn": "Mosova skala tvrdoće minerala"
+   }
+  },
+  {
+   "id": "culture-mona-lisa",
+   "topic": "culture",
+   "q": {
+    "en": "Who painted the Mona Lisa?",
+    "ro": "Cine a pictat Mona Lisa?",
+    "sr-latn": "Ko je naslikao Mona Lizu?"
+   },
+   "options": [
+    {
+     "en": "Michelangelo",
+     "ro": "Michelangelo",
+     "sr-latn": "Mikelandželo"
+    },
+    {
+     "en": "Leonardo da Vinci",
+     "ro": "Leonardo da Vinci",
+     "sr-latn": "Leonardo da Vinči"
+    },
+    {
+     "en": "Raphael",
+     "ro": "Rafael",
+     "sr-latn": "Rafael"
+    },
+    {
+     "en": "Rembrandt",
+     "ro": "Rembrandt",
+     "sr-latn": "Rembrant"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "Leonardo da Vinci painted it in the early sixteenth century, and it hangs today in the Louvre in Paris.",
+    "ro": "Leonardo da Vinci a pictat-o la începutul secolului al șaisprezecelea, iar azi se află la Luvru, în Paris.",
+    "sr-latn": "Leonardo da Vinči ju je naslikao početkom šesnaestog veka, a danas visi u Luvru u Parizu."
+   },
+   "source": "Louvre"
+  },
+  {
+   "id": "culture-odyssey",
+   "topic": "culture",
+   "q": {
+    "en": "The Odyssey tells the story of the return home of which hero?",
+    "ro": "Odiseea spune povestea întoarcerii acasă a cărui erou?",
+    "sr-latn": "Odiseja priča o povratku kući kog heroja?"
+   },
+   "options": [
+    {
+     "en": "Achilles",
+     "ro": "Ahile",
+     "sr-latn": "Ahilej"
+    },
+    {
+     "en": "Odysseus",
+     "ro": "Odiseu",
+     "sr-latn": "Odisej"
+    },
+    {
+     "en": "Hector",
+     "ro": "Hector",
+     "sr-latn": "Hektor"
+    },
+    {
+     "en": "Hercules",
+     "ro": "Hercule",
+     "sr-latn": "Herkul"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "The poem follows Odysseus on his long voyage home from Troy to Ithaca.",
+    "ro": "Poemul îl urmărește pe Odiseu în lunga lui călătorie de acasă, de la Troia la Itaca.",
+    "sr-latn": "Poema prati Odiseja na dugom putu kući, od Troje do Itake."
+   },
+   "source": "Homer, Odyssey"
+  },
+  {
+   "id": "geo-capital-australia",
+   "topic": "geo",
+   "q": {
+    "en": "What is the capital of Australia?",
+    "ro": "Care este capitala Australiei?",
+    "sr-latn": "Koji je glavni grad Australije?"
+   },
+   "options": [
+    {
+     "en": "Canberra",
+     "ro": "Canberra",
+     "sr-latn": "Kanbera"
+    },
+    {
+     "en": "Sydney",
+     "ro": "Sydney",
+     "sr-latn": "Sidnej"
+    },
+    {
+     "en": "Melbourne",
+     "ro": "Melbourne",
+     "sr-latn": "Melburn"
+    },
+    {
+     "en": "Perth",
+     "ro": "Perth",
+     "sr-latn": "Pert"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Canberra was built on purpose to be the capital, as a compromise between Sydney and Melbourne, and it has held that role since 1927.",
+    "ro": "Canberra a fost construită anume ca să fie capitală, ca un compromis între Sydney și Melbourne, și are acest rol din 1927.",
+    "sr-latn": "Kanbera je namenski izgrađena kao glavni grad, kao kompromis između Sidneja i Melburna, i tu ulogu ima od 1927."
+   },
+   "source": {
+    "en": "Australian Government",
+    "ro": "Guvernul Australiei",
+    "sr-latn": "Vlada Australije"
+   }
+  },
+  {
+   "id": "geo-capital-canada",
+   "topic": "geo",
+   "q": {
+    "en": "What is the capital of Canada?",
+    "ro": "Care este capitala Canadei?",
+    "sr-latn": "Koji je glavni grad Kanade?"
+   },
+   "options": [
+    {
+     "en": "Ottawa",
+     "ro": "Ottawa",
+     "sr-latn": "Otava"
+    },
+    {
+     "en": "Toronto",
+     "ro": "Toronto",
+     "sr-latn": "Toronto"
+    },
+    {
+     "en": "Montreal",
+     "ro": "Montreal",
+     "sr-latn": "Montreal"
+    },
+    {
+     "en": "Vancouver",
+     "ro": "Vancouver",
+     "sr-latn": "Vankuver"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Ottawa was chosen as the seat of government in 1857 and has been the capital of Canada since 1867. Toronto and Montreal are larger cities.",
+    "ro": "Ottawa a fost aleasă ca sediu al guvernului în 1857 și este capitala Canadei din 1867. Toronto și Montreal sunt orașe mai mari.",
+    "sr-latn": "Otava je izabrana za sedište vlade 1857. i glavni je grad Kanade od 1867. Toronto i Montreal su veći gradovi."
+   },
+   "source": {
+    "en": "Government of Canada",
+    "ro": "Guvernul Canadei",
+    "sr-latn": "Vlada Kanade"
+   }
+  },
+  {
+   "id": "geo-capital-romania",
+   "topic": "geo",
+   "q": {
+    "en": "What is the capital of Romania?",
+    "ro": "Care este capitala României?",
+    "sr-latn": "Koji je glavni grad Rumunije?"
+   },
+   "options": [
+    {
+     "en": "Bucharest",
+     "ro": "București",
+     "sr-latn": "Bukurešt"
+    },
+    {
+     "en": "Cluj-Napoca",
+     "ro": "Cluj-Napoca",
+     "sr-latn": "Kluž-Napoka"
+    },
+    {
+     "en": "Timisoara",
+     "ro": "Timișoara",
+     "sr-latn": "Temišvar"
+    },
+    {
+     "en": "Iasi",
+     "ro": "Iași",
+     "sr-latn": "Jaši"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Bucharest has been the capital since 1862, when Wallachia and Moldavia were united.",
+    "ro": "Bucureștiul este capitală din 1862, când Țara Românească și Moldova s-au unit.",
+    "sr-latn": "Bukurešt je glavni grad od 1862, kada su se Vlaška i Moldavija ujedinile."
+   },
+   "source": "Encyclopaedia Britannica"
+  },
+  {
+   "id": "geo-capital-serbia",
+   "topic": "geo",
+   "q": {
+    "en": "What is the capital of Serbia?",
+    "ro": "Care este capitala Serbiei?",
+    "sr-latn": "Koji je glavni grad Srbije?"
+   },
+   "options": [
+    {
+     "en": "Belgrade",
+     "ro": "Belgrad",
+     "sr-latn": "Beograd"
+    },
+    {
+     "en": "Novi Sad",
+     "ro": "Novi Sad",
+     "sr-latn": "Novi Sad"
+    },
+    {
+     "en": "Nis",
+     "ro": "Niș",
+     "sr-latn": "Niš"
+    },
+    {
+     "en": "Kragujevac",
+     "ro": "Kragujevac",
+     "sr-latn": "Kragujevac"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Belgrade sits where the Sava meets the Danube, and it has been the capital of Serbia since 1841.",
+    "ro": "Belgradul stă acolo unde Sava se varsă în Dunăre și este capitala Serbiei din 1841.",
+    "sr-latn": "Beograd leži na ušću Save u Dunav i glavni je grad Srbije od 1841."
+   },
+   "source": "City of Belgrade"
+  },
+  {
+   "id": "geo-carpathians",
+   "topic": "geo",
+   "q": {
+    "en": "Which of these countries do the Carpathian mountains cross?",
+    "ro": "Care dintre aceste țări este traversată de Munții Carpați?",
+    "sr-latn": "Koju od ovih zemalja prelaze Karpati?"
+   },
+   "options": [
+    {
+     "en": "Romania",
+     "ro": "România",
+     "sr-latn": "Rumunija"
+    },
+    {
+     "en": "Greece",
+     "ro": "Grecia",
+     "sr-latn": "Grčka"
+    },
+    {
+     "en": "Portugal",
+     "ro": "Portugalia",
+     "sr-latn": "Portugal"
+    },
+    {
+     "en": "Norway",
+     "ro": "Norvegia",
+     "sr-latn": "Norveška"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "The Carpathians run from Slovakia through Poland, Ukraine and Romania, and on into Serbia. Among these four, only Romania is on that line.",
+    "ro": "Carpații merg din Slovacia prin Polonia, Ucraina și România, apoi în Serbia. Dintre cele patru, doar România e pe traseu.",
+    "sr-latn": "Karpati idu od Slovačke preko Poljske, Ukrajine i Rumunije, pa dalje u Srbiju. Od ove četiri, samo je Rumunija na tom putu."
+   },
+   "source": "Encyclopaedia Britannica"
+  },
+  {
+   "id": "geo-danube",
+   "topic": "geo",
+   "q": {
+    "en": "The Danube flows into which sea?",
+    "ro": "În ce mare se varsă Dunărea?",
+    "sr-latn": "U koje more se uliva Dunav?"
+   },
+   "options": [
+    {
+     "en": "The Black Sea",
+     "ro": "Marea Neagră",
+     "sr-latn": "Crno more"
+    },
+    {
+     "en": "The Adriatic",
+     "ro": "Marea Adriatică",
+     "sr-latn": "Jadransko more"
+    },
+    {
+     "en": "The Aegean",
+     "ro": "Marea Egee",
+     "sr-latn": "Egejsko more"
+    },
+    {
+     "en": "The Baltic",
+     "ro": "Marea Baltică",
+     "sr-latn": "Baltičko more"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "The Danube crosses ten countries and ends in the Black Sea, in a delta on the Romanian and Ukrainian coast.",
+    "ro": "Dunărea traversează zece țări și se varsă în Marea Neagră, într-o deltă pe coasta românească și ucraineană.",
+    "sr-latn": "Dunav prolazi kroz deset zemalja i uliva se u Crno more, u delti na rumunskoj i ukrajinskoj obali."
+   },
+   "source": "International Commission for the Protection of the Danube River"
+  },
+  {
+   "id": "geo-highest-mountain",
+   "topic": "geo",
+   "q": {
+    "en": "Which mountain is the highest above sea level?",
+    "ro": "Care munte este cel mai înalt deasupra nivelului mării?",
+    "sr-latn": "Koja planina je najviša iznad nivoa mora?"
+   },
+   "options": [
+    {
+     "en": "Everest",
+     "ro": "Everest",
+     "sr-latn": "Everest"
+    },
+    {
+     "en": "K2",
+     "ro": "K2",
+     "sr-latn": "K2"
+    },
+    {
+     "en": "Kilimanjaro",
+     "ro": "Kilimanjaro",
+     "sr-latn": "Kilimandžaro"
+    },
+    {
+     "en": "Mont Blanc",
+     "ro": "Mont Blanc",
+     "sr-latn": "Monblan"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Everest reaches about 8,849 metres, higher than any other peak measured from sea level.",
+    "ro": "Everestul ajunge la aproximativ 8.849 de metri, mai sus decât orice alt vârf măsurat de la nivelul mării.",
+    "sr-latn": "Everest dostiže oko 8.849 metara, više od bilo kog drugog vrha merenog od nivoa mora."
+   },
+   "source": {
+    "en": "Nepal and China, joint measurement of 2020",
+    "ro": "Nepal și China, măsurătoarea comună din 2020",
+    "sr-latn": "Nepal i Kina, zajedničko merenje 2020"
+   }
+  },
+  {
+   "id": "geo-kilimanjaro",
+   "topic": "geo",
+   "q": {
+    "en": "Mount Kilimanjaro is in which country?",
+    "ro": "În ce țară se află muntele Kilimanjaro?",
+    "sr-latn": "U kojoj zemlji se nalazi planina Kilimandžaro?"
+   },
+   "options": [
+    {
+     "en": "Kenya",
+     "ro": "Kenya",
+     "sr-latn": "Kenija"
+    },
+    {
+     "en": "Tanzania",
+     "ro": "Tanzania",
+     "sr-latn": "Tanzanija"
+    },
+    {
+     "en": "Uganda",
+     "ro": "Uganda",
+     "sr-latn": "Uganda"
+    },
+    {
+     "en": "Ethiopia",
+     "ro": "Etiopia",
+     "sr-latn": "Etiopija"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "Kilimanjaro rises in northern Tanzania, close to the border with Kenya, and it is the highest mountain in Africa.",
+    "ro": "Kilimanjaro se ridică în nordul Tanzaniei, aproape de granița cu Kenya, și este cel mai înalt munte din Africa.",
+    "sr-latn": "Kilimandžaro se uzdiže na severu Tanzanije, blizu granice sa Kenijom, i najviša je planina Afrike."
+   },
+   "source": "Encyclopaedia Britannica"
+  },
+  {
+   "id": "geo-largest-country",
+   "topic": "geo",
+   "q": {
+    "en": "Which country has the largest land area?",
+    "ro": "Care țară are cea mai mare suprafață de uscat?",
+    "sr-latn": "Koja zemlja ima najveću kopnenu površinu?"
+   },
+   "options": [
+    {
+     "en": "Russia",
+     "ro": "Rusia",
+     "sr-latn": "Rusija"
+    },
+    {
+     "en": "Canada",
+     "ro": "Canada",
+     "sr-latn": "Kanada"
+    },
+    {
+     "en": "China",
+     "ro": "China",
+     "sr-latn": "Kina"
+    },
+    {
+     "en": "The United States",
+     "ro": "Statele Unite",
+     "sr-latn": "Sjedinjene Države"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Russia covers about 17 million square kilometres, more than Canada, China and the United States.",
+    "ro": "Rusia acoperă aproximativ 17 milioane de kilometri pătrați, mai mult decât Canada, China și Statele Unite.",
+    "sr-latn": "Rusija pokriva oko 17 miliona kvadratnih kilometara, više od Kanade, Kine i Sjedinjenih Država."
+   },
+   "source": "CIA World Factbook"
+  },
+  {
+   "id": "geo-largest-ocean",
+   "topic": "geo",
+   "q": {
+    "en": "Which is the largest ocean?",
+    "ro": "Care este cel mai mare ocean?",
+    "sr-latn": "Koji je najveći okean?"
+   },
+   "options": [
+    {
+     "en": "The Atlantic",
+     "ro": "Atlanticul",
+     "sr-latn": "Atlantik"
+    },
+    {
+     "en": "The Indian",
+     "ro": "Indianul",
+     "sr-latn": "Indijski okean"
+    },
+    {
+     "en": "The Pacific",
+     "ro": "Pacificul",
+     "sr-latn": "Pacifik"
+    },
+    {
+     "en": "The Arctic",
+     "ro": "Arctica",
+     "sr-latn": "Arktik"
+    }
+   ],
+   "correct": 2,
+   "why": {
+    "en": "The Pacific covers about a third of the planet, more than all the land put together.",
+    "ro": "Pacificul acoperă cam o treime din planetă, mai mult decât tot uscatul la un loc.",
+    "sr-latn": "Pacifik pokriva oko trećinu planete, više od celog kopna zajedno."
+   },
+   "source": "Encyclopaedia Britannica"
+  },
+  {
+   "id": "geo-longest-african-river",
+   "topic": "geo",
+   "q": {
+    "en": "Which river is the longest in Africa?",
+    "ro": "Care este cel mai lung fluviu din Africa?",
+    "sr-latn": "Koja reka je najduža u Africi?"
+   },
+   "options": [
+    {
+     "en": "The Nile",
+     "ro": "Nilul",
+     "sr-latn": "Nil"
+    },
+    {
+     "en": "The Congo",
+     "ro": "Congo",
+     "sr-latn": "Kongo"
+    },
+    {
+     "en": "The Niger",
+     "ro": "Niger",
+     "sr-latn": "Niger"
+    },
+    {
+     "en": "The Zambezi",
+     "ro": "Zambezi",
+     "sr-latn": "Zambezi"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "The Nile runs north from the lakes of East Africa to the Mediterranean, longer than the Congo, the Niger and the Zambezi.",
+    "ro": "Nilul curge spre nord, de la lacurile Africii de Est până la Marea Mediterană, mai lung decât Congo, Niger și Zambezi.",
+    "sr-latn": "Nil teče na sever, od jezera istočne Afrike do Sredozemnog mora, duži od Konga, Nigera i Zambezija."
+   },
+   "source": "Encyclopaedia Britannica"
+  },
+  {
+   "id": "geo-smallest-country",
+   "topic": "geo",
+   "q": {
+    "en": "What is the smallest country in the world by area?",
+    "ro": "Care este cea mai mică țară din lume ca suprafață?",
+    "sr-latn": "Koja je najmanja zemlja na svetu po površini?"
+   },
+   "options": [
+    {
+     "en": "Vatican City",
+     "ro": "Vaticanul",
+     "sr-latn": "Vatikan"
+    },
+    {
+     "en": "Monaco",
+     "ro": "Monaco",
+     "sr-latn": "Monako"
+    },
+    {
+     "en": "San Marino",
+     "ro": "San Marino",
+     "sr-latn": "San Marino"
+    },
+    {
+     "en": "Liechtenstein",
+     "ro": "Liechtenstein",
+     "sr-latn": "Lihtenštajn"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Vatican City covers about 0.44 square kilometres, less than a quarter of Monaco.",
+    "ro": "Vaticanul acoperă aproximativ 0,44 kilometri pătrați, mai puțin de un sfert din Monaco.",
+    "sr-latn": "Vatikan pokriva oko 0,44 kvadratna kilometra, manje od četvrtine Monaka."
+   },
+   "source": "Encyclopaedia Britannica"
+  },
+  {
+   "id": "hist-ad-roman",
+   "topic": "history",
+   "q": {
+    "en": "The Latin abbreviation AD, as in AD 476, stands for...",
+    "ro": "Abrevierea latină AD, ca în AD 476, vine de la...",
+    "sr-latn": "Latinska skraćenica AD, kao u AD 476, znači..."
+   },
+   "options": [
+    {
+     "en": "Anno Domini",
+     "ro": "Anno Domini",
+     "sr-latn": "Anno Domini"
+    },
+    {
+     "en": "Ante Diem",
+     "ro": "Ante Diem",
+     "sr-latn": "Ante Diem"
+    },
+    {
+     "en": "Ad Astra",
+     "ro": "Ad Astra",
+     "sr-latn": "Ad Astra"
+    },
+    {
+     "en": "Altera Die",
+     "ro": "Altera Die",
+     "sr-latn": "Altera Die"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Anno Domini means in the year of the Lord, and it marks the counting of years that most of the world uses today.",
+    "ro": "Anno Domini înseamnă în anul Domnului și marchează numărătoarea anilor folosită azi în cea mai mare parte a lumii.",
+    "sr-latn": "Anno Domini znači u godini Gospodnjoj i označava brojanje godina koje danas koristi veći deo sveta."
+   },
+   "source": "Oxford English Dictionary"
+  },
+  {
+   "id": "hist-eiffel",
+   "topic": "history",
+   "q": {
+    "en": "The Eiffel Tower was built for which event?",
+    "ro": "Turnul Eiffel a fost construit pentru care eveniment?",
+    "sr-latn": "Ajfelova kula je sagrađena za koji događaj?"
+   },
+   "options": [
+    {
+     "en": "The 1889 world exhibition",
+     "ro": "Expoziția mondială din 1889",
+     "sr-latn": "Svetsku izložbu 1889."
+    },
+    {
+     "en": "The 1900 Olympic Games",
+     "ro": "Jocurile Olimpice din 1900",
+     "sr-latn": "Olimpijske igre 1900."
+    },
+    {
+     "en": "The 1855 world exhibition",
+     "ro": "Expoziția mondială din 1855",
+     "sr-latn": "Svetsku izložbu 1855."
+    },
+    {
+     "en": "The 1925 arts exhibition",
+     "ro": "Expoziția de arte din 1925",
+     "sr-latn": "Izložbu umetnosti 1925."
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "It stood over the entrance of the 1889 world exhibition and was meant to be taken down afterwards.",
+    "ro": "A stat la intrarea expoziției mondiale din 1889 și trebuia demolat după aceea.",
+    "sr-latn": "Stajala je iznad ulaza u svetsku izložbu 1889. i trebalo je da bude uklonjena posle."
+   },
+   "source": "Eiffel Tower official history"
+  },
+  {
+   "id": "hist-gutenberg",
+   "topic": "history",
+   "q": {
+    "en": "What did Johannes Gutenberg print in the middle of the fifteenth century?",
+    "ro": "Ce a tipărit Johannes Gutenberg la mijlocul secolului al cincisprezecelea?",
+    "sr-latn": "Šta je Johan Gutenberg štampao sredinom petnaestog veka?"
+   },
+   "options": [
+    {
+     "en": "A Bible",
+     "ro": "O Biblie",
+     "sr-latn": "Bibliju"
+    },
+    {
+     "en": "A dictionary",
+     "ro": "Un dicționar",
+     "sr-latn": "Rečnik"
+    },
+    {
+     "en": "A newspaper",
+     "ro": "Un ziar",
+     "sr-latn": "Novine"
+    },
+    {
+     "en": "A map of the world",
+     "ro": "O hartă a lumii",
+     "sr-latn": "Kartu sveta"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "His Bible of around 1455 was the first big book printed in Europe with movable metal type.",
+    "ro": "Biblia lui, din jur de 1455, a fost prima carte mare tipărită în Europa cu litere metalice mobile.",
+    "sr-latn": "Njegova Biblija, oko 1455, bila je prva velika knjiga štampana u Evropi pokretnim metalnim slovima."
+   },
+   "source": "British Library"
+  },
+  {
+   "id": "hist-leap-year-rule",
+   "topic": "history",
+   "q": {
+    "en": "Which year is a leap year?",
+    "ro": "Care dintre acești ani este bisect?",
+    "sr-latn": "Koja od ovih godina je prestupna?"
+   },
+   "options": [
+    {
+     "en": "1900",
+     "ro": "1900",
+     "sr-latn": "1900"
+    },
+    {
+     "en": "2000",
+     "ro": "2000",
+     "sr-latn": "2000"
+    },
+    {
+     "en": "2100",
+     "ro": "2100",
+     "sr-latn": "2100"
+    },
+    {
+     "en": "2200",
+     "ro": "2200",
+     "sr-latn": "2200"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "A year divides by 4 is a leap year, except centuries, which only count when they divide by 400. 2000 divides by 400, the others do not.",
+    "ro": "Un an divizibil cu 4 este bisect, cu excepția secolelor, care contează doar dacă se împart la 400. 2000 se împarte la 400, ceilalți nu.",
+    "sr-latn": "Godina deljiva sa 4 je prestupna, osim vekova, koji se računaju samo ako su deljivi sa 400. 2000 je deljiva sa 400, ostale nisu."
+   },
+   "source": "@src.calendar"
+  },
+  {
+   "id": "hist-magna-carta",
+   "topic": "history",
+   "q": {
+    "en": "In which century was Magna Carta sealed in England?",
+    "ro": "În ce secol a fost sigilată Magna Carta în Anglia?",
+    "sr-latn": "U kom veku je u Engleskoj overena Magna Carta?"
+   },
+   "options": [
+    {
+     "en": "The twelfth",
+     "ro": "Secolul al doisprezecelea",
+     "sr-latn": "Dvanaesti"
+    },
+    {
+     "en": "The thirteenth",
+     "ro": "Secolul al treisprezecelea",
+     "sr-latn": "Trinaesti"
+    },
+    {
+     "en": "The fifteenth",
+     "ro": "Secolul al cincisprezecelea",
+     "sr-latn": "Petnaesti"
+    },
+    {
+     "en": "The seventeenth",
+     "ro": "Secolul al șaptesprezecelea",
+     "sr-latn": "Sedamnaesti"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "It was sealed in 1215, in the thirteenth century.",
+    "ro": "A fost sigilată în 1215, adică în secolul al treisprezecelea.",
+    "sr-latn": "Overena je 1215, dakle u trinaestom veku."
+   },
+   "source": "British Library"
+  },
+  {
+   "id": "hist-mechanical-clock",
+   "topic": "history",
+   "q": {
+    "en": "In which century did large mechanical clocks first appear on European towers?",
+    "ro": "În ce secol au apărut primele ceasuri mecanice mari pe turnurile europene?",
+    "sr-latn": "U kom veku su se prvi veliki mehanički satovi pojavili na evropskim kulama?"
+   },
+   "options": [
+    {
+     "en": "The eleventh",
+     "ro": "Secolul al unsprezecelea",
+     "sr-latn": "Jedanaesti"
+    },
+    {
+     "en": "The thirteenth",
+     "ro": "Secolul al treisprezecelea",
+     "sr-latn": "Trinaesti"
+    },
+    {
+     "en": "The sixteenth",
+     "ro": "Secolul al șaisprezecelea",
+     "sr-latn": "Šesnaesti"
+    },
+    {
+     "en": "The nineteenth",
+     "ro": "Secolul al nouăsprezecelea",
+     "sr-latn": "Devetnaesti"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "Tower clocks driven by weights and gears spread across Europe in the thirteenth century.",
+    "ro": "Ceasurile de turn, mișcate de greutăți și roți dințate, s-au răspândit prin Europa în secolul al treisprezecelea.",
+    "sr-latn": "Kulni satovi, pokretani tegovima i zupčanicima, raširili su se Evropom u trinaestom veku."
+   },
+   "source": "Encyclopaedia Britannica"
+  },
+  {
+   "id": "hist-penny-farthing",
+   "topic": "history",
+   "q": {
+    "en": "Why was the penny-farthing bicycle given that name?",
+    "ro": "De ce a primit bicicleta penny-farthing acest nume?",
+    "sr-latn": "Zašto je bicikl penny-farthing dobio to ime?"
+   },
+   "options": [
+    {
+     "en": "Because its two wheels looked like two coins of very different size",
+     "ro": "Pentru că roțile ei semănau cu două monede de mărimi foarte diferite",
+     "sr-latn": "Zato što su njegova dva točka ličila na dva novčića veoma različite veličine"
+    },
+    {
+     "en": "Because it cost a penny to ride",
+     "ro": "Pentru că o plimbare costa un penny",
+     "sr-latn": "Zato što je vožnja koštala jedan peni"
+    },
+    {
+     "en": "Because a farthing was its first price",
+     "ro": "Pentru că un farthing a fost primul ei preț",
+     "sr-latn": "Zato što je farthing bila njegova prva cena"
+    },
+    {
+     "en": "Because it was made in Farthing",
+     "ro": "Pentru că era făcută în Farthing",
+     "sr-latn": "Zato što je napravljen u Farthingu"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "The penny was a large coin and the farthing a small one, and the bicycle had one huge front wheel and one small back wheel.",
+    "ro": "Penny era o monedă mare, farthing una mică, iar bicicleta avea o roată mare în față și una mică în spate.",
+    "sr-latn": "Peni je bio veliki novčić, farthing mali, a bicikl je imao ogroman prednji i mali zadnji točak."
+   },
+   "source": "Encyclopaedia Britannica"
+  },
+  {
+   "id": "hist-universal-suffrage-women",
+   "topic": "history",
+   "q": {
+    "en": "In which country did women first win the right to vote in national elections?",
+    "ro": "În ce țară au câștigat femeile pentru prima dată dreptul de vot la alegerile naționale?",
+    "sr-latn": "U kojoj zemlji su žene prvi put dobile pravo glasa na nacionalnim izborima?"
+   },
+   "options": [
+    {
+     "en": "New Zealand",
+     "ro": "Noua Zeelandă",
+     "sr-latn": "Novi Zeland"
+    },
+    {
+     "en": "Switzerland",
+     "ro": "Elveția",
+     "sr-latn": "Švajcarska"
+    },
+    {
+     "en": "France",
+     "ro": "Franța",
+     "sr-latn": "Francuska"
+    },
+    {
+     "en": "The United States",
+     "ro": "Statele Unite",
+     "sr-latn": "Sjedinjene Države"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "New Zealand granted the vote to women in 1893, well before the others.",
+    "ro": "Noua Zeelandă a dat femeilor dreptul de vot în 1893, cu mult înaintea celorlalte.",
+    "sr-latn": "Novi Zeland je dao ženama pravo glasa 1893, mnogo pre ostalih."
+   },
+   "source": "New Zealand History, government archive"
+  },
+  {
+   "id": "logic-bat-and-ball",
+   "topic": "logic",
+   "q": {
+    "en": "A bat and a ball cost 110 cents together. The bat costs 100 cents more than the ball. How much is the ball?",
+    "ro": "O bâtă și o minge costă împreună 110 cenți. Bâta costă cu 100 de cenți mai mult decât mingea. Cât costă mingea?",
+    "sr-latn": "Palica i loptica zajedno koštaju 110 centi. Palica košta 100 centi više od loptice. Koliko košta loptica?"
+   },
+   "options": [
+    {
+     "en": "5 cents",
+     "ro": "5 cenți",
+     "sr-latn": "5 centi"
+    },
+    {
+     "en": "10 cents",
+     "ro": "10 cenți",
+     "sr-latn": "10 centi"
+    },
+    {
+     "en": "55 cents",
+     "ro": "55 de cenți",
+     "sr-latn": "55 centi"
+    },
+    {
+     "en": "100 cents",
+     "ro": "100 de cenți",
+     "sr-latn": "100 centi"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "If the ball is 5 cents, the bat is 105 and together they are 110. Ten cents would make the bat 110 and the total 120.",
+    "ro": "Dacă mingea costă 5 cenți, bâta costă 105, iar împreună fac 110. Zece cenți ar face bâta 110 și totalul 120.",
+    "sr-latn": "Ako loptica košta 5 centi, palica košta 105, a zajedno 110. Deset centi bi dalo palicu od 110 i ukupno 120."
+   },
+   "source": "@src.deduction"
+  },
+  {
+   "id": "logic-clock-hands",
+   "topic": "logic",
+   "q": {
+    "en": "How many times do the hour hand and the minute hand of a clock overlap in twelve hours?",
+    "ro": "De câte ori se suprapun limbile unui ceas, cea orară și cea a minutelor, în douăsprezece ore?",
+    "sr-latn": "Koliko se puta preklope kazaljke sata, satna i minutna, za dvanaest sati?"
+   },
+   "options": [
+    {
+     "en": "10",
+     "ro": "10",
+     "sr-latn": "10"
+    },
+    {
+     "en": "11",
+     "ro": "11",
+     "sr-latn": "11"
+    },
+    {
+     "en": "12",
+     "ro": "12",
+     "sr-latn": "12"
+    },
+    {
+     "en": "24",
+     "ro": "24",
+     "sr-latn": "24"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "The minute hand goes round twelve times while the hour hand goes round once, so it catches up eleven times.",
+    "ro": "Limba minutelor face douăsprezece ture cât limba orelor face una, deci o ajunge din urmă de unsprezece ori.",
+    "sr-latn": "Minutna kazaljka napravi dvanaest krugova dok satna napravi jedan, pa je sustigne jedanaest puta."
+   },
+   "source": "@src.clock"
+  },
+  {
+   "id": "logic-double",
+   "topic": "logic",
+   "q": {
+    "en": "What comes next: 2, 4, 8, 16, ...?",
+    "ro": "Ce urmează: 2, 4, 8, 16, ...?",
+    "sr-latn": "Šta sledi: 2, 4, 8, 16, ...?"
+   },
+   "options": [
+    {
+     "en": "24",
+     "ro": "24",
+     "sr-latn": "24"
+    },
+    {
+     "en": "32",
+     "ro": "32",
+     "sr-latn": "32"
+    },
+    {
+     "en": "20",
+     "ro": "20",
+     "sr-latn": "20"
+    },
+    {
+     "en": "64",
+     "ro": "64",
+     "sr-latn": "64"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "Every number is double the one before it, so 16 doubles to 32.",
+    "ro": "Fiecare număr este dublul celui dinaintea lui, deci 16 se dublează în 32.",
+    "sr-latn": "Svaki broj je duplo veći od prethodnog, pa se 16 udvostručuje u 32."
+   },
+   "source": "@src.sequences"
+  },
+  {
+   "id": "logic-dry-street",
+   "topic": "logic",
+   "q": {
+    "en": "If it rains, the street gets wet. The street is dry. What follows?",
+    "ro": "Dacă plouă, strada se udă. Strada este uscată. Ce urmează?",
+    "sr-latn": "Ako pada kiša, ulica se kvasi. Ulica je suva. Šta sledi?"
+   },
+   "options": [
+    {
+     "en": "It did not rain",
+     "ro": "Nu a plouat",
+     "sr-latn": "Nije padala kiša"
+    },
+    {
+     "en": "It rained a little",
+     "ro": "A plouat puțin",
+     "sr-latn": "Malo je padala kiša"
+    },
+    {
+     "en": "The street dried later",
+     "ro": "Strada s-a uscat mai târziu",
+     "sr-latn": "Ulica se kasnije osušila"
+    },
+    {
+     "en": "Nothing can be said",
+     "ro": "Nu se poate spune nimic",
+     "sr-latn": "Ništa se ne može reći"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Rain always leaves the street wet, so a dry street means the rain did not fall. The form is called modus tollens.",
+    "ro": "Ploaia lasă mereu strada udă, deci o stradă uscată înseamnă că ploaia nu a căzut. Forma se numește modus tollens.",
+    "sr-latn": "Kiša uvek ostavi ulicu mokrom, pa suva ulica znači da kiše nije bilo. Taj oblik se zove modus tollens."
+   },
+   "source": "@src.deduction"
+  },
+  {
+   "id": "logic-fibonacci",
+   "topic": "logic",
+   "q": {
+    "en": "What comes next: 1, 1, 2, 3, 5, 8, ...?",
+    "ro": "Ce urmează: 1, 1, 2, 3, 5, 8, ...?",
+    "sr-latn": "Šta sledi: 1, 1, 2, 3, 5, 8, ...?"
+   },
+   "options": [
+    {
+     "en": "11",
+     "ro": "11",
+     "sr-latn": "11"
+    },
+    {
+     "en": "13",
+     "ro": "13",
+     "sr-latn": "13"
+    },
+    {
+     "en": "15",
+     "ro": "15",
+     "sr-latn": "15"
+    },
+    {
+     "en": "16",
+     "ro": "16",
+     "sr-latn": "16"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "Each number is the sum of the two before it, and 5 plus 8 is 13. This is the Fibonacci sequence.",
+    "ro": "Fiecare număr este suma celor două dinaintea lui, iar 5 plus 8 fac 13. Este șirul lui Fibonacci.",
+    "sr-latn": "Svaki broj je zbir prethodna dva, a 5 plus 8 je 13. To je Fibonačijev niz."
+   },
+   "source": "@src.sequences"
+  },
+  {
+   "id": "logic-grey-bird",
+   "topic": "logic",
+   "q": {
+    "en": "Every bird in this town is grey, and I have just seen a bird in this town. What follows?",
+    "ro": "Toate păsările din acest oraș sunt cenușii, iar eu tocmai am văzut o pasăre în acest oraș. Ce urmează?",
+    "sr-latn": "Sve ptice u ovom gradu su sive, a ja sam upravo video pticu u ovom gradu. Šta sledi?"
+   },
+   "options": [
+    {
+     "en": "The bird was grey",
+     "ro": "Pasărea era cenușie",
+     "sr-latn": "Ptica je bila siva"
+    },
+    {
+     "en": "The bird was not grey",
+     "ro": "Pasărea nu era cenușie",
+     "sr-latn": "Ptica nije bila siva"
+    },
+    {
+     "en": "Nothing can be said about its colour",
+     "ro": "Nu se poate spune nimic despre culoarea ei",
+     "sr-latn": "O njenoj boji se ne može ništa reći"
+    },
+    {
+     "en": "The bird was a pigeon",
+     "ro": "Pasărea era un porumbel",
+     "sr-latn": "Ptica je bila golub"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "If the rule holds for every bird, it holds for the one I saw. The colour is not a guess, it follows.",
+    "ro": "Dacă regula e valabilă pentru fiecare pasăre, e valabilă și pentru cea pe care am văzut-o. Culoarea nu e o presupunere, ci o concluzie.",
+    "sr-latn": "Ako pravilo važi za svaku pticu, važi i za onu koju sam video. Boja nije nagađanje, nego zaključak."
+   },
+   "source": "@src.deduction"
+  },
+  {
+   "id": "logic-heights",
+   "topic": "logic",
+   "q": {
+    "en": "Ana is taller than Marko, and Marko is taller than Lena. Who is the shortest?",
+    "ro": "Ana este mai înaltă decât Marko, iar Marko este mai înalt decât Lena. Cine este cel mai scund?",
+    "sr-latn": "Ana je viša od Marka, a Marko je viši od Lene. Ko je najniži?"
+   },
+   "options": [
+    {
+     "en": "Lena",
+     "ro": "Lena",
+     "sr-latn": "Lena"
+    },
+    {
+     "en": "Ana",
+     "ro": "Ana",
+     "sr-latn": "Ana"
+    },
+    {
+     "en": "Marko",
+     "ro": "Marko",
+     "sr-latn": "Marko"
+    },
+    {
+     "en": "All three are the same height",
+     "ro": "Toți trei au aceeași înălțime",
+     "sr-latn": "Svi su iste visine"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Ana is above Marko and Marko is above Lena, so Lena sits at the bottom of the order.",
+    "ro": "Ana e deasupra lui Marko, iar Marko deasupra Lenei, deci Lena stă la baza ordinii.",
+    "sr-latn": "Ana je iznad Marka, a Marko iznad Lene, pa je Lena na dnu poretka."
+   },
+   "source": "@src.deduction"
+  },
+  {
+   "id": "logic-not-a-square",
+   "topic": "logic",
+   "q": {
+    "en": "Which number does not belong: 4, 9, 16, 25, 30?",
+    "ro": "Care număr nu se potrivește: 4, 9, 16, 25, 30?",
+    "sr-latn": "Koji broj ne pripada: 4, 9, 16, 25, 30?"
+   },
+   "options": [
+    {
+     "en": "9",
+     "ro": "9",
+     "sr-latn": "9"
+    },
+    {
+     "en": "16",
+     "ro": "16",
+     "sr-latn": "16"
+    },
+    {
+     "en": "30",
+     "ro": "30",
+     "sr-latn": "30"
+    },
+    {
+     "en": "4",
+     "ro": "4",
+     "sr-latn": "4"
+    }
+   ],
+   "correct": 2,
+   "why": {
+    "en": "4, 9, 16 and 25 are the squares of 2, 3, 4 and 5. 30 is not the square of a whole number.",
+    "ro": "4, 9, 16 și 25 sunt pătratele lui 2, 3, 4 și 5. 30 nu este pătratul niciunui număr întreg.",
+    "sr-latn": "4, 9, 16 i 25 su kvadrati brojeva 2, 3, 4 i 5. 30 nije kvadrat nijednog celog broja."
+   },
+   "source": "@src.sequences"
+  },
+  {
+   "id": "logic-not-flat",
+   "topic": "logic",
+   "q": {
+    "en": "Which one does not belong: triangle, square, circle, cube?",
+    "ro": "Care nu se potrivește: triunghi, pătrat, cerc, cub?",
+    "sr-latn": "Šta ne pripada: trougao, kvadrat, krug, kocka?"
+   },
+   "options": [
+    {
+     "en": "Triangle",
+     "ro": "Triunghi",
+     "sr-latn": "Trougao"
+    },
+    {
+     "en": "Square",
+     "ro": "Pătrat",
+     "sr-latn": "Kvadrat"
+    },
+    {
+     "en": "Circle",
+     "ro": "Cerc",
+     "sr-latn": "Krug"
+    },
+    {
+     "en": "Cube",
+     "ro": "Cub",
+     "sr-latn": "Kocka"
+    }
+   ],
+   "correct": 3,
+   "why": {
+    "en": "The first three are flat shapes drawn on a page. A cube has depth.",
+    "ro": "Primele trei sunt forme plate, desenate pe o foaie. Cubul are adâncime.",
+    "sr-latn": "Prva tri su ravne figure nacrtane na papiru. Kocka ima dubinu."
+   },
+   "source": "@src.geometry"
+  },
+  {
+   "id": "logic-overtake-second",
+   "topic": "logic",
+   "q": {
+    "en": "In a race you overtake the runner in second place. Which place are you in now?",
+    "ro": "Într-o cursă depășești alergătorul de pe locul doi. Pe ce loc ești acum?",
+    "sr-latn": "U trci pretekneš trkača na drugom mestu. Na kom mestu si sada?"
+   },
+   "options": [
+    {
+     "en": "First",
+     "ro": "Primul",
+     "sr-latn": "Prvi"
+    },
+    {
+     "en": "Second",
+     "ro": "Al doilea",
+     "sr-latn": "Drugi"
+    },
+    {
+     "en": "Third",
+     "ro": "Al treilea",
+     "sr-latn": "Treći"
+    },
+    {
+     "en": "Last",
+     "ro": "Ultimul",
+     "sr-latn": "Poslednji"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "Overtaking the second runner puts you where that runner was, which is second. The leader is still ahead.",
+    "ro": "Dacă îl depășești pe cel de pe locul doi, ajungi pe locul lui, adică doi. Liderul e încă în față.",
+    "sr-latn": "Ako pretekneš trkača na drugom mestu, dolaziš na njegovo mesto, to jest drugo. Vođa je i dalje ispred."
+   },
+   "source": "@src.deduction"
+  },
+  {
+   "id": "logic-red-roses",
+   "topic": "logic",
+   "q": {
+    "en": "Every rose in this garden is red, and every red flower in this garden was planted by my aunt. What follows?",
+    "ro": "Fiecare trandafir din această grădină este roșu, iar fiecare floare roșie din această grădină a fost plantată de mătușa mea. Ce urmează?",
+    "sr-latn": "Svaka ruža u ovoj bašti je crvena, a svaki crveni cvet u ovoj bašti je zasadila moja tetka. Šta sledi?"
+   },
+   "options": [
+    {
+     "en": "Every rose here was planted by my aunt",
+     "ro": "Fiecare trandafir de aici a fost plantat de mătușa mea",
+     "sr-latn": "Svaku ružu ovde je zasadila moja tetka"
+    },
+    {
+     "en": "Some roses were not planted by my aunt",
+     "ro": "Unii trandafiri nu au fost plantați de mătușa mea",
+     "sr-latn": "Neke ruže nije zasadila moja tetka"
+    },
+    {
+     "en": "Every flower here is a rose",
+     "ro": "Fiecare floare de aici este trandafir",
+     "sr-latn": "Svaki cvet ovde je ruža"
+    },
+    {
+     "en": "Nothing follows",
+     "ro": "Nu urmează nimic",
+     "sr-latn": "Ništa ne sledi"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "The two statements chain together: a rose is red, and a red flower here came from my aunt.",
+    "ro": "Cele două afirmații se leagă: un trandafir este roșu, iar o floare roșie de aici vine de la mătușa mea.",
+    "sr-latn": "Dve tvrdnje se povezuju: ruža je crvena, a crveni cvet ovde je od moje tetke."
+   },
+   "source": "@src.deduction"
+  },
+  {
+   "id": "logic-steps-of-odd",
+   "topic": "logic",
+   "q": {
+    "en": "What comes next: 3, 6, 11, 18, ...?",
+    "ro": "Ce urmează: 3, 6, 11, 18, ...?",
+    "sr-latn": "Šta sledi: 3, 6, 11, 18, ...?"
+   },
+   "options": [
+    {
+     "en": "25",
+     "ro": "25",
+     "sr-latn": "25"
+    },
+    {
+     "en": "27",
+     "ro": "27",
+     "sr-latn": "27"
+    },
+    {
+     "en": "29",
+     "ro": "29",
+     "sr-latn": "29"
+    },
+    {
+     "en": "24",
+     "ro": "24",
+     "sr-latn": "24"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "The steps are 3, 5 and 7, so the next step is 9, and 18 plus 9 is 27.",
+    "ro": "Pașii sunt 3, 5 și 7, deci următorul pas este 9, iar 18 plus 9 fac 27.",
+    "sr-latn": "Koraci su 3, 5 i 7, pa je sledeći korak 9, a 18 plus 9 je 27."
+   },
+   "source": "@src.sequences"
+  },
+  {
+   "id": "math-average-speed",
+   "topic": "math",
+   "q": {
+    "en": "A train covers 180 km in 2 hours. What is its average speed, in kilometres per hour?",
+    "ro": "Un tren parcurge 180 km în 2 ore. Care este viteza lui medie, în kilometri pe oră?",
+    "sr-latn": "Voz pređe 180 km za 2 sata. Kolika je njegova prosečna brzina, u kilometrima na sat?"
+   },
+   "options": [
+    {
+     "en": "60",
+     "ro": "60",
+     "sr-latn": "60"
+    },
+    {
+     "en": "90",
+     "ro": "90",
+     "sr-latn": "90"
+    },
+    {
+     "en": "120",
+     "ro": "120",
+     "sr-latn": "120"
+    },
+    {
+     "en": "360",
+     "ro": "360",
+     "sr-latn": "360"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "Speed is distance divided by time: 180 divided by 2 is 90 kilometres per hour.",
+    "ro": "Viteza este distanța împărțită la timp: 180 împărțit la 2 fac 90 de kilometri pe oră.",
+    "sr-latn": "Brzina je pređeni put podeljen vremenom: 180 podeljeno sa 2 je 90 kilometara na sat."
+   },
+   "source": "@src.arithmetic"
+  },
+  {
+   "id": "math-discount",
+   "topic": "math",
+   "q": {
+    "en": "A jacket costs 80 and is reduced by 25%. What does it cost now?",
+    "ro": "O jachetă costă 80 și se ieftinește cu 25%. Cât costă acum?",
+    "sr-latn": "Jakna košta 80 i pojeftini za 25%. Koliko košta sada?"
+   },
+   "options": [
+    {
+     "en": "55",
+     "ro": "55",
+     "sr-latn": "55"
+    },
+    {
+     "en": "60",
+     "ro": "60",
+     "sr-latn": "60"
+    },
+    {
+     "en": "65",
+     "ro": "65",
+     "sr-latn": "65"
+    },
+    {
+     "en": "20",
+     "ro": "20",
+     "sr-latn": "20"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "A quarter of 80 is 20, and 80 minus 20 is 60.",
+    "ro": "Un sfert din 80 este 20, iar 80 minus 20 fac 60.",
+    "sr-latn": "Četvrtina od 80 je 20, a 80 minus 20 je 60."
+   },
+   "source": "@src.arithmetic"
+  },
+  {
+   "id": "math-divisible-nine",
+   "topic": "math",
+   "q": {
+    "en": "Which of these numbers divides by 9 without a remainder?",
+    "ro": "Care dintre aceste numere se împarte exact la 9?",
+    "sr-latn": "Koji od ovih brojeva se deli sa 9 bez ostatka?"
+   },
+   "options": [
+    {
+     "en": "731",
+     "ro": "731",
+     "sr-latn": "731"
+    },
+    {
+     "en": "738",
+     "ro": "738",
+     "sr-latn": "738"
+    },
+    {
+     "en": "742",
+     "ro": "742",
+     "sr-latn": "742"
+    },
+    {
+     "en": "745",
+     "ro": "745",
+     "sr-latn": "745"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "A number divides by 9 when its digits add up to a multiple of 9, and 7 plus 3 plus 8 is 18.",
+    "ro": "Un număr se împarte la 9 dacă suma cifrelor lui este un multiplu de 9, iar 7 plus 3 plus 8 fac 18.",
+    "sr-latn": "Broj se deli sa 9 kada njegove cifre sabrane daju višekratnik broja 9, a 7 plus 3 plus 8 je 18."
+   },
+   "source": "@src.divisibility"
+  },
+  {
+   "id": "math-half-plus-third",
+   "topic": "math",
+   "q": {
+    "en": "What is one half plus one third?",
+    "ro": "Cât face o doime plus o treime?",
+    "sr-latn": "Koliko je jedna polovina plus jedna trećina?"
+   },
+   "options": [
+    {
+     "en": "2/5",
+     "ro": "2/5",
+     "sr-latn": "2/5"
+    },
+    {
+     "en": "1/6",
+     "ro": "1/6",
+     "sr-latn": "1/6"
+    },
+    {
+     "en": "5/6",
+     "ro": "5/6",
+     "sr-latn": "5/6"
+    },
+    {
+     "en": "2/6",
+     "ro": "2/6",
+     "sr-latn": "2/6"
+    }
+   ],
+   "correct": 2,
+   "why": {
+    "en": "In sixths, one half is three sixths and one third is two sixths, so together they are five sixths.",
+    "ro": "În șesimi, o doime este trei șesimi, iar o treime este două șesimi, deci împreună fac cinci șesimi.",
+    "sr-latn": "U šestinama, jedna polovina je tri šestine, a jedna trećina je dve šestine, pa zajedno daju pet šestina."
+   },
+   "source": "@src.arithmetic"
+  },
+  {
+   "id": "math-largest-fraction",
+   "topic": "math",
+   "q": {
+    "en": "Which of these fractions is the largest?",
+    "ro": "Care dintre aceste fracții este cea mai mare?",
+    "sr-latn": "Koji od ovih razlomaka je najveći?"
+   },
+   "options": [
+    {
+     "en": "3/4",
+     "ro": "3/4",
+     "sr-latn": "3/4"
+    },
+    {
+     "en": "5/7",
+     "ro": "5/7",
+     "sr-latn": "5/7"
+    },
+    {
+     "en": "2/3",
+     "ro": "2/3",
+     "sr-latn": "2/3"
+    },
+    {
+     "en": "7/10",
+     "ro": "7/10",
+     "sr-latn": "7/10"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Written as decimals they are 0.75, about 0.71, about 0.67 and 0.7, so three quarters is the largest.",
+    "ro": "Scrise ca numere zecimale sunt 0,75, aproximativ 0,71, aproximativ 0,67 și 0,7, deci trei sferturi este cea mai mare.",
+    "sr-latn": "Kao decimalni brojevi to je 0,75, oko 0,71, oko 0,67 i 0,7, pa je tri četvrtine najveće."
+   },
+   "source": "@src.arithmetic"
+  },
+  {
+   "id": "math-next-prime",
+   "topic": "math",
+   "q": {
+    "en": "Which number comes straight after 23 in the list of prime numbers?",
+    "ro": "Care număr urmează după 23 în șirul numerelor prime?",
+    "sr-latn": "Koji broj sledi posle 23 u nizu prostih brojeva?"
+   },
+   "options": [
+    {
+     "en": "25",
+     "ro": "25",
+     "sr-latn": "25"
+    },
+    {
+     "en": "27",
+     "ro": "27",
+     "sr-latn": "27"
+    },
+    {
+     "en": "29",
+     "ro": "29",
+     "sr-latn": "29"
+    },
+    {
+     "en": "31",
+     "ro": "31",
+     "sr-latn": "31"
+    }
+   ],
+   "correct": 2,
+   "why": {
+    "en": "24, 25, 26, 27 and 28 all divide by something smaller than themselves. 29 divides only by 1 and by 29.",
+    "ro": "24, 25, 26, 27 și 28 se împart toate la ceva mai mic decât ele. 29 se împarte doar la 1 și la 29.",
+    "sr-latn": "24, 25, 26, 27 i 28 se dele na nešto manje od sebe. 29 se deli samo sa 1 i sa 29."
+   },
+   "source": "@src.arithmetic"
+  },
+  {
+   "id": "math-percent-200",
+   "topic": "math",
+   "q": {
+    "en": "What is 15% of 200?",
+    "ro": "Cât este 15% din 200?",
+    "sr-latn": "Koliko je 15% od 200?"
+   },
+   "options": [
+    {
+     "en": "30",
+     "ro": "30",
+     "sr-latn": "30"
+    },
+    {
+     "en": "20",
+     "ro": "20",
+     "sr-latn": "20"
+    },
+    {
+     "en": "15",
+     "ro": "15",
+     "sr-latn": "15"
+    },
+    {
+     "en": "45",
+     "ro": "45",
+     "sr-latn": "45"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Fifteen percent means fifteen in every hundred, so 200 multiplied by 0.15 is 30.",
+    "ro": "Cincisprezece la sută înseamnă cincisprezece din fiecare sută, deci 200 înmulțit cu 0,15 dă 30.",
+    "sr-latn": "Petnaest posto znači petnaest u svakih sto, pa je 200 pomnoženo sa 0,15 jednako 30."
+   },
+   "source": "@src.arithmetic"
+  },
+  {
+   "id": "math-pi-two-decimals",
+   "topic": "math",
+   "q": {
+    "en": "Pi, rounded to two decimal places, is...",
+    "ro": "Pi, rotunjit la două zecimale, este...",
+    "sr-latn": "Pi, zaokružen na dve decimale, iznosi..."
+   },
+   "options": [
+    {
+     "en": "3.12",
+     "ro": "3,12",
+     "sr-latn": "3,12"
+    },
+    {
+     "en": "3.14",
+     "ro": "3,14",
+     "sr-latn": "3,14"
+    },
+    {
+     "en": "3.16",
+     "ro": "3,16",
+     "sr-latn": "3,16"
+    },
+    {
+     "en": "3.41",
+     "ro": "3,41",
+     "sr-latn": "3,41"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "Pi begins 3.14159, so the first two decimals are 1 and 4.",
+    "ro": "Pi începe cu 3,14159, deci primele două zecimale sunt 1 și 4.",
+    "sr-latn": "Pi počinje sa 3,14159, pa su prve dve decimale 1 i 4."
+   },
+   "source": "@src.arithmetic"
+  },
+  {
+   "id": "math-rectangle-area",
+   "topic": "math",
+   "q": {
+    "en": "A rectangle is 6 metres long and 4 metres wide. What is its area?",
+    "ro": "Un dreptunghi are 6 metri lungime și 4 metri lățime. Care este aria lui?",
+    "sr-latn": "Pravougaonik je dug 6 metara i širok 4 metra. Kolika je njegova površina?"
+   },
+   "options": [
+    {
+     "en": "24 square metres",
+     "ro": "24 de metri pătrați",
+     "sr-latn": "24 kvadratna metra"
+    },
+    {
+     "en": "20 square metres",
+     "ro": "20 de metri pătrați",
+     "sr-latn": "20 kvadratnih metara"
+    },
+    {
+     "en": "10 square metres",
+     "ro": "10 metri pătrați",
+     "sr-latn": "10 kvadratnih metara"
+    },
+    {
+     "en": "12 square metres",
+     "ro": "12 metri pătrați",
+     "sr-latn": "12 kvadratnih metara"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "The area of a rectangle is length times width: 6 times 4 is 24 square metres.",
+    "ro": "Aria dreptunghiului este lungimea ori lățimea: 6 ori 4 fac 24 de metri pătrați.",
+    "sr-latn": "Površina pravougaonika je dužina puta širina: 6 puta 4 je 24 kvadratna metra."
+   },
+   "source": "Euclid, Elements, Book I"
+  },
+  {
+   "id": "math-square-root-144",
+   "topic": "math",
+   "q": {
+    "en": "What is the square root of 144?",
+    "ro": "Care este rădăcina pătrată a lui 144?",
+    "sr-latn": "Koliki je kvadratni koren broja 144?"
+   },
+   "options": [
+    {
+     "en": "12",
+     "ro": "12",
+     "sr-latn": "12"
+    },
+    {
+     "en": "14",
+     "ro": "14",
+     "sr-latn": "14"
+    },
+    {
+     "en": "16",
+     "ro": "16",
+     "sr-latn": "16"
+    },
+    {
+     "en": "24",
+     "ro": "24",
+     "sr-latn": "24"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "12 times 12 is 144, and the square root is the positive number that gives 144 when multiplied by itself.",
+    "ro": "12 ori 12 fac 144, iar rădăcina pătrată este numărul pozitiv care, înmulțit cu el însuși, dă 144.",
+    "sr-latn": "12 puta 12 je 144, a kvadratni koren je pozitivan broj koji pomnožen sam sobom daje 144."
+   },
+   "source": "@src.arithmetic"
+  },
+  {
+   "id": "math-triangle-angles",
+   "topic": "math",
+   "q": {
+    "en": "The three angles inside a triangle always add up to...",
+    "ro": "Cele trei unghiuri din interiorul unui triunghi dau împreună...",
+    "sr-latn": "Tri ugla unutar trougla uvek daju zajedno..."
+   },
+   "options": [
+    {
+     "en": "180 degrees",
+     "ro": "180 de grade",
+     "sr-latn": "180 stepeni"
+    },
+    {
+     "en": "90 degrees",
+     "ro": "90 de grade",
+     "sr-latn": "90 stepeni"
+    },
+    {
+     "en": "270 degrees",
+     "ro": "270 de grade",
+     "sr-latn": "270 stepeni"
+    },
+    {
+     "en": "360 degrees",
+     "ro": "360 de grade",
+     "sr-latn": "360 stepeni"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Draw a line through one corner, parallel to the opposite side. The three angles sit on that straight line, and a straight line is 180 degrees.",
+    "ro": "Se duce prin un vârf o dreaptă paralelă cu latura opusă. Cele trei unghiuri stau pe acea dreaptă, iar o dreaptă are 180 de grade.",
+    "sr-latn": "Kroz jedno teme se povuče prava paralelna sa naspramnom stranicom. Tri ugla leže na toj pravoj, a prava ima 180 stepeni."
+   },
+   "source": "Euclid, Elements, Book I"
+  },
+  {
+   "id": "math-two-to-ten",
+   "topic": "math",
+   "q": {
+    "en": "How much is 2 to the power of 10?",
+    "ro": "Cât face 2 la puterea 10?",
+    "sr-latn": "Koliko je 2 na deseti?"
+   },
+   "options": [
+    {
+     "en": "512",
+     "ro": "512",
+     "sr-latn": "512"
+    },
+    {
+     "en": "1000",
+     "ro": "1000",
+     "sr-latn": "1000"
+    },
+    {
+     "en": "1024",
+     "ro": "1024",
+     "sr-latn": "1024"
+    },
+    {
+     "en": "2048",
+     "ro": "2048",
+     "sr-latn": "2048"
+    }
+   ],
+   "correct": 2,
+   "why": {
+    "en": "Two multiplied by itself ten times is 1024. It is close to a thousand, but it is not a thousand.",
+    "ro": "Doi înmulțit cu el însuși de zece ori dă 1024. E aproape de o mie, dar nu este o mie.",
+    "sr-latn": "Dva pomnoženo samo sobom deset puta daje 1024. Blizu je hiljade, ali nije hiljada."
+   },
+   "source": "@src.arithmetic"
+  },
+  {
+   "id": "sci-boiling-point",
+   "topic": "sci",
+   "q": {
+    "en": "At sea level, water boils at about...",
+    "ro": "La nivelul mării, apa fierbe la aproximativ...",
+    "sr-latn": "Na nivou mora, voda ključa na oko..."
+   },
+   "options": [
+    {
+     "en": "90 degrees Celsius",
+     "ro": "90 de grade Celsius",
+     "sr-latn": "90 stepeni Celzijusa"
+    },
+    {
+     "en": "100 degrees Celsius",
+     "ro": "100 de grade Celsius",
+     "sr-latn": "100 stepeni Celzijusa"
+    },
+    {
+     "en": "110 degrees Celsius",
+     "ro": "110 de grade Celsius",
+     "sr-latn": "110 stepeni Celzijusa"
+    },
+    {
+     "en": "120 degrees Celsius",
+     "ro": "120 de grade Celsius",
+     "sr-latn": "120 stepeni Celzijusa"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "At normal pressure at sea level water boils at 100 degrees Celsius. Higher up, where the air is thinner, it boils at a lower temperature.",
+    "ro": "La presiunea normală de la nivelul mării, apa fierbe la 100 de grade Celsius. La altitudine, unde aerul e rar, fierbe la o temperatură mai mică.",
+    "sr-latn": "Na normalnom pritisku na nivou mora voda ključa na 100 stepeni Celzijusa. Na visini, gde je vazduh ređi, ključa na nižoj temperaturi."
+   },
+   "source": "CRC Handbook of Chemistry and Physics"
+  },
+  {
+   "id": "sci-bones",
+   "topic": "sci",
+   "q": {
+    "en": "How many bones does an adult human body have?",
+    "ro": "Câte oase are corpul unui adult?",
+    "sr-latn": "Koliko kostiju ima telo odraslog čoveka?"
+   },
+   "options": [
+    {
+     "en": "106",
+     "ro": "106",
+     "sr-latn": "106"
+    },
+    {
+     "en": "186",
+     "ro": "186",
+     "sr-latn": "186"
+    },
+    {
+     "en": "206",
+     "ro": "206",
+     "sr-latn": "206"
+    },
+    {
+     "en": "256",
+     "ro": "256",
+     "sr-latn": "256"
+    }
+   ],
+   "correct": 2,
+   "why": {
+    "en": "An adult body has 206 bones. A baby is born with far more, and many of them fuse as the body grows.",
+    "ro": "Un corp adult are 206 oase. Un bebeluș se naște cu mult mai multe, iar multe se sudează pe măsură ce corpul crește.",
+    "sr-latn": "Odraslo telo ima 206 kostiju. Beba se rađa sa mnogo više, a mnoge se srastu dok telo raste."
+   },
+   "source": "Gray's Anatomy"
+  },
+  {
+   "id": "sci-carbon-protons",
+   "topic": "sci",
+   "q": {
+    "en": "How many protons does a carbon atom have?",
+    "ro": "Câți protoni are un atom de carbon?",
+    "sr-latn": "Koliko protona ima atom ugljenika?"
+   },
+   "options": [
+    {
+     "en": "6",
+     "ro": "6",
+     "sr-latn": "6"
+    },
+    {
+     "en": "8",
+     "ro": "8",
+     "sr-latn": "8"
+    },
+    {
+     "en": "12",
+     "ro": "12",
+     "sr-latn": "12"
+    },
+    {
+     "en": "14",
+     "ro": "14",
+     "sr-latn": "14"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "The number of protons is the atomic number, and carbon sits at number 6 in the periodic table.",
+    "ro": "Numărul de protoni este numărul atomic, iar carbonul stă pe locul 6 în tabelul periodic.",
+    "sr-latn": "Broj protona je atomski broj, a ugljenik je na šestom mestu u periodnom sistemu."
+   },
+   "source": "IUPAC, periodic table"
+  },
+  {
+   "id": "sci-closest-planet",
+   "topic": "sci",
+   "q": {
+    "en": "Which planet orbits closest to the Sun?",
+    "ro": "Care planetă se învârte cel mai aproape de Soare?",
+    "sr-latn": "Koja planeta kruži najbliže Suncu?"
+   },
+   "options": [
+    {
+     "en": "Mercury",
+     "ro": "Mercur",
+     "sr-latn": "Merkur"
+    },
+    {
+     "en": "Venus",
+     "ro": "Venus",
+     "sr-latn": "Venera"
+    },
+    {
+     "en": "Earth",
+     "ro": "Pământ",
+     "sr-latn": "Zemlja"
+    },
+    {
+     "en": "Mars",
+     "ro": "Marte",
+     "sr-latn": "Mars"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Mercury circles the Sun at less than half the distance of the Earth's orbit.",
+    "ro": "Mercur se învârte în jurul Soarelui la mai puțin de jumătate din distanța orbitei Pământului.",
+    "sr-latn": "Merkur kruži oko Sunca na manje od polovine rastojanja Zemljine orbite."
+   },
+   "source": "NASA, planetary fact sheet"
+  },
+  {
+   "id": "sci-gold-symbol",
+   "topic": "sci",
+   "q": {
+    "en": "What is the chemical symbol for gold?",
+    "ro": "Care este simbolul chimic al aurului?",
+    "sr-latn": "Koji je hemijski simbol zlata?"
+   },
+   "options": [
+    {
+     "en": "Au",
+     "ro": "Au",
+     "sr-latn": "Au"
+    },
+    {
+     "en": "Ag",
+     "ro": "Ag",
+     "sr-latn": "Ag"
+    },
+    {
+     "en": "Go",
+     "ro": "Go",
+     "sr-latn": "Go"
+    },
+    {
+     "en": "Gd",
+     "ro": "Gd",
+     "sr-latn": "Gd"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Au comes from aurum, the Latin name for gold. Ag is silver, from argentum.",
+    "ro": "Au vine de la aurum, numele latin al aurului. Ag este argintul, de la argentum.",
+    "sr-latn": "Au dolazi od aurum, latinskog imena zlata. Ag je srebro, od argentum."
+   },
+   "source": "IUPAC"
+  },
+  {
+   "id": "sci-insulin",
+   "topic": "sci",
+   "q": {
+    "en": "Which organ produces insulin?",
+    "ro": "Care organ produce insulină?",
+    "sr-latn": "Koji organ proizvodi insulin?"
+   },
+   "options": [
+    {
+     "en": "The pancreas",
+     "ro": "Pancreasul",
+     "sr-latn": "Pankreas"
+    },
+    {
+     "en": "The liver",
+     "ro": "Ficatul",
+     "sr-latn": "Jetra"
+    },
+    {
+     "en": "The kidney",
+     "ro": "Rinichiul",
+     "sr-latn": "Bubreg"
+    },
+    {
+     "en": "The spleen",
+     "ro": "Splina",
+     "sr-latn": "Slezina"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Insulin comes from the beta cells of the pancreas, which sits behind the stomach.",
+    "ro": "Insulina vine din celulele beta ale pancreasului, care stă în spatele stomacului.",
+    "sr-latn": "Insulin stvaraju beta ćelije pankreasa, koji leži iza želuca."
+   },
+   "source": "Gray's Anatomy"
+  },
+  {
+   "id": "sci-most-abundant-gas",
+   "topic": "sci",
+   "q": {
+    "en": "Which gas is the most abundant in the air we breathe?",
+    "ro": "Care gaz este cel mai răspândit în aerul pe care îl respirăm?",
+    "sr-latn": "Koji gas je najzastupljeniji u vazduhu koji udišemo?"
+   },
+   "options": [
+    {
+     "en": "Nitrogen",
+     "ro": "Azotul",
+     "sr-latn": "Azot"
+    },
+    {
+     "en": "Oxygen",
+     "ro": "Oxigenul",
+     "sr-latn": "Kiseonik"
+    },
+    {
+     "en": "Carbon dioxide",
+     "ro": "Dioxidul de carbon",
+     "sr-latn": "Ugljen-dioksid"
+    },
+    {
+     "en": "Argon",
+     "ro": "Argonul",
+     "sr-latn": "Argon"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Dry air is about 78 percent nitrogen and 21 percent oxygen.",
+    "ro": "Aerul uscat este cam 78 la sută azot și 21 la sută oxigen.",
+    "sr-latn": "Suv vazduh je oko 78 posto azot i 21 posto kiseonik."
+   },
+   "source": "NASA, Earth fact sheet"
+  },
+  {
+   "id": "sci-oxygen-number",
+   "topic": "sci",
+   "q": {
+    "en": "What is the atomic number of oxygen?",
+    "ro": "Care este numărul atomic al oxigenului?",
+    "sr-latn": "Koji je atomski broj kiseonika?"
+   },
+   "options": [
+    {
+     "en": "6",
+     "ro": "6",
+     "sr-latn": "6"
+    },
+    {
+     "en": "8",
+     "ro": "8",
+     "sr-latn": "8"
+    },
+    {
+     "en": "16",
+     "ro": "16",
+     "sr-latn": "16"
+    },
+    {
+     "en": "18",
+     "ro": "18",
+     "sr-latn": "18"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "Oxygen has eight protons. Sixteen is its usual mass number, which also counts the eight neutrons.",
+    "ro": "Oxigenul are opt protoni. Șaisprezece este numărul lui de masă obișnuit, care numără și cei opt neutroni.",
+    "sr-latn": "Kiseonik ima osam protona. Šesnaest je njegov uobičajen maseni broj, koji broji i osam neutrona."
+   },
+   "source": "IUPAC"
+  },
+  {
+   "id": "sci-photosynthesis-gas",
+   "topic": "sci",
+   "q": {
+    "en": "Which gas do plants take from the air for photosynthesis?",
+    "ro": "Ce gaz iau plantele din aer pentru fotosinteză?",
+    "sr-latn": "Koji gas biljke uzimaju iz vazduha za fotosintezu?"
+   },
+   "options": [
+    {
+     "en": "Carbon dioxide",
+     "ro": "Dioxidul de carbon",
+     "sr-latn": "Ugljen-dioksid"
+    },
+    {
+     "en": "Oxygen",
+     "ro": "Oxigenul",
+     "sr-latn": "Kiseonik"
+    },
+    {
+     "en": "Nitrogen",
+     "ro": "Azotul",
+     "sr-latn": "Azot"
+    },
+    {
+     "en": "Hydrogen",
+     "ro": "Hidrogenul",
+     "sr-latn": "Vodonik"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Plants take in carbon dioxide and water, and give back oxygen and sugar.",
+    "ro": "Plantele iau dioxid de carbon și apă și dau înapoi oxigen și zahăr.",
+    "sr-latn": "Biljke uzimaju ugljen-dioksid i vodu, a vraćaju kiseonik i šećer."
+   },
+   "source": "Encyclopaedia Britannica"
+  },
+  {
+   "id": "sci-speed-of-light",
+   "topic": "sci",
+   "q": {
+    "en": "In a vacuum, light travels at about...",
+    "ro": "În vid, lumina se deplasează cu aproximativ...",
+    "sr-latn": "U vakuumu, svetlost putuje brzinom od oko..."
+   },
+   "options": [
+    {
+     "en": "300 km per second",
+     "ro": "300 km pe secundă",
+     "sr-latn": "300 km u sekundi"
+    },
+    {
+     "en": "3,000 km per second",
+     "ro": "3.000 km pe secundă",
+     "sr-latn": "3.000 km u sekundi"
+    },
+    {
+     "en": "300,000 km per second",
+     "ro": "300.000 km pe secundă",
+     "sr-latn": "300.000 km u sekundi"
+    },
+    {
+     "en": "3,000,000 km per second",
+     "ro": "3.000.000 km pe secundă",
+     "sr-latn": "3.000.000 km u sekundi"
+    }
+   ],
+   "correct": 2,
+   "why": {
+    "en": "Light covers 299,792 kilometres every second, which is close to 300,000.",
+    "ro": "Lumina parcurge 299.792 de kilometri pe secundă, adică aproape 300.000.",
+    "sr-latn": "Svetlost pređe 299.792 kilometra u sekundi, što je blizu 300.000."
+   },
+   "source": "BIPM, SI Brochure"
+  },
+  {
+   "id": "sci-water-formula",
+   "topic": "sci",
+   "q": {
+    "en": "What is the chemical formula of water?",
+    "ro": "Care este formula chimică a apei?",
+    "sr-latn": "Koja je hemijska formula vode?"
+   },
+   "options": [
+    {
+     "en": "H2O",
+     "ro": "H2O",
+     "sr-latn": "H2O"
+    },
+    {
+     "en": "CO2",
+     "ro": "CO2",
+     "sr-latn": "CO2"
+    },
+    {
+     "en": "O2",
+     "ro": "O2",
+     "sr-latn": "O2"
+    },
+    {
+     "en": "H2O2",
+     "ro": "H2O2",
+     "sr-latn": "H2O2"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Two hydrogen atoms and one oxygen atom: H2O. CO2 is carbon dioxide.",
+    "ro": "Doi atomi de hidrogen și unul de oxigen: H2O. CO2 este dioxidul de carbon.",
+    "sr-latn": "Dva atoma vodonika i jedan atom kiseonika: H2O. CO2 je ugljen-dioksid."
+   },
+   "source": "IUPAC"
+  },
+  {
+   "id": "sci-what-keeps-orbit",
+   "topic": "sci",
+   "q": {
+    "en": "What keeps the planets in orbit around the Sun?",
+    "ro": "Ce ține planetele pe orbită în jurul Soarelui?",
+    "sr-latn": "Šta drži planete u orbiti oko Sunca?"
+   },
+   "options": [
+    {
+     "en": "Gravity",
+     "ro": "Gravitația",
+     "sr-latn": "Gravitacija"
+    },
+    {
+     "en": "Magnetism",
+     "ro": "Magnetismul",
+     "sr-latn": "Magnetizam"
+    },
+    {
+     "en": "The solar wind",
+     "ro": "Vântul solar",
+     "sr-latn": "Sunčev vetar"
+    },
+    {
+     "en": "Their own spin",
+     "ro": "Rotația lor",
+     "sr-latn": "Njihova rotacija"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "The gravity of the Sun pulls the planets inward, and their sideways speed stops them from falling in. Together those two make an orbit.",
+    "ro": "Gravitația Soarelui trage planetele spre interior, iar viteza lor laterală le oprește să cadă. Împreună fac o orbită.",
+    "sr-latn": "Gravitacija Sunca vuče planete unutra, a njihova bočna brzina ih sprečava da padnu. Zajedno čine orbitu."
+   },
+   "source": "Isaac Newton, Principia"
+  },
+  {
+   "id": "word-algebra",
+   "topic": "words",
+   "q": {
+    "en": "The word algebra comes from Arabic, where al-jabr meant...",
+    "ro": "Cuvântul algebră vine din arabă, unde al-jabr însemna...",
+    "sr-latn": "Reč algebra dolazi iz arapskog, gde je al-džabr značilo..."
+   },
+   "options": [
+    {
+     "en": "Restoring something broken",
+     "ro": "Repararea a ceva stricat",
+     "sr-latn": "Popravljanje nečega slomljenog"
+    },
+    {
+     "en": "Counting on fingers",
+     "ro": "Număratul pe degete",
+     "sr-latn": "Brojanje na prste"
+    },
+    {
+     "en": "Drawing circles",
+     "ro": "Desenarea cercurilor",
+     "sr-latn": "Crtanje krugova"
+    },
+    {
+     "en": "Measuring the stars",
+     "ro": "Măsurarea stelelor",
+     "sr-latn": "Merjenje zvezda"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Al-Khwarizmi wrote a book in the ninth century about al-jabr, the restoring of broken parts, and the word reached Europe from there.",
+    "ro": "Al-Khwarizmi a scris în secolul al nouălea o carte despre al-jabr, refacerea părților rupte, iar cuvântul a ajuns de acolo în Europa.",
+    "sr-latn": "Al-Horezmi je u devetom veku napisao knjigu o al-džabru, ponovnom spajanju slomljenih delova, i odatle je reč stigla u Evropu."
+   },
+   "source": "Encyclopaedia Britannica"
+  },
+  {
+   "id": "word-antonym",
+   "topic": "words",
+   "q": {
+    "en": "A word with the opposite meaning to another word is called...",
+    "ro": "Un cuvânt cu sens opus altui cuvânt se numește...",
+    "sr-latn": "Reč sa suprotnim značenjem od druge reči zove se..."
+   },
+   "options": [
+    {
+     "en": "An antonym",
+     "ro": "Antonim",
+     "sr-latn": "Antonim"
+    },
+    {
+     "en": "A synonym",
+     "ro": "Sinonim",
+     "sr-latn": "Sinonim"
+    },
+    {
+     "en": "A homonym",
+     "ro": "Omonim",
+     "sr-latn": "Homonim"
+    },
+    {
+     "en": "An acronym",
+     "ro": "Acronim",
+     "sr-latn": "Akronim"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Anti means against and onoma means name. A synonym shares the meaning, an antonym goes against it.",
+    "ro": "Anti înseamnă împotrivă, iar onoma înseamnă nume. Sinonimul are același sens, antonimul îl contrazice.",
+    "sr-latn": "Anti znači protiv, a onoma znači ime. Sinonim ima isto značenje, antonim mu se suprotstavlja."
+   },
+   "source": "Oxford English Dictionary"
+  },
+  {
+   "id": "word-aqua",
+   "topic": "words",
+   "q": {
+    "en": "In Latin, aqua means...",
+    "ro": "În latină, aqua înseamnă...",
+    "sr-latn": "Na latinskom, aqua znači..."
+   },
+   "options": [
+    {
+     "en": "Water",
+     "ro": "Apă",
+     "sr-latn": "Voda"
+    },
+    {
+     "en": "Earth",
+     "ro": "Pământ",
+     "sr-latn": "Zemlja"
+    },
+    {
+     "en": "Fire",
+     "ro": "Foc",
+     "sr-latn": "Vatra"
+    },
+    {
+     "en": "Air",
+     "ro": "Aer",
+     "sr-latn": "Vazduh"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Latin aqua is water, which is why an aqueduct carries water and an aquarium holds it.",
+    "ro": "Aqua este apa în latină, deci un apeduct cară apă, iar un acvariu ține apă.",
+    "sr-latn": "Aqua je voda na latinskom, zato akvadukt nosi vodu, a akvarijum je drži."
+   },
+   "source": "Oxford English Dictionary"
+  },
+  {
+   "id": "word-bibliophile",
+   "topic": "words",
+   "q": {
+    "en": "A bibliophile is someone who loves...",
+    "ro": "Un bibliofil este cineva care iubește...",
+    "sr-latn": "Bibliofil je neko ko voli..."
+   },
+   "options": [
+    {
+     "en": "Books",
+     "ro": "Cărțile",
+     "sr-latn": "Knjige"
+    },
+    {
+     "en": "Water",
+     "ro": "Apa",
+     "sr-latn": "Vodu"
+    },
+    {
+     "en": "Horses",
+     "ro": "Caii",
+     "sr-latn": "Konje"
+    },
+    {
+     "en": "Stamps",
+     "ro": "Timbrele",
+     "sr-latn": "Marke"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Biblion is the Greek word for book, and philos means loving.",
+    "ro": "Biblion este cuvântul grecesc pentru carte, iar philos înseamnă iubitor.",
+    "sr-latn": "Biblion je grčka reč za knjigu, a philos znači onaj koji voli."
+   },
+   "source": "Oxford English Dictionary"
+  },
+  {
+   "id": "word-bio-prefix",
+   "topic": "words",
+   "q": {
+    "en": "The Greek prefix bio- means...",
+    "ro": "Prefixul grecesc bio- înseamnă...",
+    "sr-latn": "Grčki prefiks bio- znači..."
+   },
+   "options": [
+    {
+     "en": "Life",
+     "ro": "Viață",
+     "sr-latn": "Život"
+    },
+    {
+     "en": "Water",
+     "ro": "Apă",
+     "sr-latn": "Voda"
+    },
+    {
+     "en": "Light",
+     "ro": "Lumină",
+     "sr-latn": "Svetlost"
+    },
+    {
+     "en": "Small",
+     "ro": "Mic",
+     "sr-latn": "Mali"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Biology is the study of life, and a biography is a written life.",
+    "ro": "Biologia este studiul vieții, iar biografia este o viață scrisă.",
+    "sr-latn": "Biologija je nauka o životu, a biografija je zapisan život."
+   },
+   "source": "Oxford English Dictionary"
+  },
+  {
+   "id": "word-cyrillic-language",
+   "topic": "words",
+   "q": {
+    "en": "Which of these languages is written with the Cyrillic alphabet?",
+    "ro": "Care dintre aceste limbi se scrie cu alfabetul chirilic?",
+    "sr-latn": "Koji od ovih jezika se piše ćirilicom?"
+   },
+   "options": [
+    {
+     "en": "Russian",
+     "ro": "Rusa",
+     "sr-latn": "Ruski"
+    },
+    {
+     "en": "Spanish",
+     "ro": "Spaniola",
+     "sr-latn": "Španski"
+    },
+    {
+     "en": "Turkish",
+     "ro": "Turca",
+     "sr-latn": "Turski"
+    },
+    {
+     "en": "Dutch",
+     "ro": "Olandeza",
+     "sr-latn": "Holandski"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Russian, Serbian, Bulgarian and Ukrainian are written in Cyrillic. Spanish, Turkish and Dutch use the Latin alphabet.",
+    "ro": "Rusa, sârba, bulgara și ucraineana se scriu cu chirilice. Spaniola, turca și olandeza folosesc alfabetul latin.",
+    "sr-latn": "Ruski, srpski, bugarski i ukrajinski se pišu ćirilicom. Španski, turski i holandski koriste latinicu."
+   },
+   "source": "Encyclopaedia Britannica"
+  },
+  {
+   "id": "word-english-alphabet",
+   "topic": "words",
+   "q": {
+    "en": "How many letters are in the English alphabet?",
+    "ro": "Câte litere are alfabetul englez?",
+    "sr-latn": "Koliko slova ima engleski alfabet?"
+   },
+   "options": [
+    {
+     "en": "24",
+     "ro": "24",
+     "sr-latn": "24"
+    },
+    {
+     "en": "26",
+     "ro": "26",
+     "sr-latn": "26"
+    },
+    {
+     "en": "28",
+     "ro": "28",
+     "sr-latn": "28"
+    },
+    {
+     "en": "30",
+     "ro": "30",
+     "sr-latn": "30"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "The English alphabet has 26 letters.",
+    "ro": "Alfabetul englez are 26 de litere.",
+    "sr-latn": "Engleski alfabet ima 26 slova."
+   },
+   "source": "Oxford English Dictionary"
+  },
+  {
+   "id": "word-palindrome",
+   "topic": "words",
+   "q": {
+    "en": "A word or a number that reads the same forwards and backwards is called...",
+    "ro": "Un cuvânt sau un număr care se citește la fel în ambele sensuri se numește...",
+    "sr-latn": "Reč ili broj koji se čita isto u oba smera zove se..."
+   },
+   "options": [
+    {
+     "en": "A palindrome",
+     "ro": "Palindrom",
+     "sr-latn": "Palindrom"
+    },
+    {
+     "en": "An anagram",
+     "ro": "Anagramă",
+     "sr-latn": "Anagram"
+    },
+    {
+     "en": "A synonym",
+     "ro": "Sinonim",
+     "sr-latn": "Sinonim"
+    },
+    {
+     "en": "A homophone",
+     "ro": "Omofon",
+     "sr-latn": "Homofon"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "The word comes from Greek and means running back again.",
+    "ro": "Cuvântul vine din greacă și înseamnă a alerga înapoi.",
+    "sr-latn": "Reč dolazi iz grčkog i znači trčati natrag."
+   },
+   "source": "Oxford English Dictionary"
+  },
+  {
+   "id": "word-phone-root",
+   "topic": "words",
+   "q": {
+    "en": "The Greek root phone, as in telephone, means...",
+    "ro": "Rădăcina grecească phone, ca în telefon, înseamnă...",
+    "sr-latn": "Grčki koren fon, kao u reči telefon, znači..."
+   },
+   "options": [
+    {
+     "en": "Voice",
+     "ro": "Voce",
+     "sr-latn": "Glas"
+    },
+    {
+     "en": "Light",
+     "ro": "Lumină",
+     "sr-latn": "Svetlost"
+    },
+    {
+     "en": "Distance",
+     "ro": "Distanță",
+     "sr-latn": "Rastojanje"
+    },
+    {
+     "en": "Wire",
+     "ro": "Fir",
+     "sr-latn": "Žica"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Tele means far and phone means voice, so a telephone is a voice from far away.",
+    "ro": "Tele înseamnă departe, iar phone înseamnă voce, deci telefonul este o voce de departe.",
+    "sr-latn": "Tele znači daleko, a fon znači glas, pa je telefon glas iz daljine."
+   },
+   "source": "Oxford English Dictionary"
+  },
+  {
+   "id": "word-polyglot",
+   "topic": "words",
+   "q": {
+    "en": "A polyglot is someone who...",
+    "ro": "Un poliglot este cineva care...",
+    "sr-latn": "Poliglota je neko ko..."
+   },
+   "options": [
+    {
+     "en": "Speaks several languages",
+     "ro": "Vorbește mai multe limbi",
+     "sr-latn": "Govori više jezika"
+    },
+    {
+     "en": "Writes with both hands",
+     "ro": "Scrie cu ambele mâini",
+     "sr-latn": "Piše obema rukama"
+    },
+    {
+     "en": "Works in several countries",
+     "ro": "Lucrează în mai multe țări",
+     "sr-latn": "Radi u više zemalja"
+    },
+    {
+     "en": "Studies old books",
+     "ro": "Studiază cărți vechi",
+     "sr-latn": "Proučava stare knjige"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "Poly means many and glotta means tongue, so the word counts tongues, not passports.",
+    "ro": "Poly înseamnă multe, iar glotta înseamnă limbă, deci cuvântul numără limbi, nu pașapoarte.",
+    "sr-latn": "Poli znači mnogo, a glota znači jezik, pa reč broji jezike, a ne pasoše."
+   },
+   "source": "Oxford English Dictionary"
+  },
+  {
+   "id": "word-serbian-alphabet",
+   "topic": "words",
+   "q": {
+    "en": "How many letters does the Serbian Cyrillic alphabet have?",
+    "ro": "Câte litere are alfabetul chirilic sârbesc?",
+    "sr-latn": "Koliko slova ima srpska ćirilica?"
+   },
+   "options": [
+    {
+     "en": "28",
+     "ro": "28",
+     "sr-latn": "28"
+    },
+    {
+     "en": "30",
+     "ro": "30",
+     "sr-latn": "30"
+    },
+    {
+     "en": "32",
+     "ro": "32",
+     "sr-latn": "32"
+    },
+    {
+     "en": "26",
+     "ro": "26",
+     "sr-latn": "26"
+    }
+   ],
+   "correct": 1,
+   "why": {
+    "en": "Serbian Cyrillic has 30 letters, one for every sound, and no silent letters.",
+    "ro": "Chirilica sârbă are 30 de litere, una pentru fiecare sunet, și nicio literă mută.",
+    "sr-latn": "Srpska ćirilica ima 30 slova, po jedno za svaki glas, i nema nijemih slova."
+   },
+   "source": "Matica srpska, Serbian orthography"
+  },
+  {
+   "id": "word-sub-prefix",
+   "topic": "words",
+   "q": {
+    "en": "The prefix sub- means...",
+    "ro": "Prefixul sub- înseamnă...",
+    "sr-latn": "Prefiks sub- znači..."
+   },
+   "options": [
+    {
+     "en": "Under",
+     "ro": "Sub",
+     "sr-latn": "Ispod"
+    },
+    {
+     "en": "Above",
+     "ro": "Deasupra",
+     "sr-latn": "Iznad"
+    },
+    {
+     "en": "Between",
+     "ro": "Între",
+     "sr-latn": "Između"
+    },
+    {
+     "en": "Again",
+     "ro": "Din nou",
+     "sr-latn": "Ponovo"
+    }
+   ],
+   "correct": 0,
+   "why": {
+    "en": "A submarine goes under the sea, and sub- comes from the Latin word for under.",
+    "ro": "Un submarin merge sub mare, iar sub- vine din latinescul pentru sub.",
+    "sr-latn": "Submarin ide ispod mora, a sub- dolazi od latinske reči za ispod."
+   },
+   "source": "Oxford English Dictionary"
+  }
+ ]
+}

@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#4338ca">
+<title>Quiz-Deck</title>
+<meta name="description" content="Short questions, checked answers, no account, no upload.">
+<meta name="author" content="Kristian Mario Miskovic (TekiDeki)">
+<meta name="robots" content="index, follow">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+/* Quiz-Deck · TekiDeki · single file build from src/styles.css */
+
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f0f2f6;
+  --ink: #14171c;
+  --muted: #5a6572;
+  --line: #dde2e9;
+  --accent: #4338ca;
+  --accent-ink: #ffffff;
+  --accent-soft: #eef0ff;
+  --ok: #147a3d;
+  --ok-soft: #e8f7ee;
+  --bad: #b3261e;
+  --bad-soft: #fdeceb;
+  --radius: 16px;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 10px 30px rgba(16, 24, 40, .05);
+}
+
+[data-theme="dark"] {
+  --bg: #0f1116;
+  --surface: #171b22;
+  --surface-2: #1f242d;
+  --ink: #e9edf3;
+  --muted: #a2adbb;
+  --line: #2a313c;
+  --accent: #a3b0ff;
+  --accent-ink: #10131a;
+  --accent-soft: #1e2340;
+  --ok: #6ee7a0;
+  --ok-soft: #14291f;
+  --bad: #ff9a92;
+  --bad-soft: #2b1a1a;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 30px rgba(0, 0, 0, .28);
+}
+
+* { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3 { margin: 0; line-height: 1.2; letter-spacing: -0.015em; }
+p { margin: 0; }
+
+.wrap { width: min(760px, 100% - 2rem); margin-inline: auto; }
+
+.sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.skip {
+  position: absolute; left: -999px; top: 0; z-index: 10;
+  background: var(--accent); color: var(--accent-ink); padding: .6rem 1rem;
+  border-radius: 0 0 10px 0;
+}
+.skip:focus { left: 0; }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* topbar */
+.topbar {
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+.topbar-in { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 62px; }
+.brand { display: inline-flex; align-items: center; gap: .55rem; color: var(--ink); font-weight: 700; letter-spacing: -0.02em; }
+.brand:hover { text-decoration: none; }
+.brand-text { font-size: 1.05rem; }
+.brand-dot { color: var(--accent); }
+.mark { display: inline-flex; width: 30px; height: 30px; color: var(--accent); }
+.mark svg { width: 100%; height: 100%; fill: none; }
+
+.tools { display: flex; align-items: center; gap: .5rem; }
+.select {
+  appearance: none; background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: .42rem 1.9rem .42rem .7rem; font: inherit; font-size: .9rem;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 15px) 55%, calc(100% - 10px) 55%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  max-width: 11.5rem;
+}
+.iconbtn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 10px; cursor: pointer;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line);
+}
+.iconbtn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.iconbtn .moon { display: none; }
+[data-theme="dark"] .iconbtn .moon { display: block; }
+[data-theme="dark"] .iconbtn .sun { display: none; }
+.iconbtn:hover { background: var(--surface-2); }
+
+/* screens */
+main { padding: 2.2rem 0 3rem; }
+.screen[hidden] { display: none; }
+.hero { margin-bottom: 1.6rem; }
+.hero h1 { font-size: clamp(1.85rem, 4.4vw, 2.6rem); margin-bottom: .55rem; }
+.lede { color: var(--muted); max-width: 46ch; }
+
+/* banner */
+.banner {
+  background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: var(--radius); padding: 1.1rem 1.15rem; margin-bottom: 1.2rem;
+}
+.banner-k { font-weight: 700; font-size: 1.1rem; }
+.banner-d { color: var(--muted); margin: .2rem 0 .85rem; }
+.banner.bad { color: var(--bad); background: var(--bad-soft); border-color: color-mix(in srgb, var(--bad) 35%, transparent); font-size: .95rem; }
+
+/* mode cards */
+.modes { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+@media (max-width: 620px) { .modes { grid-template-columns: 1fr; } }
+
+.mode {
+  display: flex; flex-direction: column; gap: .3rem; text-align: left;
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.15rem 1.2rem; cursor: pointer; font: inherit;
+  box-shadow: var(--shadow);
+  transition: transform .12s ease, border-color .12s ease;
+}
+.mode:hover { border-color: var(--accent); transform: translateY(-1px); }
+.mode:active { transform: none; }
+.mode#btn-daily { border-left: 4px solid var(--accent); }
+.mode-k { font-weight: 700; font-size: 1.12rem; }
+.mode-d { color: var(--muted); font-size: .92rem; line-height: 1.45; }
+.mode-meta { color: var(--accent); font-size: .84rem; font-weight: 600; margin-top: .35rem; }
+
+.fine { color: var(--muted); font-size: .87rem; margin-top: .9rem; }
+.fine a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+.center { text-align: center; }
+
+/* stats */
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin: 1.4rem 0 0; }
+.stat {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: .95rem 1.1rem; margin: 0;
+}
+.stat dt { color: var(--muted); font-size: .85rem; }
+.stat dd { margin: .15rem 0 0; font-size: 1.7rem; font-weight: 700; letter-spacing: -0.02em; }
+
+/* panel */
+.panel {
+  margin-top: 1.4rem; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 1.15rem 1.2rem;
+}
+.panel-h { font-size: 1.02rem; margin-bottom: .35rem; }
+.panel-p { color: var(--muted); font-size: .9rem; }
+.panel .row { margin-top: .85rem; }
+.confirm { margin-top: .9rem; padding-top: .9rem; border-top: 1px dashed var(--line); }
+.confirm p { font-size: .92rem; margin-bottom: .7rem; }
+.status { margin-top: .6rem; font-size: .88rem; color: var(--muted); min-height: 1.2em; }
+
+/* buttons */
+.row { display: flex; flex-wrap: wrap; gap: .55rem; align-items: center; }
+.btn {
+  font: inherit; font-size: .95rem; font-weight: 600; cursor: pointer;
+  border-radius: 10px; padding: .58rem 1rem; border: 1px solid var(--line);
+  background: var(--surface-2); color: var(--ink);
+}
+.btn:hover { border-color: var(--accent); }
+.btn:active { transform: translateY(1px); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { filter: brightness(1.05); }
+.btn.ghost { background: transparent; }
+.btn.danger { background: var(--bad); border-color: var(--bad); color: #fff; }
+.btn.wide { width: 100%; margin-top: 1.1rem; }
+.btn[hidden] { display: none; }
+
+.linkbtn {
+  background: none; border: 0; color: var(--muted); font: inherit; font-size: .88rem;
+  cursor: pointer; padding: .2rem; text-decoration: underline; text-underline-offset: 3px;
+}
+.linkbtn:hover { color: var(--ink); }
+
+/* quiz */
+.quiz-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.pill {
+  font-size: .82rem; font-weight: 700; letter-spacing: .02em;
+  background: var(--surface-2); border: 1px solid var(--line); color: var(--muted);
+  border-radius: 999px; padding: .25rem .8rem;
+}
+.bar { height: 6px; background: var(--surface-2); border-radius: 999px; overflow: hidden; margin: .85rem 0 1.1rem; }
+.bar span { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 999px; transition: width .25s ease; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 20px; padding: 1.5rem 1.4rem; box-shadow: var(--shadow);
+}
+.qcard { padding: 1.6rem 1.45rem; }
+.topic {
+  display: inline-block; font-size: .76rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; color: var(--accent); margin-bottom: .75rem;
+}
+.qtext { font-size: clamp(1.22rem, 2.6vw, 1.5rem); font-weight: 650; margin-bottom: 1.25rem; }
+
+.options { display: grid; gap: .6rem; }
+.option {
+  display: flex; align-items: flex-start; gap: .8rem; width: 100%;
+  text-align: left; font: inherit; font-size: 1rem; cursor: pointer;
+  background: var(--surface); color: var(--ink);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: .78rem .9rem;
+  transition: border-color .12s ease, background .12s ease;
+}
+.option:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-soft); }
+.option .key {
+  flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
+  width: 1.6rem; height: 1.6rem; border-radius: 8px; font-size: .82rem; font-weight: 700;
+  background: var(--surface-2); color: var(--muted);
+}
+.option .label { padding-top: .08rem; }
+.option:disabled { cursor: default; }
+.option.ok { border-color: var(--ok); background: var(--ok-soft); }
+.option.ok .key { background: var(--ok); color: var(--surface); }
+.option.bad { border-color: var(--bad); background: var(--bad-soft); }
+.option.bad .key { background: var(--bad); color: #fff; }
+.option.dim { opacity: .55; }
+
+.feedback { margin-top: 1.15rem; padding-top: 1.05rem; border-top: 1px solid var(--line); }
+.feedback[hidden] { display: none; }
+.verdict { font-weight: 700; margin-bottom: .35rem; }
+.verdict.ok { color: var(--ok); }
+.verdict.bad { color: var(--bad); }
+.why { color: var(--ink); font-size: .97rem; }
+.meta { color: var(--muted); font-size: .82rem; margin-top: .55rem; }
+.meta .dot { padding: 0 .4rem; }
+
+/* end */
+.endcard { text-align: center; padding: 1.8rem 1.4rem; }
+.kicker { color: var(--muted); font-size: .85rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
+.bigscore { font-size: clamp(2.6rem, 9vw, 3.6rem); margin: .3rem 0 .1rem; letter-spacing: -0.03em; }
+.muted { color: var(--muted); }
+.note { color: var(--muted); font-size: .9rem; margin-top: .5rem; }
+.endcard .row { justify-content: center; margin-top: 1.2rem; }
+.endcard .fine { margin-top: .8rem; }
+.cmp {
+  margin-top: 1rem; padding: .75rem .9rem; border-radius: 12px;
+  background: var(--surface-2); font-size: .92rem; display: grid; gap: .15rem;
+}
+.sharelink {
+  width: 100%; margin-top: .6rem; font: inherit; font-size: .85rem;
+  padding: .55rem .7rem; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--surface-2); color: var(--muted);
+}
+.sharelink[hidden] { display: none; }
+
+/* review */
+.review { margin-top: 1.6rem; }
+.review-h { font-size: 1.05rem; margin-bottom: .7rem; }
+.review-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .7rem; }
+.review-list li {
+  background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--bad);
+  border-radius: 12px; padding: .85rem 1rem;
+}
+.review-q { font-weight: 650; margin-bottom: .35rem; }
+.review-line { font-size: .9rem; color: var(--muted); }
+.review-line b { color: var(--ink); font-weight: 600; }
+.review-right { color: var(--ink); font-weight: 600; }
+.review-why { font-size: .9rem; margin-top: .4rem; }
+.review-src { font-size: .8rem; color: var(--muted); margin-top: .4rem; }
+.review-empty { color: var(--muted); }
+
+/* footer */
+.foot { border-top: 1px solid var(--line); padding: 1.3rem 0 2rem; }
+.foot .fine { margin-top: .25rem; }
+.foot .fine:first-child { margin-top: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+<script>
+/* Paint the stored theme before the body exists, so a reload never flashes. */
+(function () {
+  try {
+    var saved = localStorage.getItem('quiz-deck:theme');
+    var dark = saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+}());
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main" data-i18n="skip">Skip to the question</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#main">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="6.5" y="4.5" width="19" height="23" rx="3" fill="none" stroke="currentColor" stroke-width="2.1"/><path d="M11.5 11.5h9M11.5 16h9M11.5 20.5h5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg></span>
+      <span class="brand-text">Quiz<span class="brand-dot">.</span>Deck</span>
+    </a>
+    <div class="tools">
+      <label class="sr" for="lang" data-i18n="uiLanguage">Interface language</label>
+      <select id="lang" class="select"></select>
+      <button id="theme" class="iconbtn" type="button" data-i18n-aria-label="theme" aria-label="Switch theme">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6 6l1.6 1.6M16.4 16.4L18 18M18 6l-1.6 1.6M7.6 16.4L6 18"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.4A8.4 8.4 0 0 1 9.6 4a8.4 8.4 0 1 0 10.4 10.4z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <section class="screen" id="screen-start" aria-labelledby="h1">
+    <div class="hero">
+      <h1 id="h1" data-i18n="h1">Short questions, checked answers</h1>
+      <p class="lede" id="lede" data-i18n="lede"></p>
+    </div>
+
+    <div class="banner" id="challenge" hidden>
+      <p class="banner-k" id="challenge-title"></p>
+      <p class="banner-d" data-i18n="challengeLede">Play the same questions and see where you land.</p>
+      <div class="row">
+        <button class="btn primary" id="btn-challenge" type="button" data-i18n="challengePlay">Play</button>
+        <button class="btn ghost" id="btn-challenge-close" type="button" data-i18n="challengeClose">Close</button>
+      </div>
+    </div>
+    <p class="banner bad" id="challenge-bad" hidden data-i18n="challengeBad"></p>
+
+    <div class="modes">
+      <button class="mode" id="btn-daily" type="button">
+        <span class="mode-k" data-i18n="startDaily">Today's round</span>
+        <span class="mode-d" data-i18n="startDailyNote"></span>
+        <span class="mode-meta" id="daily-meta"></span>
+      </button>
+      <button class="mode" id="btn-practice" type="button">
+        <span class="mode-k" data-i18n="startPractice">Practice</span>
+        <span class="mode-d" data-i18n="startPracticeNote"></span>
+      </button>
+    </div>
+
+    <p class="fine" id="round-note" data-i18n="dailyReset"></p>
+    <p class="fine" id="bank-line"></p>
+
+    <dl class="stats">
+      <div class="stat">
+        <dt data-i18n="streak">Days in a row</dt>
+        <dd id="stat-streak">0</dd>
+      </div>
+      <div class="stat">
+        <dt data-i18n="best">Record here</dt>
+        <dd id="stat-best">0</dd>
+      </div>
+    </dl>
+
+    <section class="panel" aria-labelledby="local-title">
+      <h2 class="panel-h" id="local-title" data-i18n="localTitle">Where the progress lives</h2>
+      <p class="panel-p" data-i18n="localNote"></p>
+      <div class="row">
+        <button class="btn" id="btn-export" type="button" data-i18n="export">Export</button>
+        <button class="btn" id="btn-import" type="button" data-i18n="import">Import</button>
+        <button class="btn ghost" id="btn-reset" type="button" data-i18n="reset">Erase progress</button>
+        <input id="file-import" type="file" accept="application/json,.json" hidden>
+      </div>
+      <div class="confirm" id="confirm" hidden>
+        <p id="confirm-text" data-i18n="resetAsk"></p>
+        <div class="row">
+          <button class="btn danger" id="btn-reset-yes" type="button" data-i18n="resetYes">Erase</button>
+          <button class="btn ghost" id="btn-reset-no" type="button" data-i18n="resetNo">Cancel</button>
+        </div>
+      </div>
+      <p class="status" id="local-status" role="status" aria-live="polite"></p>
+    </section>
+  </section>
+
+  <section class="screen" id="screen-quiz" aria-labelledby="q-text" hidden>
+    <div class="quiz-head">
+      <p class="pill" id="q-progress"></p>
+      <button class="linkbtn" id="btn-quit" type="button" data-i18n="quit">Leave the round</button>
+    </div>
+    <div class="bar" role="presentation"><span id="bar-fill"></span></div>
+
+    <article class="card qcard">
+      <p class="topic" id="q-topic"></p>
+      <h2 class="qtext" id="q-text" tabindex="-1"></h2>
+      <div class="options" id="q-options" role="group" aria-labelledby="q-text"></div>
+      <div class="feedback" id="q-feedback" hidden aria-live="polite">
+        <p class="verdict" id="fb-verdict"></p>
+        <p class="why" id="fb-why"></p>
+        <p class="meta"><span id="fb-source"></span><span class="dot">·</span><span id="fb-checked"></span></p>
+      </div>
+      <button class="btn primary wide" id="btn-next" type="button" hidden>Next</button>
+    </article>
+
+    <p class="fine center" data-i18n="keyboard">Keys 1 to 4 pick an answer, Enter moves on.</p>
+  </section>
+
+  <section class="screen" id="screen-end" hidden aria-labelledby="end-score">
+    <article class="card endcard">
+      <p class="kicker" id="end-kicker"></p>
+      <h2 class="bigscore" id="end-score"></h2>
+      <p class="muted" id="end-time"></p>
+      <p class="note" id="end-note"></p>
+      <div class="cmp" id="end-challenge" hidden></div>
+      <div class="row">
+        <button class="btn primary" id="btn-share" type="button" data-i18n="share">Copy the challenge</button>
+        <button class="btn" id="btn-replay" type="button" data-i18n="replayWrong">Replay the mistakes</button>
+        <button class="btn ghost" id="btn-again" type="button" data-i18n="again">One more round</button>
+      </div>
+      <p class="fine" id="share-note" hidden data-i18n="shareNote"></p>
+      <p class="status" id="share-status" role="status" aria-live="polite"></p>
+      <input class="sharelink" id="share-link" readonly hidden>
+    </article>
+
+    <section class="review" aria-labelledby="review-title">
+      <h3 class="review-h" id="review-title" data-i18n="reviewTitle">Where it went wrong</h3>
+      <ol class="review-list" id="review-list"></ol>
+    </section>
+
+    <div class="row center">
+      <button class="btn ghost" id="btn-home" type="button" data-i18n="home">Back to the start</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="fine"><a href="https://freehtml.dev">freehtml.dev</a> · <a href="https://github.com/TekiDeki/Quiz-Deck">GitHub</a></p>
+    <p class="fine" id="foot-note" data-i18n="offlineNote"></p>
+    <p class="fine"><a href="https://github.com/TekiDeki/Quiz-Deck/issues" data-i18n="report">Spotted a mistake? Report it on GitHub.</a></p>
+  </div>
+</footer>
+
+<script>
+/* Generated by build.py. Do not edit. */
+window.TD_LOCALES = {"en":{"again":"One more round","bankLine":"{total} questions in the bank, in four languages.","best":"Record here","bestValue":"{s} of {n}","challengeBad":"The challenge in that link cannot be read.","challengeClose":"Close","challengeLede":"Play the same questions and see where you land.","challengePlay":"Play","challengeThem":"Challenge: {s} of {n} in {t}","challengeTitle":"Challenge: {s} of {n} in {t}","challengeYou":"You: {s} of {n}","checkedLine":"Checked: {d}","copied":"Copied.","copyFail":"The browser blocked the copy. Click the link and copy it by hand.","correct":"Correct.","counter":"{i} of {n}","dailyOn":"For {date}","dailyReset":"A new round arrives after midnight, by the clock on this computer.","dailySaved":"Today's round has been recorded.","endScore":"{s} of {n}","endTime":"Time: {t}","export":"Export","finish":"See the result","h1":"Short questions, checked answers","home":"Back to the start","import":"Import","importBad":"That file could not be read.","importOk":"The progress was read.","keyboard":"Keys 1 to 4 pick an answer, Enter moves on.","lede":"Pick a round, answer {n} questions and read the explanation after each one. Every fact carries its source and the date it was checked.","localNote":"Streak, record and history sit only in this browser, in localStorage. Clearing the cache, the site data or using automatic cleanup wipes them. Export a copy if you want to keep them.","localTitle":"Where the progress lives","metaDesc":"Twelve short questions, four answers each, one correct. Every fact comes with an explanation, a source and the date it was checked. No account, no upload, works offline.","next":"Next","noRecord":"This round does not enter the streak and does not change the record.","offlineNote":"One HTML file. Works offline, no account, no ads, no tracking.","playedToday":"Today: {s} of {n}","progressLabel":"Question {i} of {n}","quit":"Leave the round","replayWrong":"Replay the mistakes","report":"Spotted a mistake? Report it on GitHub.","reset":"Erase progress","resetAsk":"Erase the streak, the record and the history on this computer?","resetDone":"The progress is gone.","resetNo":"Cancel","resetYes":"Erase","reviewNone":"No mistakes.","reviewTitle":"Where it went wrong","rightAnswer":"Right answer: {a}","share":"Copy the challenge","shareNote":"The link carries only the score and the time. Whoever opens it gets exactly the same questions.","skip":"Skip to the question","sourceLine":"Source: {s}","src.arithmetic":"Arithmetic","src.calendar":"Gregorian calendar","src.clock":"Clock","src.deduction":"Deduction","src.divisibility":"Divisibility rules","src.geometry":"Geometry","src.sequences":"Sequences","startDaily":"Today's round","startDailyNote":"The same {n} questions for everyone, in the order of the day.","startPractice":"Practice","startPracticeNote":"Mixed questions from the whole bank. It does not count towards the streak.","streak":"Days in a row","theme":"Switch theme","title":"Quiz-Deck · short questions, checked answers","topic.culture":"Culture","topic.geo":"Geography","topic.history":"History","topic.logic":"Logic","topic.math":"Numbers","topic.sci":"Science","topic.words":"Language","uiLanguage":"Interface language","wrong":"Not this one. The right answer: {a}","yourAnswer":"Your answer: {a}"},"ro":{"again":"Încă o rundă","bankLine":"{total} întrebări în bancă, în patru limbi.","best":"Record aici","bestValue":"{s} din {n}","challengeBad":"Provocarea din link nu poate fi citită.","challengeClose":"Închide","challengeLede":"Joacă aceleași întrebări și vezi unde ajungi.","challengePlay":"Joacă","challengeThem":"Provocarea: {s} din {n} în {t}","challengeTitle":"Provocare: {s} din {n} în {t}","challengeYou":"Tu: {s} din {n}","checkedLine":"Verificat: {d}","copied":"Copiat.","copyFail":"Browserul a blocat copierea. Apasă pe link și copiază-l manual.","correct":"Corect.","counter":"{i} din {n}","dailyOn":"Pentru {date}","dailyReset":"Runda nouă vine după miezul nopții, după ceasul calculatorului.","dailySaved":"Runda de azi a fost notată.","endScore":"{s} din {n}","endTime":"Timp: {t}","export":"Export","finish":"Vezi rezultatul","h1":"Întrebări scurte, răspunsuri verificate","home":"Înapoi la început","import":"Import","importBad":"Fișierul nu a putut fi citit.","importOk":"Progresul a fost citit.","keyboard":"Tastele 1, 2, 3 și 4 aleg răspunsul; Enter merge mai departe.","lede":"Alege o rundă, răspunde la {n} întrebări și citește explicația după fiecare. Fiecare fapt are sursa și data la care a fost verificat.","localNote":"Seria, recordul și istoricul stau doar în acest browser, în localStorage. Dacă golești cache-ul sau datele site-ului, se pierd. Exportă o copie dacă vrei să le păstrezi.","localTitle":"Unde stă progresul","metaDesc":"Douăsprezece întrebări scurte, patru variante, una singură bună. Fiecare fapt are explicație, sursă și data la care a fost verificat. Fără cont, fără încărcare, merge offline.","next":"Următoarea","noRecord":"Runda aceasta nu intră în serie și nu schimbă recordul.","offlineNote":"Un singur fișier HTML. Merge offline, fără cont, fără reclame, fără urmărire.","playedToday":"Azi: {s} din {n}","progressLabel":"Întrebarea {i} din {n}","quit":"Renunță la rundă","replayWrong":"Reia greșelile","report":"Vezi o greșeală? Spune-mi pe GitHub.","reset":"Șterge progresul","resetAsk":"Ștergi seria, recordul și istoricul de pe acest calculator?","resetDone":"Progresul a fost șters.","resetNo":"Anulează","resetYes":"Șterge","reviewNone":"Fără greșeli.","reviewTitle":"Unde s-a greșit","rightAnswer":"Răspunsul bun: {a}","share":"Copiază provocarea","shareNote":"Linkul duce doar scorul și timpul. Cine îl deschide primește exact aceleași întrebări.","skip":"Sari la întrebare","sourceLine":"Sursă: {s}","src.arithmetic":"Calcul","src.calendar":"Calendarul gregorian","src.clock":"Ceas","src.deduction":"Deducție","src.divisibility":"Reguli de divizibilitate","src.geometry":"Geometrie","src.sequences":"Șiruri","startDaily":"Runda de azi","startDailyNote":"Aceleași {n} întrebări pentru toți, în ordinea zilei.","startPractice":"Antrenament","startPracticeNote":"Întrebări amestecate din toată banca. Nu intră în serie.","streak":"Zile la rând","theme":"Schimbă tema","title":"Quiz-Deck · întrebări scurte, răspunsuri verificate","topic.culture":"Cultură","topic.geo":"Geografie","topic.history":"Istorie","topic.logic":"Logică","topic.math":"Calcul","topic.sci":"Științe","topic.words":"Limbă","uiLanguage":"Limba interfeței","wrong":"Nu. Răspunsul bun: {a}","yourAnswer":"Răspunsul tău: {a}"},"sr-cyrl":{"again":"Још једна рунда","bankLine":"{total} питања у бази, на четири језика.","best":"Рекорд овде","bestValue":"{s} од {n}","challengeBad":"Изазов из линка не може да се прочита.","challengeClose":"Затвори","challengeLede":"Одговори на иста питања и види где си.","challengePlay":"Играј","challengeThem":"Изазов: {s} од {n}, време {t}","challengeTitle":"Изазов: {s} од {n}, време {t}","challengeYou":"Ти: {s} од {n}","checkedLine":"Проверено: {d}","copied":"Копирано.","copyFail":"Прегледач је блокирао копирање. Кликни на линк и копирај га ручно.","correct":"Тачно.","counter":"{i} од {n}","dailyOn":"За {date}","dailyReset":"Нова рунда долази после поноћи, по сату на овом рачунару.","dailySaved":"Данашња рунда је забележена.","endScore":"{s} од {n}","endTime":"Време: {t}","export":"Извези","finish":"Види резултат","h1":"Кратка питања, проверени одговори","home":"Назад на почетак","import":"Увези","importBad":"Датотека није могла да се прочита.","importOk":"Напредак је прочитан.","keyboard":"Тастери 1 до 4 бирају одговор, Ентер иде даље.","lede":"Изабери рунду, одговори на {n} питања и прочитај објашњење после сваког. Свака чињеница има извор и датум провере.","localNote":"Низ, рекорд и историја чувају се само у овом прегледачу, у localStorage. Ако обришеш кеш или податке сајта, нестају. Извези копију ако желиш да их сачуваш.","localTitle":"Где се чува напредак","metaDesc":"Дванаест кратких питања, четири одговора, само један тачан. Свака чињеница има објашњење, извор и датум провере. Без налога, без отпремања, ради и без интернета.","next":"Следеће","noRecord":"Ова рунда не улази у низ и не мења рекорд.","offlineNote":"Један HTML фајл. Ради и без интернета, без налога, без реклама, без праћења.","playedToday":"Данас: {s} од {n}","progressLabel":"Питање {i} од {n}","quit":"Прекини рунду","replayWrong":"Понови грешке","report":"Видиш грешку? Пријави је на GitHubу.","reset":"Обриши напредак","resetAsk":"Бришеш низ, рекорд и историју са овог рачунара?","resetDone":"Напредак је обрисан.","resetNo":"Откажи","resetYes":"Обриши","reviewNone":"Без грешака.","reviewTitle":"Где је грешка","rightAnswer":"Тачан одговор: {a}","share":"Копирај изазов","shareNote":"Линк носи само скор и време. Ко га отвори, добија иста питања.","skip":"Пређи на питање","sourceLine":"Извор: {s}","src.arithmetic":"Рачун","src.calendar":"Грегоријански календар","src.clock":"Сат","src.deduction":"Дедукција","src.divisibility":"Правила дељивости","src.geometry":"Геометрија","src.sequences":"Низови","startDaily":"Данашња рунда","startDailyNote":"Иста {n} питања за све, у истом реду.","startPractice":"Вежба","startPracticeNote":"Помешана питања из целе базе питања. Не улази у низ.","streak":"Дана заредом","theme":"Промени тему","title":"Quiz-Deck · кратка питања, проверени одговори","topic.culture":"Култура","topic.geo":"Географија","topic.history":"Историја","topic.logic":"Логика","topic.math":"Рачун","topic.sci":"Наука","topic.words":"Језик","uiLanguage":"Језик интерфејса","wrong":"Није тачно. Тачан одговор: {a}","yourAnswer":"Твој одговор: {a}"},"sr-latn":{"again":"Još jedna runda","bankLine":"{total} pitanja u bazi, na četiri jezika.","best":"Rekord ovde","bestValue":"{s} od {n}","challengeBad":"Izazov iz linka ne može da se pročita.","challengeClose":"Zatvori","challengeLede":"Odgovori na ista pitanja i vidi gde si.","challengePlay":"Igraj","challengeThem":"Izazov: {s} od {n}, vreme {t}","challengeTitle":"Izazov: {s} od {n}, vreme {t}","challengeYou":"Ti: {s} od {n}","checkedLine":"Provereno: {d}","copied":"Kopirano.","copyFail":"Pregledač je blokirao kopiranje. Klikni na link i kopiraj ga ručno.","correct":"Tačno.","counter":"{i} od {n}","dailyOn":"Za {date}","dailyReset":"Nova runda dolazi posle ponoći, po satu na ovom računaru.","dailySaved":"Današnja runda je zabeležena.","endScore":"{s} od {n}","endTime":"Vreme: {t}","export":"Izvezi","finish":"Vidi rezultat","h1":"Kratka pitanja, provereni odgovori","home":"Nazad na početak","import":"Uvezi","importBad":"Datoteka nije mogla da se pročita.","importOk":"Napredak je pročitan.","keyboard":"Tasteri 1 do 4 biraju odgovor, Enter ide dalje.","lede":"Izaberi rundu, odgovori na {n} pitanja i pročitaj objašnjenje posle svakog. Svaka činjenica ima izvor i datum provere.","localNote":"Niz, rekord i istorija čuvaju se samo u ovom pregledaču, u localStorage. Ako obrišeš keš ili podatke sajta, nestaju. Izvezi kopiju ako želiš da ih sačuvaš.","localTitle":"Gde se čuva napredak","metaDesc":"Dvanaest kratkih pitanja, četiri odgovora, samo jedan tačan. Svaka činjenica ima objašnjenje, izvor i datum provere. Bez naloga, bez otpremanja, radi i bez interneta.","next":"Sledeće","noRecord":"Ova runda ne ulazi u niz i ne menja rekord.","offlineNote":"Jedan HTML fajl. Radi i bez interneta, bez naloga, bez reklama, bez praćenja.","playedToday":"Danas: {s} od {n}","progressLabel":"Pitanje {i} od {n}","quit":"Prekini rundu","replayWrong":"Ponovi greške","report":"Vidiš grešku? Prijavi je na GitHubu.","reset":"Obriši napredak","resetAsk":"Brišeš niz, rekord i istoriju sa ovog računara?","resetDone":"Napredak je obrisan.","resetNo":"Otkaži","resetYes":"Obriši","reviewNone":"Bez grešaka.","reviewTitle":"Gde je greška","rightAnswer":"Tačan odgovor: {a}","share":"Kopiraj izazov","shareNote":"Link nosi samo skor i vreme. Ko ga otvori, dobija ista pitanja.","skip":"Pređi na pitanje","sourceLine":"Izvor: {s}","src.arithmetic":"Račun","src.calendar":"Gregorijanski kalendar","src.clock":"Sat","src.deduction":"Dedukcija","src.divisibility":"Pravila deljivosti","src.geometry":"Geometrija","src.sequences":"Nizovi","startDaily":"Današnja runda","startDailyNote":"Ista {n} pitanja za sve, u istom redu.","startPractice":"Vežba","startPracticeNote":"Pomešana pitanja iz cele baze pitanja. Ne ulazi u niz.","streak":"Dana zaredom","theme":"Promeni temu","title":"Quiz-Deck · kratka pitanja, provereni odgovori","topic.culture":"Kultura","topic.geo":"Geografija","topic.history":"Istorija","topic.logic":"Logika","topic.math":"Račun","topic.sci":"Nauka","topic.words":"Jezik","uiLanguage":"Jezik interfejsa","wrong":"Nije tačno. Tačan odgovor: {a}","yourAnswer":"Tvoj odgovor: {a}"}};
+window.TD_BANK = {"checked":"2026-10-21","items":[{"checked":"2026-10-21","correct":1,"id":"culture-dna-model","options":[{"en":"The 1930s","ro":"Anii 1930","sr-cyrl":"Тридесетих","sr-latn":"Tridesetih"},{"en":"The 1950s","ro":"Anii 1950","sr-cyrl":"Педесетих","sr-latn":"Pedesetih"},{"en":"The 1970s","ro":"Anii 1970","sr-cyrl":"Седамдесетих","sr-latn":"Sedamdesetih"},{"en":"The 1990s","ro":"Anii 1990","sr-cyrl":"Деведесетих","sr-latn":"Devedesetih"}],"q":{"en":"In which decade was the double helix structure of DNA described?","ro":"În ce deceniu a fost descrisă structura dublu-helix a ADN-ului?","sr-cyrl":"У којој деценији је описана структура двоструког хеликса ДНК?","sr-latn":"U kojoj deceniji je opisana struktura dvostrukog heliksa DNK?"},"source":"Nature, 25 April 1953","topic":"culture","why":{"en":"Watson and Crick published the model in 1953, in the 1950s, building on X-ray work by Rosalind Franklin and Maurice Wilkins.","ro":"Watson și Crick au publicat modelul în 1953, adică în anii 1950, pornind de la lucrările cu raze X ale lui Rosalind Franklin și Maurice Wilkins.","sr-cyrl":"Вотсон и Крик су објавили модел 1953, дакле педесетих, на основу рендгенских снимака Розалинд Френклин и Мориса Вилкинса.","sr-latn":"Votson i Krik su objavili model 1953, dakle pedesetih, na osnovu rendgenskih snimaka Rozalind Frenklin i Morisa Vilkinsa."}},{"checked":"2026-10-21","correct":0,"id":"culture-hardest-natural","options":[{"en":"Diamond","ro":"Diamantul","sr-cyrl":"Дијамант","sr-latn":"Dijamant"},{"en":"Quartz","ro":"Cuarțul","sr-cyrl":"Кварц","sr-latn":"Kvarc"},{"en":"Steel","ro":"Oțelul","sr-cyrl":"Челик","sr-latn":"Čelik"},{"en":"Gold","ro":"Aurul","sr-cyrl":"Злато","sr-latn":"Zlato"}],"q":{"en":"Which of these is the hardest natural substance?","ro":"Care dintre acestea este cea mai dură substanță naturală?","sr-cyrl":"Која од ових супстанци је најтврђа у природи?","sr-latn":"Koja od ovih supstanci je najtvrđa u prirodi?"},"source":{"en":"Mohs scale of mineral hardness","ro":"Scara Mohs a durității mineralelor","sr-cyrl":"Мосова скала тврдоће минерала","sr-latn":"Mosova skala tvrdoće minerala"},"topic":"culture","why":{"en":"On the Mohs scale diamond sits at 10, the top of the list for natural minerals.","ro":"Pe scara Mohs, diamantul stă la 10, vârful listei pentru mineralele naturale.","sr-cyrl":"На Мосовој скали дијамант стоји на 10, на врху листе природних минерала.","sr-latn":"Na Mosovoj skali dijamant stoji na 10, na vrhu liste prirodnih minerala."}},{"checked":"2026-10-21","correct":1,"id":"culture-mona-lisa","options":[{"en":"Michelangelo","ro":"Michelangelo","sr-cyrl":"Микеланџело","sr-latn":"Mikelandželo"},{"en":"Leonardo da Vinci","ro":"Leonardo da Vinci","sr-cyrl":"Леонардо да Винчи","sr-latn":"Leonardo da Vinči"},{"en":"Raphael","ro":"Rafael","sr-cyrl":"Рафаел","sr-latn":"Rafael"},{"en":"Rembrandt","ro":"Rembrandt","sr-cyrl":"Рембрант","sr-latn":"Rembrant"}],"q":{"en":"Who painted the Mona Lisa?","ro":"Cine a pictat Mona Lisa?","sr-cyrl":"Ко је насликао Мона Лизу?","sr-latn":"Ko je naslikao Mona Lizu?"},"source":"Louvre","topic":"culture","why":{"en":"Leonardo da Vinci painted it in the early sixteenth century, and it hangs today in the Louvre in Paris.","ro":"Leonardo da Vinci a pictat-o la începutul secolului al șaisprezecelea, iar azi se află la Luvru, în Paris.","sr-cyrl":"Леонардо да Винчи ју је насликао почетком шеснаестог века, а данас виси у Лувру у Паризу.","sr-latn":"Leonardo da Vinči ju je naslikao početkom šesnaestog veka, a danas visi u Luvru u Parizu."}},{"checked":"2026-10-21","correct":1,"id":"culture-odyssey","options":[{"en":"Achilles","ro":"Ahile","sr-cyrl":"Ахилеј","sr-latn":"Ahilej"},{"en":"Odysseus","ro":"Odiseu","sr-cyrl":"Одисеј","sr-latn":"Odisej"},{"en":"Hector","ro":"Hector","sr-cyrl":"Хектор","sr-latn":"Hektor"},{"en":"Hercules","ro":"Hercule","sr-cyrl":"Херкул","sr-latn":"Herkul"}],"q":{"en":"The Odyssey tells the story of the return home of which hero?","ro":"Odiseea spune povestea întoarcerii acasă a cărui erou?","sr-cyrl":"Одисеја прича о повратку кући ког хероја?","sr-latn":"Odiseja priča o povratku kući kog heroja?"},"source":"Homer, Odyssey","topic":"culture","why":{"en":"The poem follows Odysseus on his long voyage home from Troy to Ithaca.","ro":"Poemul îl urmărește pe Odiseu în lunga lui călătorie de acasă, de la Troia la Itaca.","sr-cyrl":"Поема прати Одисеја на дугом путу кући, од Троје до Итаке.","sr-latn":"Poema prati Odiseja na dugom putu kući, od Troje do Itake."}},{"checked":"2026-10-21","correct":0,"id":"geo-capital-australia","options":[{"en":"Canberra","ro":"Canberra","sr-cyrl":"Канбера","sr-latn":"Kanbera"},{"en":"Sydney","ro":"Sydney","sr-cyrl":"Сиднеј","sr-latn":"Sidnej"},{"en":"Melbourne","ro":"Melbourne","sr-cyrl":"Мелбурн","sr-latn":"Melburn"},{"en":"Perth","ro":"Perth","sr-cyrl":"Перт","sr-latn":"Pert"}],"q":{"en":"What is the capital of Australia?","ro":"Care este capitala Australiei?","sr-cyrl":"Који је главни град Аустралије?","sr-latn":"Koji je glavni grad Australije?"},"source":{"en":"Australian Government","ro":"Guvernul Australiei","sr-cyrl":"Влада Аустралије","sr-latn":"Vlada Australije"},"topic":"geo","why":{"en":"Canberra was built on purpose to be the capital, as a compromise between Sydney and Melbourne, and it has held that role since 1927.","ro":"Canberra a fost construită anume ca să fie capitală, ca un compromis între Sydney și Melbourne, și are acest rol din 1927.","sr-cyrl":"Канбера је наменски изграђена као главни град, као компромис између Сиднеја и Мелбурна, и ту улогу има од 1927.","sr-latn":"Kanbera je namenski izgrađena kao glavni grad, kao kompromis između Sidneja i Melburna, i tu ulogu ima od 1927."}},{"checked":"2026-10-21","correct":0,"id":"geo-capital-canada","options":[{"en":"Ottawa","ro":"Ottawa","sr-cyrl":"Отава","sr-latn":"Otava"},{"en":"Toronto","ro":"Toronto","sr-cyrl":"Торонто","sr-latn":"Toronto"},{"en":"Montreal","ro":"Montreal","sr-cyrl":"Монтреал","sr-latn":"Montreal"},{"en":"Vancouver","ro":"Vancouver","sr-cyrl":"Ванкувер","sr-latn":"Vankuver"}],"q":{"en":"What is the capital of Canada?","ro":"Care este capitala Canadei?","sr-cyrl":"Који је главни град Канаде?","sr-latn":"Koji je glavni grad Kanade?"},"source":{"en":"Government of Canada","ro":"Guvernul Canadei","sr-cyrl":"Влада Канаде","sr-latn":"Vlada Kanade"},"topic":"geo","why":{"en":"Ottawa was chosen as the seat of government in 1857 and has been the capital of Canada since 1867. Toronto and Montreal are larger cities.","ro":"Ottawa a fost aleasă ca sediu al guvernului în 1857 și este capitala Canadei din 1867. Toronto și Montreal sunt orașe mai mari.","sr-cyrl":"Отава је изабрана за седиште владе 1857. и главни је град Канаде од 1867. Торонто и Монтреал су већи градови.","sr-latn":"Otava je izabrana za sedište vlade 1857. i glavni je grad Kanade od 1867. Toronto i Montreal su veći gradovi."}},{"checked":"2026-10-21","correct":0,"id":"geo-capital-romania","options":[{"en":"Bucharest","ro":"București","sr-cyrl":"Букурешт","sr-latn":"Bukurešt"},{"en":"Cluj-Napoca","ro":"Cluj-Napoca","sr-cyrl":"Клуж-Напока","sr-latn":"Kluž-Napoka"},{"en":"Timisoara","ro":"Timișoara","sr-cyrl":"Темишвар","sr-latn":"Temišvar"},{"en":"Iasi","ro":"Iași","sr-cyrl":"Јаши","sr-latn":"Jaši"}],"q":{"en":"What is the capital of Romania?","ro":"Care este capitala României?","sr-cyrl":"Који је главни град Румуније?","sr-latn":"Koji je glavni grad Rumunije?"},"source":"Encyclopaedia Britannica","topic":"geo","why":{"en":"Bucharest has been the capital since 1862, when Wallachia and Moldavia were united.","ro":"Bucureștiul este capitală din 1862, când Țara Românească și Moldova s-au unit.","sr-cyrl":"Букурешт је главни град од 1862, када су се Влашка и Молдавија ујединиле.","sr-latn":"Bukurešt je glavni grad od 1862, kada su se Vlaška i Moldavija ujedinile."}},{"checked":"2026-10-21","correct":0,"id":"geo-capital-serbia","options":[{"en":"Belgrade","ro":"Belgrad","sr-cyrl":"Београд","sr-latn":"Beograd"},{"en":"Novi Sad","ro":"Novi Sad","sr-cyrl":"Нови Сад","sr-latn":"Novi Sad"},{"en":"Nis","ro":"Niș","sr-cyrl":"Ниш","sr-latn":"Niš"},{"en":"Kragujevac","ro":"Kragujevac","sr-cyrl":"Крагујевац","sr-latn":"Kragujevac"}],"q":{"en":"What is the capital of Serbia?","ro":"Care este capitala Serbiei?","sr-cyrl":"Који је главни град Србије?","sr-latn":"Koji je glavni grad Srbije?"},"source":"City of Belgrade","topic":"geo","why":{"en":"Belgrade sits where the Sava meets the Danube, and it has been the capital of Serbia since 1841.","ro":"Belgradul stă acolo unde Sava se varsă în Dunăre și este capitala Serbiei din 1841.","sr-cyrl":"Београд лежи на ушћу Саве у Дунав и главни је град Србије од 1841.","sr-latn":"Beograd leži na ušću Save u Dunav i glavni je grad Srbije od 1841."}},{"checked":"2026-10-21","correct":0,"id":"geo-carpathians","options":[{"en":"Romania","ro":"România","sr-cyrl":"Румунија","sr-latn":"Rumunija"},{"en":"Greece","ro":"Grecia","sr-cyrl":"Грчка","sr-latn":"Grčka"},{"en":"Portugal","ro":"Portugalia","sr-cyrl":"Португал","sr-latn":"Portugal"},{"en":"Norway","ro":"Norvegia","sr-cyrl":"Норвешка","sr-latn":"Norveška"}],"q":{"en":"Which of these countries do the Carpathian mountains cross?","ro":"Care dintre aceste țări este traversată de Munții Carpați?","sr-cyrl":"Коју од ових земаља прелазе Карпати?","sr-latn":"Koju od ovih zemalja prelaze Karpati?"},"source":"Encyclopaedia Britannica","topic":"geo","why":{"en":"The Carpathians run from Slovakia through Poland, Ukraine and Romania, and on into Serbia. Among these four, only Romania is on that line.","ro":"Carpații merg din Slovacia prin Polonia, Ucraina și România, apoi în Serbia. Dintre cele patru, doar România e pe traseu.","sr-cyrl":"Карпати иду од Словачке преко Пољске, Украјине и Румуније, па даље у Србију. Од ове четири, само је Румунија на том путу.","sr-latn":"Karpati idu od Slovačke preko Poljske, Ukrajine i Rumunije, pa dalje u Srbiju. Od ove četiri, samo je Rumunija na tom putu."}},{"checked":"2026-10-21","correct":0,"id":"geo-danube","options":[{"en":"The Black Sea","ro":"Marea Neagră","sr-cyrl":"Црно море","sr-latn":"Crno more"},{"en":"The Adriatic","ro":"Marea Adriatică","sr-cyrl":"Јадранско море","sr-latn":"Jadransko more"},{"en":"The Aegean","ro":"Marea Egee","sr-cyrl":"Егејско море","sr-latn":"Egejsko more"},{"en":"The Baltic","ro":"Marea Baltică","sr-cyrl":"Балтичко море","sr-latn":"Baltičko more"}],"q":{"en":"The Danube flows into which sea?","ro":"În ce mare se varsă Dunărea?","sr-cyrl":"У које море се улива Дунав?","sr-latn":"U koje more se uliva Dunav?"},"source":"International Commission for the Protection of the Danube River","topic":"geo","why":{"en":"The Danube crosses ten countries and ends in the Black Sea, in a delta on the Romanian and Ukrainian coast.","ro":"Dunărea traversează zece țări și se varsă în Marea Neagră, într-o deltă pe coasta românească și ucraineană.","sr-cyrl":"Дунав пролази кроз десет земаља и улива се у Црно море, у делти на румунској и украјинској обали.","sr-latn":"Dunav prolazi kroz deset zemalja i uliva se u Crno more, u delti na rumunskoj i ukrajinskoj obali."}},{"checked":"2026-10-21","correct":0,"id":"geo-highest-mountain","options":[{"en":"Everest","ro":"Everest","sr-cyrl":"Еверест","sr-latn":"Everest"},{"en":"K2","ro":"K2","sr-cyrl":"К2","sr-latn":"K2"},{"en":"Kilimanjaro","ro":"Kilimanjaro","sr-cyrl":"Килиманџаро","sr-latn":"Kilimandžaro"},{"en":"Mont Blanc","ro":"Mont Blanc","sr-cyrl":"Монблан","sr-latn":"Monblan"}],"q":{"en":"Which mountain is the highest above sea level?","ro":"Care munte este cel mai înalt deasupra nivelului mării?","sr-cyrl":"Која планина је највиша изнад нивоа мора?","sr-latn":"Koja planina je najviša iznad nivoa mora?"},"source":{"en":"Nepal and China, joint measurement of 2020","ro":"Nepal și China, măsurătoarea comună din 2020","sr-cyrl":"Непал и Кина, заједничко мерење 2020","sr-latn":"Nepal i Kina, zajedničko merenje 2020"},"topic":"geo","why":{"en":"Everest reaches about 8,849 metres, higher than any other peak measured from sea level.","ro":"Everestul ajunge la aproximativ 8.849 de metri, mai sus decât orice alt vârf măsurat de la nivelul mării.","sr-cyrl":"Еверест достиже око 8.849 метара, више од било ког другог врха мереног од нивоа мора.","sr-latn":"Everest dostiže oko 8.849 metara, više od bilo kog drugog vrha merenog od nivoa mora."}},{"checked":"2026-10-21","correct":1,"id":"geo-kilimanjaro","options":[{"en":"Kenya","ro":"Kenya","sr-cyrl":"Кенија","sr-latn":"Kenija"},{"en":"Tanzania","ro":"Tanzania","sr-cyrl":"Танзанија","sr-latn":"Tanzanija"},{"en":"Uganda","ro":"Uganda","sr-cyrl":"Уганда","sr-latn":"Uganda"},{"en":"Ethiopia","ro":"Etiopia","sr-cyrl":"Етиопија","sr-latn":"Etiopija"}],"q":{"en":"Mount Kilimanjaro is in which country?","ro":"În ce țară se află muntele Kilimanjaro?","sr-cyrl":"У којој земљи се налази планина Килиманџаро?","sr-latn":"U kojoj zemlji se nalazi planina Kilimandžaro?"},"source":"Encyclopaedia Britannica","topic":"geo","why":{"en":"Kilimanjaro rises in northern Tanzania, close to the border with Kenya, and it is the highest mountain in Africa.","ro":"Kilimanjaro se ridică în nordul Tanzaniei, aproape de granița cu Kenya, și este cel mai înalt munte din Africa.","sr-cyrl":"Килиманџаро се уздиже на северу Танзаније, близу границе са Кенијом, и највиша је планина Африке.","sr-latn":"Kilimandžaro se uzdiže na severu Tanzanije, blizu granice sa Kenijom, i najviša je planina Afrike."}},{"checked":"2026-10-21","correct":0,"id":"geo-largest-country","options":[{"en":"Russia","ro":"Rusia","sr-cyrl":"Русија","sr-latn":"Rusija"},{"en":"Canada","ro":"Canada","sr-cyrl":"Канада","sr-latn":"Kanada"},{"en":"China","ro":"China","sr-cyrl":"Кина","sr-latn":"Kina"},{"en":"The United States","ro":"Statele Unite","sr-cyrl":"Сједињене Државе","sr-latn":"Sjedinjene Države"}],"q":{"en":"Which country has the largest land area?","ro":"Care țară are cea mai mare suprafață de uscat?","sr-cyrl":"Која земља има највећу копнену површину?","sr-latn":"Koja zemlja ima najveću kopnenu površinu?"},"source":"CIA World Factbook","topic":"geo","why":{"en":"Russia covers about 17 million square kilometres, more than Canada, China and the United States.","ro":"Rusia acoperă aproximativ 17 milioane de kilometri pătrați, mai mult decât Canada, China și Statele Unite.","sr-cyrl":"Русија покрива око 17 милиона квадратних километара, више од Канаде, Кине и Сједињених Држава.","sr-latn":"Rusija pokriva oko 17 miliona kvadratnih kilometara, više od Kanade, Kine i Sjedinjenih Država."}},{"checked":"2026-10-21","correct":2,"id":"geo-largest-ocean","options":[{"en":"The Atlantic","ro":"Atlanticul","sr-cyrl":"Атлантик","sr-latn":"Atlantik"},{"en":"The Indian","ro":"Indianul","sr-cyrl":"Индијски океан","sr-latn":"Indijski okean"},{"en":"The Pacific","ro":"Pacificul","sr-cyrl":"Пацифик","sr-latn":"Pacifik"},{"en":"The Arctic","ro":"Arctica","sr-cyrl":"Арктик","sr-latn":"Arktik"}],"q":{"en":"Which is the largest ocean?","ro":"Care este cel mai mare ocean?","sr-cyrl":"Који је највећи океан?","sr-latn":"Koji je najveći okean?"},"source":"Encyclopaedia Britannica","topic":"geo","why":{"en":"The Pacific covers about a third of the planet, more than all the land put together.","ro":"Pacificul acoperă cam o treime din planetă, mai mult decât tot uscatul la un loc.","sr-cyrl":"Пацифик покрива око трећину планете, више од целог копна заједно.","sr-latn":"Pacifik pokriva oko trećinu planete, više od celog kopna zajedno."}},{"checked":"2026-10-21","correct":0,"id":"geo-longest-african-river","options":[{"en":"The Nile","ro":"Nilul","sr-cyrl":"Нил","sr-latn":"Nil"},{"en":"The Congo","ro":"Congo","sr-cyrl":"Конго","sr-latn":"Kongo"},{"en":"The Niger","ro":"Niger","sr-cyrl":"Нигер","sr-latn":"Niger"},{"en":"The Zambezi","ro":"Zambezi","sr-cyrl":"Замбези","sr-latn":"Zambezi"}],"q":{"en":"Which river is the longest in Africa?","ro":"Care este cel mai lung fluviu din Africa?","sr-cyrl":"Која река је најдужа у Африци?","sr-latn":"Koja reka je najduža u Africi?"},"source":"Encyclopaedia Britannica","topic":"geo","why":{"en":"The Nile runs north from the lakes of East Africa to the Mediterranean, longer than the Congo, the Niger and the Zambezi.","ro":"Nilul curge spre nord, de la lacurile Africii de Est până la Marea Mediterană, mai lung decât Congo, Niger și Zambezi.","sr-cyrl":"Нил тече на север, од језера источне Африке до Средоземног мора, дужи од Конга, Нигера и Замбезија.","sr-latn":"Nil teče na sever, od jezera istočne Afrike do Sredozemnog mora, duži od Konga, Nigera i Zambezija."}},{"checked":"2026-10-21","correct":0,"id":"geo-smallest-country","options":[{"en":"Vatican City","ro":"Vaticanul","sr-cyrl":"Ватикан","sr-latn":"Vatikan"},{"en":"Monaco","ro":"Monaco","sr-cyrl":"Монако","sr-latn":"Monako"},{"en":"San Marino","ro":"San Marino","sr-cyrl":"Сан Марино","sr-latn":"San Marino"},{"en":"Liechtenstein","ro":"Liechtenstein","sr-cyrl":"Лихтенштајн","sr-latn":"Lihtenštajn"}],"q":{"en":"What is the smallest country in the world by area?","ro":"Care este cea mai mică țară din lume ca suprafață?","sr-cyrl":"Која је најмања земља на свету по површини?","sr-latn":"Koja je najmanja zemlja na svetu po površini?"},"source":"Encyclopaedia Britannica","topic":"geo","why":{"en":"Vatican City covers about 0.44 square kilometres, less than a quarter of Monaco.","ro":"Vaticanul acoperă aproximativ 0,44 kilometri pătrați, mai puțin de un sfert din Monaco.","sr-cyrl":"Ватикан покрива око 0,44 квадратна километра, мање од четвртине Монака.","sr-latn":"Vatikan pokriva oko 0,44 kvadratna kilometra, manje od četvrtine Monaka."}},{"checked":"2026-10-21","correct":0,"id":"hist-ad-roman","options":[{"en":"Anno Domini","ro":"Anno Domini","sr-cyrl":"Анно Домини","sr-latn":"Anno Domini"},{"en":"Ante Diem","ro":"Ante Diem","sr-cyrl":"Анте Дием","sr-latn":"Ante Diem"},{"en":"Ad Astra","ro":"Ad Astra","sr-cyrl":"Ад Астра","sr-latn":"Ad Astra"},{"en":"Altera Die","ro":"Altera Die","sr-cyrl":"Алтера Дие","sr-latn":"Altera Die"}],"q":{"en":"The Latin abbreviation AD, as in AD 476, stands for...","ro":"Abrevierea latină AD, ca în AD 476, vine de la...","sr-cyrl":"Латинска скраћеница АД, као у АД 476, значи...","sr-latn":"Latinska skraćenica AD, kao u AD 476, znači..."},"source":"Oxford English Dictionary","topic":"history","why":{"en":"Anno Domini means in the year of the Lord, and it marks the counting of years that most of the world uses today.","ro":"Anno Domini înseamnă în anul Domnului și marchează numărătoarea anilor folosită azi în cea mai mare parte a lumii.","sr-cyrl":"Анно Домини значи у години Господњој и означава бројање година које данас користи већи део света.","sr-latn":"Anno Domini znači u godini Gospodnjoj i označava brojanje godina koje danas koristi veći deo sveta."}},{"checked":"2026-10-21","correct":0,"id":"hist-eiffel","options":[{"en":"The 1889 world exhibition","ro":"Expoziția mondială din 1889","sr-cyrl":"Светску изложбу 1889.","sr-latn":"Svetsku izložbu 1889."},{"en":"The 1900 Olympic Games","ro":"Jocurile Olimpice din 1900","sr-cyrl":"Олимпијске игре 1900.","sr-latn":"Olimpijske igre 1900."},{"en":"The 1855 world exhibition","ro":"Expoziția mondială din 1855","sr-cyrl":"Светску изложбу 1855.","sr-latn":"Svetsku izložbu 1855."},{"en":"The 1925 arts exhibition","ro":"Expoziția de arte din 1925","sr-cyrl":"Изложбу уметности 1925.","sr-latn":"Izložbu umetnosti 1925."}],"q":{"en":"The Eiffel Tower was built for which event?","ro":"Turnul Eiffel a fost construit pentru care eveniment?","sr-cyrl":"Ајфелова кула је саграђена за који догађај?","sr-latn":"Ajfelova kula je sagrađena za koji događaj?"},"source":"Eiffel Tower official history","topic":"history","why":{"en":"It stood over the entrance of the 1889 world exhibition and was meant to be taken down afterwards.","ro":"A stat la intrarea expoziției mondiale din 1889 și trebuia demolat după aceea.","sr-cyrl":"Стајала је изнад улаза у светску изложбу 1889. и требало је да буде уклоњена после.","sr-latn":"Stajala je iznad ulaza u svetsku izložbu 1889. i trebalo je da bude uklonjena posle."}},{"checked":"2026-10-21","correct":0,"id":"hist-gutenberg","options":[{"en":"A Bible","ro":"O Biblie","sr-cyrl":"Библију","sr-latn":"Bibliju"},{"en":"A dictionary","ro":"Un dicționar","sr-cyrl":"Речник","sr-latn":"Rečnik"},{"en":"A newspaper","ro":"Un ziar","sr-cyrl":"Новине","sr-latn":"Novine"},{"en":"A map of the world","ro":"O hartă a lumii","sr-cyrl":"Карту света","sr-latn":"Kartu sveta"}],"q":{"en":"What did Johannes Gutenberg print in the middle of the fifteenth century?","ro":"Ce a tipărit Johannes Gutenberg la mijlocul secolului al cincisprezecelea?","sr-cyrl":"Шта је Јохан Гутенберг штампао средином петнаестог века?","sr-latn":"Šta je Johan Gutenberg štampao sredinom petnaestog veka?"},"source":"British Library","topic":"history","why":{"en":"His Bible of around 1455 was the first big book printed in Europe with movable metal type.","ro":"Biblia lui, din jur de 1455, a fost prima carte mare tipărită în Europa cu litere metalice mobile.","sr-cyrl":"Његова Библија, око 1455, била је прва велика књига штампана у Европи покретним металним словима.","sr-latn":"Njegova Biblija, oko 1455, bila je prva velika knjiga štampana u Evropi pokretnim metalnim slovima."}},{"checked":"2026-10-21","correct":1,"id":"hist-leap-year-rule","options":[{"en":"1900","ro":"1900","sr-cyrl":"1900","sr-latn":"1900"},{"en":"2000","ro":"2000","sr-cyrl":"2000","sr-latn":"2000"},{"en":"2100","ro":"2100","sr-cyrl":"2100","sr-latn":"2100"},{"en":"2200","ro":"2200","sr-cyrl":"2200","sr-latn":"2200"}],"q":{"en":"Which year is a leap year?","ro":"Care dintre acești ani este bisect?","sr-cyrl":"Која од ових година је преступна?","sr-latn":"Koja od ovih godina je prestupna?"},"source":{"en":"Gregorian calendar","ro":"Calendarul gregorian","sr-cyrl":"Грегоријански календар","sr-latn":"Gregorijanski kalendar"},"topic":"history","why":{"en":"A year divides by 4 is a leap year, except centuries, which only count when they divide by 400. 2000 divides by 400, the others do not.","ro":"Un an divizibil cu 4 este bisect, cu excepția secolelor, care contează doar dacă se împart la 400. 2000 se împarte la 400, ceilalți nu.","sr-cyrl":"Година дељива са 4 је преступна, осим векова, који се рачунају само ако су дељиви са 400. 2000 је дељива са 400, остале нису.","sr-latn":"Godina deljiva sa 4 je prestupna, osim vekova, koji se računaju samo ako su deljivi sa 400. 2000 je deljiva sa 400, ostale nisu."}},{"checked":"2026-10-21","correct":1,"id":"hist-magna-carta","options":[{"en":"The twelfth","ro":"Secolul al doisprezecelea","sr-cyrl":"Дванаести","sr-latn":"Dvanaesti"},{"en":"The thirteenth","ro":"Secolul al treisprezecelea","sr-cyrl":"Тринаести","sr-latn":"Trinaesti"},{"en":"The fifteenth","ro":"Secolul al cincisprezecelea","sr-cyrl":"Петнаести","sr-latn":"Petnaesti"},{"en":"The seventeenth","ro":"Secolul al șaptesprezecelea","sr-cyrl":"Седамнаести","sr-latn":"Sedamnaesti"}],"q":{"en":"In which century was Magna Carta sealed in England?","ro":"În ce secol a fost sigilată Magna Carta în Anglia?","sr-cyrl":"У ком веку је у Енглеској оверена Магна Царта?","sr-latn":"U kom veku je u Engleskoj overena Magna Carta?"},"source":"British Library","topic":"history","why":{"en":"It was sealed in 1215, in the thirteenth century.","ro":"A fost sigilată în 1215, adică în secolul al treisprezecelea.","sr-cyrl":"Оверена је 1215, дакле у тринаестом веку.","sr-latn":"Overena je 1215, dakle u trinaestom veku."}},{"checked":"2026-10-21","correct":1,"id":"hist-mechanical-clock","options":[{"en":"The eleventh","ro":"Secolul al unsprezecelea","sr-cyrl":"Једанаести","sr-latn":"Jedanaesti"},{"en":"The thirteenth","ro":"Secolul al treisprezecelea","sr-cyrl":"Тринаести","sr-latn":"Trinaesti"},{"en":"The sixteenth","ro":"Secolul al șaisprezecelea","sr-cyrl":"Шеснаести","sr-latn":"Šesnaesti"},{"en":"The nineteenth","ro":"Secolul al nouăsprezecelea","sr-cyrl":"Деветнаести","sr-latn":"Devetnaesti"}],"q":{"en":"In which century did large mechanical clocks first appear on European towers?","ro":"În ce secol au apărut primele ceasuri mecanice mari pe turnurile europene?","sr-cyrl":"У ком веку су се први велики механички сатови појавили на европским кулама?","sr-latn":"U kom veku su se prvi veliki mehanički satovi pojavili na evropskim kulama?"},"source":"Encyclopaedia Britannica","topic":"history","why":{"en":"Tower clocks driven by weights and gears spread across Europe in the thirteenth century.","ro":"Ceasurile de turn, mișcate de greutăți și roți dințate, s-au răspândit prin Europa în secolul al treisprezecelea.","sr-cyrl":"Кулни сатови, покретани теговима и зупчаницима, раширили су се Европом у тринаестом веку.","sr-latn":"Kulni satovi, pokretani tegovima i zupčanicima, raširili su se Evropom u trinaestom veku."}},{"checked":"2026-10-21","correct":0,"id":"hist-penny-farthing","options":[{"en":"Because its two wheels looked like two coins of very different size","ro":"Pentru că roțile ei semănau cu două monede de mărimi foarte diferite","sr-cyrl":"Зато што су његова два точка личила на два новчића веома различите величине","sr-latn":"Zato što su njegova dva točka ličila na dva novčića veoma različite veličine"},{"en":"Because it cost a penny to ride","ro":"Pentru că o plimbare costa un penny","sr-cyrl":"Зато што је вожња коштала један пени","sr-latn":"Zato što je vožnja koštala jedan peni"},{"en":"Because a farthing was its first price","ro":"Pentru că un farthing a fost primul ei preț","sr-cyrl":"Зато што је фартхинг била његова прва цена","sr-latn":"Zato što je farthing bila njegova prva cena"},{"en":"Because it was made in Farthing","ro":"Pentru că era făcută în Farthing","sr-cyrl":"Зато што је направљен у Фартхингу","sr-latn":"Zato što je napravljen u Farthingu"}],"q":{"en":"Why was the penny-farthing bicycle given that name?","ro":"De ce a primit bicicleta penny-farthing acest nume?","sr-cyrl":"Зашто је бицикл penny-farthing добио то име?","sr-latn":"Zašto je bicikl penny-farthing dobio to ime?"},"source":"Encyclopaedia Britannica","topic":"history","why":{"en":"The penny was a large coin and the farthing a small one, and the bicycle had one huge front wheel and one small back wheel.","ro":"Penny era o monedă mare, farthing una mică, iar bicicleta avea o roată mare în față și una mică în spate.","sr-cyrl":"Пени је био велики новчић, фартхинг мали, а бицикл је имао огроман предњи и мали задњи точак.","sr-latn":"Peni je bio veliki novčić, farthing mali, a bicikl je imao ogroman prednji i mali zadnji točak."}},{"checked":"2026-10-21","correct":0,"id":"hist-universal-suffrage-women","options":[{"en":"New Zealand","ro":"Noua Zeelandă","sr-cyrl":"Нови Зеланд","sr-latn":"Novi Zeland"},{"en":"Switzerland","ro":"Elveția","sr-cyrl":"Швајцарска","sr-latn":"Švajcarska"},{"en":"France","ro":"Franța","sr-cyrl":"Француска","sr-latn":"Francuska"},{"en":"The United States","ro":"Statele Unite","sr-cyrl":"Сједињене Државе","sr-latn":"Sjedinjene Države"}],"q":{"en":"In which country did women first win the right to vote in national elections?","ro":"În ce țară au câștigat femeile pentru prima dată dreptul de vot la alegerile naționale?","sr-cyrl":"У којој земљи су жене први пут добиле право гласа на националним изборима?","sr-latn":"U kojoj zemlji su žene prvi put dobile pravo glasa na nacionalnim izborima?"},"source":"New Zealand History, government archive","topic":"history","why":{"en":"New Zealand granted the vote to women in 1893, well before the others.","ro":"Noua Zeelandă a dat femeilor dreptul de vot în 1893, cu mult înaintea celorlalte.","sr-cyrl":"Нови Зеланд је дао женама право гласа 1893, много пре осталих.","sr-latn":"Novi Zeland je dao ženama pravo glasa 1893, mnogo pre ostalih."}},{"checked":"2026-10-21","correct":0,"id":"logic-bat-and-ball","options":[{"en":"5 cents","ro":"5 cenți","sr-cyrl":"5 центи","sr-latn":"5 centi"},{"en":"10 cents","ro":"10 cenți","sr-cyrl":"10 центи","sr-latn":"10 centi"},{"en":"55 cents","ro":"55 de cenți","sr-cyrl":"55 центи","sr-latn":"55 centi"},{"en":"100 cents","ro":"100 de cenți","sr-cyrl":"100 центи","sr-latn":"100 centi"}],"q":{"en":"A bat and a ball cost 110 cents together. The bat costs 100 cents more than the ball. How much is the ball?","ro":"O bâtă și o minge costă împreună 110 cenți. Bâta costă cu 100 de cenți mai mult decât mingea. Cât costă mingea?","sr-cyrl":"Палица и лоптица заједно коштају 110 центи. Палица кошта 100 центи више од лоптице. Колико кошта лоптица?","sr-latn":"Palica i loptica zajedno koštaju 110 centi. Palica košta 100 centi više od loptice. Koliko košta loptica?"},"source":{"en":"Deduction","ro":"Deducție","sr-cyrl":"Дедукција","sr-latn":"Dedukcija"},"topic":"logic","why":{"en":"If the ball is 5 cents, the bat is 105 and together they are 110. Ten cents would make the bat 110 and the total 120.","ro":"Dacă mingea costă 5 cenți, bâta costă 105, iar împreună fac 110. Zece cenți ar face bâta 110 și totalul 120.","sr-cyrl":"Ако лоптица кошта 5 центи, палица кошта 105, а заједно 110. Десет центи би дало палицу од 110 и укупно 120.","sr-latn":"Ako loptica košta 5 centi, palica košta 105, a zajedno 110. Deset centi bi dalo palicu od 110 i ukupno 120."}},{"checked":"2026-10-21","correct":1,"id":"logic-clock-hands","options":[{"en":"10","ro":"10","sr-cyrl":"10","sr-latn":"10"},{"en":"11","ro":"11","sr-cyrl":"11","sr-latn":"11"},{"en":"12","ro":"12","sr-cyrl":"12","sr-latn":"12"},{"en":"24","ro":"24","sr-cyrl":"24","sr-latn":"24"}],"q":{"en":"How many times do the hour hand and the minute hand of a clock overlap in twelve hours?","ro":"De câte ori se suprapun limbile unui ceas, cea orară și cea a minutelor, în douăsprezece ore?","sr-cyrl":"Колико се пута преклопе казаљке сата, сатна и минутна, за дванаест сати?","sr-latn":"Koliko se puta preklope kazaljke sata, satna i minutna, za dvanaest sati?"},"source":{"en":"Clock","ro":"Ceas","sr-cyrl":"Сат","sr-latn":"Sat"},"topic":"logic","why":{"en":"The minute hand goes round twelve times while the hour hand goes round once, so it catches up eleven times.","ro":"Limba minutelor face douăsprezece ture cât limba orelor face una, deci o ajunge din urmă de unsprezece ori.","sr-cyrl":"Минутна казаљка направи дванаест кругова док сатна направи један, па је сустигне једанаест пута.","sr-latn":"Minutna kazaljka napravi dvanaest krugova dok satna napravi jedan, pa je sustigne jedanaest puta."}},{"checked":"2026-10-21","correct":1,"id":"logic-double","options":[{"en":"24","ro":"24","sr-cyrl":"24","sr-latn":"24"},{"en":"32","ro":"32","sr-cyrl":"32","sr-latn":"32"},{"en":"20","ro":"20","sr-cyrl":"20","sr-latn":"20"},{"en":"64","ro":"64","sr-cyrl":"64","sr-latn":"64"}],"q":{"en":"What comes next: 2, 4, 8, 16, ...?","ro":"Ce urmează: 2, 4, 8, 16, ...?","sr-cyrl":"Шта следи: 2, 4, 8, 16, ...?","sr-latn":"Šta sledi: 2, 4, 8, 16, ...?"},"source":{"en":"Sequences","ro":"Șiruri","sr-cyrl":"Низови","sr-latn":"Nizovi"},"topic":"logic","why":{"en":"Every number is double the one before it, so 16 doubles to 32.","ro":"Fiecare număr este dublul celui dinaintea lui, deci 16 se dublează în 32.","sr-cyrl":"Сваки број је дупло већи од претходног, па се 16 удвостручује у 32.","sr-latn":"Svaki broj je duplo veći od prethodnog, pa se 16 udvostručuje u 32."}},{"checked":"2026-10-21","correct":0,"id":"logic-dry-street","options":[{"en":"It did not rain","ro":"Nu a plouat","sr-cyrl":"Није падала киша","sr-latn":"Nije padala kiša"},{"en":"It rained a little","ro":"A plouat puțin","sr-cyrl":"Мало је падала киша","sr-latn":"Malo je padala kiša"},{"en":"The street dried later","ro":"Strada s-a uscat mai târziu","sr-cyrl":"Улица се касније осушила","sr-latn":"Ulica se kasnije osušila"},{"en":"Nothing can be said","ro":"Nu se poate spune nimic","sr-cyrl":"Ништа се не може рећи","sr-latn":"Ništa se ne može reći"}],"q":{"en":"If it rains, the street gets wet. The street is dry. What follows?","ro":"Dacă plouă, strada se udă. Strada este uscată. Ce urmează?","sr-cyrl":"Ако пада киша, улица се кваси. Улица је сува. Шта следи?","sr-latn":"Ako pada kiša, ulica se kvasi. Ulica je suva. Šta sledi?"},"source":{"en":"Deduction","ro":"Deducție","sr-cyrl":"Дедукција","sr-latn":"Dedukcija"},"topic":"logic","why":{"en":"Rain always leaves the street wet, so a dry street means the rain did not fall. The form is called modus tollens.","ro":"Ploaia lasă mereu strada udă, deci o stradă uscată înseamnă că ploaia nu a căzut. Forma se numește modus tollens.","sr-cyrl":"Киша увек остави улицу мокром, па сува улица значи да кише није било. Тај облик се зове модус толленс.","sr-latn":"Kiša uvek ostavi ulicu mokrom, pa suva ulica znači da kiše nije bilo. Taj oblik se zove modus tollens."}},{"checked":"2026-10-21","correct":1,"id":"logic-fibonacci","options":[{"en":"11","ro":"11","sr-cyrl":"11","sr-latn":"11"},{"en":"13","ro":"13","sr-cyrl":"13","sr-latn":"13"},{"en":"15","ro":"15","sr-cyrl":"15","sr-latn":"15"},{"en":"16","ro":"16","sr-cyrl":"16","sr-latn":"16"}],"q":{"en":"What comes next: 1, 1, 2, 3, 5, 8, ...?","ro":"Ce urmează: 1, 1, 2, 3, 5, 8, ...?","sr-cyrl":"Шта следи: 1, 1, 2, 3, 5, 8, ...?","sr-latn":"Šta sledi: 1, 1, 2, 3, 5, 8, ...?"},"source":{"en":"Sequences","ro":"Șiruri","sr-cyrl":"Низови","sr-latn":"Nizovi"},"topic":"logic","why":{"en":"Each number is the sum of the two before it, and 5 plus 8 is 13. This is the Fibonacci sequence.","ro":"Fiecare număr este suma celor două dinaintea lui, iar 5 plus 8 fac 13. Este șirul lui Fibonacci.","sr-cyrl":"Сваки број је збир претходна два, а 5 плус 8 је 13. То је Фибоначијев низ.","sr-latn":"Svaki broj je zbir prethodna dva, a 5 plus 8 je 13. To je Fibonačijev niz."}},{"checked":"2026-10-21","correct":0,"id":"logic-grey-bird","options":[{"en":"The bird was grey","ro":"Pasărea era cenușie","sr-cyrl":"Птица је била сива","sr-latn":"Ptica je bila siva"},{"en":"The bird was not grey","ro":"Pasărea nu era cenușie","sr-cyrl":"Птица није била сива","sr-latn":"Ptica nije bila siva"},{"en":"Nothing can be said about its colour","ro":"Nu se poate spune nimic despre culoarea ei","sr-cyrl":"О њеној боји се не може ништа рећи","sr-latn":"O njenoj boji se ne može ništa reći"},{"en":"The bird was a pigeon","ro":"Pasărea era un porumbel","sr-cyrl":"Птица је била голуб","sr-latn":"Ptica je bila golub"}],"q":{"en":"Every bird in this town is grey, and I have just seen a bird in this town. What follows?","ro":"Toate păsările din acest oraș sunt cenușii, iar eu tocmai am văzut o pasăre în acest oraș. Ce urmează?","sr-cyrl":"Све птице у овом граду су сиве, а ја сам управо видео птицу у овом граду. Шта следи?","sr-latn":"Sve ptice u ovom gradu su sive, a ja sam upravo video pticu u ovom gradu. Šta sledi?"},"source":{"en":"Deduction","ro":"Deducție","sr-cyrl":"Дедукција","sr-latn":"Dedukcija"},"topic":"logic","why":{"en":"If the rule holds for every bird, it holds for the one I saw. The colour is not a guess, it follows.","ro":"Dacă regula e valabilă pentru fiecare pasăre, e valabilă și pentru cea pe care am văzut-o. Culoarea nu e o presupunere, ci o concluzie.","sr-cyrl":"Ако правило важи за сваку птицу, важи и за ону коју сам видео. Боја није нагађање, него закључак.","sr-latn":"Ako pravilo važi za svaku pticu, važi i za onu koju sam video. Boja nije nagađanje, nego zaključak."}},{"checked":"2026-10-21","correct":0,"id":"logic-heights","options":[{"en":"Lena","ro":"Lena","sr-cyrl":"Лена","sr-latn":"Lena"},{"en":"Ana","ro":"Ana","sr-cyrl":"Ана","sr-latn":"Ana"},{"en":"Marko","ro":"Marko","sr-cyrl":"Марко","sr-latn":"Marko"},{"en":"All three are the same height","ro":"Toți trei au aceeași înălțime","sr-cyrl":"Сви су исте висине","sr-latn":"Svi su iste visine"}],"q":{"en":"Ana is taller than Marko, and Marko is taller than Lena. Who is the shortest?","ro":"Ana este mai înaltă decât Marko, iar Marko este mai înalt decât Lena. Cine este cel mai scund?","sr-cyrl":"Ана је виша од Марка, а Марко је виши од Лене. Ко је најнижи?","sr-latn":"Ana je viša od Marka, a Marko je viši od Lene. Ko je najniži?"},"source":{"en":"Deduction","ro":"Deducție","sr-cyrl":"Дедукција","sr-latn":"Dedukcija"},"topic":"logic","why":{"en":"Ana is above Marko and Marko is above Lena, so Lena sits at the bottom of the order.","ro":"Ana e deasupra lui Marko, iar Marko deasupra Lenei, deci Lena stă la baza ordinii.","sr-cyrl":"Ана је изнад Марка, а Марко изнад Лене, па је Лена на дну поретка.","sr-latn":"Ana je iznad Marka, a Marko iznad Lene, pa je Lena na dnu poretka."}},{"checked":"2026-10-21","correct":2,"id":"logic-not-a-square","options":[{"en":"9","ro":"9","sr-cyrl":"9","sr-latn":"9"},{"en":"16","ro":"16","sr-cyrl":"16","sr-latn":"16"},{"en":"30","ro":"30","sr-cyrl":"30","sr-latn":"30"},{"en":"4","ro":"4","sr-cyrl":"4","sr-latn":"4"}],"q":{"en":"Which number does not belong: 4, 9, 16, 25, 30?","ro":"Care număr nu se potrivește: 4, 9, 16, 25, 30?","sr-cyrl":"Који број не припада: 4, 9, 16, 25, 30?","sr-latn":"Koji broj ne pripada: 4, 9, 16, 25, 30?"},"source":{"en":"Sequences","ro":"Șiruri","sr-cyrl":"Низови","sr-latn":"Nizovi"},"topic":"logic","why":{"en":"4, 9, 16 and 25 are the squares of 2, 3, 4 and 5. 30 is not the square of a whole number.","ro":"4, 9, 16 și 25 sunt pătratele lui 2, 3, 4 și 5. 30 nu este pătratul niciunui număr întreg.","sr-cyrl":"4, 9, 16 и 25 су квадрати бројева 2, 3, 4 и 5. 30 није квадрат ниједног целог броја.","sr-latn":"4, 9, 16 i 25 su kvadrati brojeva 2, 3, 4 i 5. 30 nije kvadrat nijednog celog broja."}},{"checked":"2026-10-21","correct":3,"id":"logic-not-flat","options":[{"en":"Triangle","ro":"Triunghi","sr-cyrl":"Троугао","sr-latn":"Trougao"},{"en":"Square","ro":"Pătrat","sr-cyrl":"Квадрат","sr-latn":"Kvadrat"},{"en":"Circle","ro":"Cerc","sr-cyrl":"Круг","sr-latn":"Krug"},{"en":"Cube","ro":"Cub","sr-cyrl":"Коцка","sr-latn":"Kocka"}],"q":{"en":"Which one does not belong: triangle, square, circle, cube?","ro":"Care nu se potrivește: triunghi, pătrat, cerc, cub?","sr-cyrl":"Шта не припада: троугао, квадрат, круг, коцка?","sr-latn":"Šta ne pripada: trougao, kvadrat, krug, kocka?"},"source":{"en":"Geometry","ro":"Geometrie","sr-cyrl":"Геометрија","sr-latn":"Geometrija"},"topic":"logic","why":{"en":"The first three are flat shapes drawn on a page. A cube has depth.","ro":"Primele trei sunt forme plate, desenate pe o foaie. Cubul are adâncime.","sr-cyrl":"Прва три су равне фигуре нацртане на папиру. Коцка има дубину.","sr-latn":"Prva tri su ravne figure nacrtane na papiru. Kocka ima dubinu."}},{"checked":"2026-10-21","correct":1,"id":"logic-overtake-second","options":[{"en":"First","ro":"Primul","sr-cyrl":"Први","sr-latn":"Prvi"},{"en":"Second","ro":"Al doilea","sr-cyrl":"Други","sr-latn":"Drugi"},{"en":"Third","ro":"Al treilea","sr-cyrl":"Трећи","sr-latn":"Treći"},{"en":"Last","ro":"Ultimul","sr-cyrl":"Последњи","sr-latn":"Poslednji"}],"q":{"en":"In a race you overtake the runner in second place. Which place are you in now?","ro":"Într-o cursă depășești alergătorul de pe locul doi. Pe ce loc ești acum?","sr-cyrl":"У трци претекнеш тркача на другом месту. На ком месту си сада?","sr-latn":"U trci pretekneš trkača na drugom mestu. Na kom mestu si sada?"},"source":{"en":"Deduction","ro":"Deducție","sr-cyrl":"Дедукција","sr-latn":"Dedukcija"},"topic":"logic","why":{"en":"Overtaking the second runner puts you where that runner was, which is second. The leader is still ahead.","ro":"Dacă îl depășești pe cel de pe locul doi, ajungi pe locul lui, adică doi. Liderul e încă în față.","sr-cyrl":"Ако претекнеш тркача на другом месту, долазиш на његово место, то јест друго. Вођа је и даље испред.","sr-latn":"Ako pretekneš trkača na drugom mestu, dolaziš na njegovo mesto, to jest drugo. Vođa je i dalje ispred."}},{"checked":"2026-10-21","correct":0,"id":"logic-red-roses","options":[{"en":"Every rose here was planted by my aunt","ro":"Fiecare trandafir de aici a fost plantat de mătușa mea","sr-cyrl":"Сваку ружу овде је засадила моја тетка","sr-latn":"Svaku ružu ovde je zasadila moja tetka"},{"en":"Some roses were not planted by my aunt","ro":"Unii trandafiri nu au fost plantați de mătușa mea","sr-cyrl":"Неке руже није засадила моја тетка","sr-latn":"Neke ruže nije zasadila moja tetka"},{"en":"Every flower here is a rose","ro":"Fiecare floare de aici este trandafir","sr-cyrl":"Сваки цвет овде је ружа","sr-latn":"Svaki cvet ovde je ruža"},{"en":"Nothing follows","ro":"Nu urmează nimic","sr-cyrl":"Ништа не следи","sr-latn":"Ništa ne sledi"}],"q":{"en":"Every rose in this garden is red, and every red flower in this garden was planted by my aunt. What follows?","ro":"Fiecare trandafir din această grădină este roșu, iar fiecare floare roșie din această grădină a fost plantată de mătușa mea. Ce urmează?","sr-cyrl":"Свака ружа у овој башти је црвена, а сваки црвени цвет у овој башти је засадила моја тетка. Шта следи?","sr-latn":"Svaka ruža u ovoj bašti je crvena, a svaki crveni cvet u ovoj bašti je zasadila moja tetka. Šta sledi?"},"source":{"en":"Deduction","ro":"Deducție","sr-cyrl":"Дедукција","sr-latn":"Dedukcija"},"topic":"logic","why":{"en":"The two statements chain together: a rose is red, and a red flower here came from my aunt.","ro":"Cele două afirmații se leagă: un trandafir este roșu, iar o floare roșie de aici vine de la mătușa mea.","sr-cyrl":"Две тврдње се повезују: ружа је црвена, а црвени цвет овде је од моје тетке.","sr-latn":"Dve tvrdnje se povezuju: ruža je crvena, a crveni cvet ovde je od moje tetke."}},{"checked":"2026-10-21","correct":1,"id":"logic-steps-of-odd","options":[{"en":"25","ro":"25","sr-cyrl":"25","sr-latn":"25"},{"en":"27","ro":"27","sr-cyrl":"27","sr-latn":"27"},{"en":"29","ro":"29","sr-cyrl":"29","sr-latn":"29"},{"en":"24","ro":"24","sr-cyrl":"24","sr-latn":"24"}],"q":{"en":"What comes next: 3, 6, 11, 18, ...?","ro":"Ce urmează: 3, 6, 11, 18, ...?","sr-cyrl":"Шта следи: 3, 6, 11, 18, ...?","sr-latn":"Šta sledi: 3, 6, 11, 18, ...?"},"source":{"en":"Sequences","ro":"Șiruri","sr-cyrl":"Низови","sr-latn":"Nizovi"},"topic":"logic","why":{"en":"The steps are 3, 5 and 7, so the next step is 9, and 18 plus 9 is 27.","ro":"Pașii sunt 3, 5 și 7, deci următorul pas este 9, iar 18 plus 9 fac 27.","sr-cyrl":"Кораци су 3, 5 и 7, па је следећи корак 9, а 18 плус 9 је 27.","sr-latn":"Koraci su 3, 5 i 7, pa je sledeći korak 9, a 18 plus 9 je 27."}},{"checked":"2026-10-21","correct":1,"id":"math-average-speed","options":[{"en":"60","ro":"60","sr-cyrl":"60","sr-latn":"60"},{"en":"90","ro":"90","sr-cyrl":"90","sr-latn":"90"},{"en":"120","ro":"120","sr-cyrl":"120","sr-latn":"120"},{"en":"360","ro":"360","sr-cyrl":"360","sr-latn":"360"}],"q":{"en":"A train covers 180 km in 2 hours. What is its average speed, in kilometres per hour?","ro":"Un tren parcurge 180 km în 2 ore. Care este viteza lui medie, în kilometri pe oră?","sr-cyrl":"Воз пређе 180 км за 2 сата. Колика је његова просечна брзина, у километрима на сат?","sr-latn":"Voz pređe 180 km za 2 sata. Kolika je njegova prosečna brzina, u kilometrima na sat?"},"source":{"en":"Arithmetic","ro":"Calcul","sr-cyrl":"Рачун","sr-latn":"Račun"},"topic":"math","why":{"en":"Speed is distance divided by time: 180 divided by 2 is 90 kilometres per hour.","ro":"Viteza este distanța împărțită la timp: 180 împărțit la 2 fac 90 de kilometri pe oră.","sr-cyrl":"Брзина је пређени пут подељен временом: 180 подељено са 2 је 90 километара на сат.","sr-latn":"Brzina je pređeni put podeljen vremenom: 180 podeljeno sa 2 je 90 kilometara na sat."}},{"checked":"2026-10-21","correct":1,"id":"math-discount","options":[{"en":"55","ro":"55","sr-cyrl":"55","sr-latn":"55"},{"en":"60","ro":"60","sr-cyrl":"60","sr-latn":"60"},{"en":"65","ro":"65","sr-cyrl":"65","sr-latn":"65"},{"en":"20","ro":"20","sr-cyrl":"20","sr-latn":"20"}],"q":{"en":"A jacket costs 80 and is reduced by 25%. What does it cost now?","ro":"O jachetă costă 80 și se ieftinește cu 25%. Cât costă acum?","sr-cyrl":"Јакна кошта 80 и појефтини за 25%. Колико кошта сада?","sr-latn":"Jakna košta 80 i pojeftini za 25%. Koliko košta sada?"},"source":{"en":"Arithmetic","ro":"Calcul","sr-cyrl":"Рачун","sr-latn":"Račun"},"topic":"math","why":{"en":"A quarter of 80 is 20, and 80 minus 20 is 60.","ro":"Un sfert din 80 este 20, iar 80 minus 20 fac 60.","sr-cyrl":"Четвртина од 80 је 20, а 80 минус 20 је 60.","sr-latn":"Četvrtina od 80 je 20, a 80 minus 20 je 60."}},{"checked":"2026-10-21","correct":1,"id":"math-divisible-nine","options":[{"en":"731","ro":"731","sr-cyrl":"731","sr-latn":"731"},{"en":"738","ro":"738","sr-cyrl":"738","sr-latn":"738"},{"en":"742","ro":"742","sr-cyrl":"742","sr-latn":"742"},{"en":"745","ro":"745","sr-cyrl":"745","sr-latn":"745"}],"q":{"en":"Which of these numbers divides by 9 without a remainder?","ro":"Care dintre aceste numere se împarte exact la 9?","sr-cyrl":"Који од ових бројева се дели са 9 без остатка?","sr-latn":"Koji od ovih brojeva se deli sa 9 bez ostatka?"},"source":{"en":"Divisibility rules","ro":"Reguli de divizibilitate","sr-cyrl":"Правила дељивости","sr-latn":"Pravila deljivosti"},"topic":"math","why":{"en":"A number divides by 9 when its digits add up to a multiple of 9, and 7 plus 3 plus 8 is 18.","ro":"Un număr se împarte la 9 dacă suma cifrelor lui este un multiplu de 9, iar 7 plus 3 plus 8 fac 18.","sr-cyrl":"Број се дели са 9 када његове цифре сабране дају вишекратник броја 9, а 7 плус 3 плус 8 је 18.","sr-latn":"Broj se deli sa 9 kada njegove cifre sabrane daju višekratnik broja 9, a 7 plus 3 plus 8 je 18."}},{"checked":"2026-10-21","correct":2,"id":"math-half-plus-third","options":[{"en":"2/5","ro":"2/5","sr-cyrl":"2/5","sr-latn":"2/5"},{"en":"1/6","ro":"1/6","sr-cyrl":"1/6","sr-latn":"1/6"},{"en":"5/6","ro":"5/6","sr-cyrl":"5/6","sr-latn":"5/6"},{"en":"2/6","ro":"2/6","sr-cyrl":"2/6","sr-latn":"2/6"}],"q":{"en":"What is one half plus one third?","ro":"Cât face o doime plus o treime?","sr-cyrl":"Колико је једна половина плус једна трећина?","sr-latn":"Koliko je jedna polovina plus jedna trećina?"},"source":{"en":"Arithmetic","ro":"Calcul","sr-cyrl":"Рачун","sr-latn":"Račun"},"topic":"math","why":{"en":"In sixths, one half is three sixths and one third is two sixths, so together they are five sixths.","ro":"În șesimi, o doime este trei șesimi, iar o treime este două șesimi, deci împreună fac cinci șesimi.","sr-cyrl":"У шестинама, једна половина је три шестине, а једна трећина је две шестине, па заједно дају пет шестина.","sr-latn":"U šestinama, jedna polovina je tri šestine, a jedna trećina je dve šestine, pa zajedno daju pet šestina."}},{"checked":"2026-10-21","correct":0,"id":"math-largest-fraction","options":[{"en":"3/4","ro":"3/4","sr-cyrl":"3/4","sr-latn":"3/4"},{"en":"5/7","ro":"5/7","sr-cyrl":"5/7","sr-latn":"5/7"},{"en":"2/3","ro":"2/3","sr-cyrl":"2/3","sr-latn":"2/3"},{"en":"7/10","ro":"7/10","sr-cyrl":"7/10","sr-latn":"7/10"}],"q":{"en":"Which of these fractions is the largest?","ro":"Care dintre aceste fracții este cea mai mare?","sr-cyrl":"Који од ових разломака је највећи?","sr-latn":"Koji od ovih razlomaka je najveći?"},"source":{"en":"Arithmetic","ro":"Calcul","sr-cyrl":"Рачун","sr-latn":"Račun"},"topic":"math","why":{"en":"Written as decimals they are 0.75, about 0.71, about 0.67 and 0.7, so three quarters is the largest.","ro":"Scrise ca numere zecimale sunt 0,75, aproximativ 0,71, aproximativ 0,67 și 0,7, deci trei sferturi este cea mai mare.","sr-cyrl":"Као децимални бројеви то је 0,75, око 0,71, око 0,67 и 0,7, па је три четвртине највеће.","sr-latn":"Kao decimalni brojevi to je 0,75, oko 0,71, oko 0,67 i 0,7, pa je tri četvrtine najveće."}},{"checked":"2026-10-21","correct":2,"id":"math-next-prime","options":[{"en":"25","ro":"25","sr-cyrl":"25","sr-latn":"25"},{"en":"27","ro":"27","sr-cyrl":"27","sr-latn":"27"},{"en":"29","ro":"29","sr-cyrl":"29","sr-latn":"29"},{"en":"31","ro":"31","sr-cyrl":"31","sr-latn":"31"}],"q":{"en":"Which number comes straight after 23 in the list of prime numbers?","ro":"Care număr urmează după 23 în șirul numerelor prime?","sr-cyrl":"Који број следи после 23 у низу простих бројева?","sr-latn":"Koji broj sledi posle 23 u nizu prostih brojeva?"},"source":{"en":"Arithmetic","ro":"Calcul","sr-cyrl":"Рачун","sr-latn":"Račun"},"topic":"math","why":{"en":"24, 25, 26, 27 and 28 all divide by something smaller than themselves. 29 divides only by 1 and by 29.","ro":"24, 25, 26, 27 și 28 se împart toate la ceva mai mic decât ele. 29 se împarte doar la 1 și la 29.","sr-cyrl":"24, 25, 26, 27 и 28 се деле на нешто мање од себе. 29 се дели само са 1 и са 29.","sr-latn":"24, 25, 26, 27 i 28 se dele na nešto manje od sebe. 29 se deli samo sa 1 i sa 29."}},{"checked":"2026-10-21","correct":0,"id":"math-percent-200","options":[{"en":"30","ro":"30","sr-cyrl":"30","sr-latn":"30"},{"en":"20","ro":"20","sr-cyrl":"20","sr-latn":"20"},{"en":"15","ro":"15","sr-cyrl":"15","sr-latn":"15"},{"en":"45","ro":"45","sr-cyrl":"45","sr-latn":"45"}],"q":{"en":"What is 15% of 200?","ro":"Cât este 15% din 200?","sr-cyrl":"Колико је 15% од 200?","sr-latn":"Koliko je 15% od 200?"},"source":{"en":"Arithmetic","ro":"Calcul","sr-cyrl":"Рачун","sr-latn":"Račun"},"topic":"math","why":{"en":"Fifteen percent means fifteen in every hundred, so 200 multiplied by 0.15 is 30.","ro":"Cincisprezece la sută înseamnă cincisprezece din fiecare sută, deci 200 înmulțit cu 0,15 dă 30.","sr-cyrl":"Петнаест посто значи петнаест у сваких сто, па је 200 помножено са 0,15 једнако 30.","sr-latn":"Petnaest posto znači petnaest u svakih sto, pa je 200 pomnoženo sa 0,15 jednako 30."}},{"checked":"2026-10-21","correct":1,"id":"math-pi-two-decimals","options":[{"en":"3.12","ro":"3,12","sr-cyrl":"3,12","sr-latn":"3,12"},{"en":"3.14","ro":"3,14","sr-cyrl":"3,14","sr-latn":"3,14"},{"en":"3.16","ro":"3,16","sr-cyrl":"3,16","sr-latn":"3,16"},{"en":"3.41","ro":"3,41","sr-cyrl":"3,41","sr-latn":"3,41"}],"q":{"en":"Pi, rounded to two decimal places, is...","ro":"Pi, rotunjit la două zecimale, este...","sr-cyrl":"Пи, заокружен на две децимале, износи...","sr-latn":"Pi, zaokružen na dve decimale, iznosi..."},"source":{"en":"Arithmetic","ro":"Calcul","sr-cyrl":"Рачун","sr-latn":"Račun"},"topic":"math","why":{"en":"Pi begins 3.14159, so the first two decimals are 1 and 4.","ro":"Pi începe cu 3,14159, deci primele două zecimale sunt 1 și 4.","sr-cyrl":"Пи почиње са 3,14159, па су прве две децимале 1 и 4.","sr-latn":"Pi počinje sa 3,14159, pa su prve dve decimale 1 i 4."}},{"checked":"2026-10-21","correct":0,"id":"math-rectangle-area","options":[{"en":"24 square metres","ro":"24 de metri pătrați","sr-cyrl":"24 квадратна метра","sr-latn":"24 kvadratna metra"},{"en":"20 square metres","ro":"20 de metri pătrați","sr-cyrl":"20 квадратних метара","sr-latn":"20 kvadratnih metara"},{"en":"10 square metres","ro":"10 metri pătrați","sr-cyrl":"10 квадратних метара","sr-latn":"10 kvadratnih metara"},{"en":"12 square metres","ro":"12 metri pătrați","sr-cyrl":"12 квадратних метара","sr-latn":"12 kvadratnih metara"}],"q":{"en":"A rectangle is 6 metres long and 4 metres wide. What is its area?","ro":"Un dreptunghi are 6 metri lungime și 4 metri lățime. Care este aria lui?","sr-cyrl":"Правоугаоник је дуг 6 метара и широк 4 метра. Колика је његова површина?","sr-latn":"Pravougaonik je dug 6 metara i širok 4 metra. Kolika je njegova površina?"},"source":"Euclid, Elements, Book I","topic":"math","why":{"en":"The area of a rectangle is length times width: 6 times 4 is 24 square metres.","ro":"Aria dreptunghiului este lungimea ori lățimea: 6 ori 4 fac 24 de metri pătrați.","sr-cyrl":"Површина правоугаоника је дужина пута ширина: 6 пута 4 је 24 квадратна метра.","sr-latn":"Površina pravougaonika je dužina puta širina: 6 puta 4 je 24 kvadratna metra."}},{"checked":"2026-10-21","correct":0,"id":"math-square-root-144","options":[{"en":"12","ro":"12","sr-cyrl":"12","sr-latn":"12"},{"en":"14","ro":"14","sr-cyrl":"14","sr-latn":"14"},{"en":"16","ro":"16","sr-cyrl":"16","sr-latn":"16"},{"en":"24","ro":"24","sr-cyrl":"24","sr-latn":"24"}],"q":{"en":"What is the square root of 144?","ro":"Care este rădăcina pătrată a lui 144?","sr-cyrl":"Колики је квадратни корен броја 144?","sr-latn":"Koliki je kvadratni koren broja 144?"},"source":{"en":"Arithmetic","ro":"Calcul","sr-cyrl":"Рачун","sr-latn":"Račun"},"topic":"math","why":{"en":"12 times 12 is 144, and the square root is the positive number that gives 144 when multiplied by itself.","ro":"12 ori 12 fac 144, iar rădăcina pătrată este numărul pozitiv care, înmulțit cu el însuși, dă 144.","sr-cyrl":"12 пута 12 је 144, а квадратни корен је позитиван број који помножен сам собом даје 144.","sr-latn":"12 puta 12 je 144, a kvadratni koren je pozitivan broj koji pomnožen sam sobom daje 144."}},{"checked":"2026-10-21","correct":0,"id":"math-triangle-angles","options":[{"en":"180 degrees","ro":"180 de grade","sr-cyrl":"180 степени","sr-latn":"180 stepeni"},{"en":"90 degrees","ro":"90 de grade","sr-cyrl":"90 степени","sr-latn":"90 stepeni"},{"en":"270 degrees","ro":"270 de grade","sr-cyrl":"270 степени","sr-latn":"270 stepeni"},{"en":"360 degrees","ro":"360 de grade","sr-cyrl":"360 степени","sr-latn":"360 stepeni"}],"q":{"en":"The three angles inside a triangle always add up to...","ro":"Cele trei unghiuri din interiorul unui triunghi dau împreună...","sr-cyrl":"Три угла унутар троугла увек дају заједно...","sr-latn":"Tri ugla unutar trougla uvek daju zajedno..."},"source":"Euclid, Elements, Book I","topic":"math","why":{"en":"Draw a line through one corner, parallel to the opposite side. The three angles sit on that straight line, and a straight line is 180 degrees.","ro":"Se duce prin un vârf o dreaptă paralelă cu latura opusă. Cele trei unghiuri stau pe acea dreaptă, iar o dreaptă are 180 de grade.","sr-cyrl":"Кроз једно теме се повуче права паралелна са наспрамном страницом. Три угла леже на тој правој, а права има 180 степени.","sr-latn":"Kroz jedno teme se povuče prava paralelna sa naspramnom stranicom. Tri ugla leže na toj pravoj, a prava ima 180 stepeni."}},{"checked":"2026-10-21","correct":2,"id":"math-two-to-ten","options":[{"en":"512","ro":"512","sr-cyrl":"512","sr-latn":"512"},{"en":"1000","ro":"1000","sr-cyrl":"1000","sr-latn":"1000"},{"en":"1024","ro":"1024","sr-cyrl":"1024","sr-latn":"1024"},{"en":"2048","ro":"2048","sr-cyrl":"2048","sr-latn":"2048"}],"q":{"en":"How much is 2 to the power of 10?","ro":"Cât face 2 la puterea 10?","sr-cyrl":"Колико је 2 на десети?","sr-latn":"Koliko je 2 na deseti?"},"source":{"en":"Arithmetic","ro":"Calcul","sr-cyrl":"Рачун","sr-latn":"Račun"},"topic":"math","why":{"en":"Two multiplied by itself ten times is 1024. It is close to a thousand, but it is not a thousand.","ro":"Doi înmulțit cu el însuși de zece ori dă 1024. E aproape de o mie, dar nu este o mie.","sr-cyrl":"Два помножено само собом десет пута даје 1024. Близу је хиљаде, али није хиљада.","sr-latn":"Dva pomnoženo samo sobom deset puta daje 1024. Blizu je hiljade, ali nije hiljada."}},{"checked":"2026-10-21","correct":1,"id":"sci-boiling-point","options":[{"en":"90 degrees Celsius","ro":"90 de grade Celsius","sr-cyrl":"90 степени Целзијуса","sr-latn":"90 stepeni Celzijusa"},{"en":"100 degrees Celsius","ro":"100 de grade Celsius","sr-cyrl":"100 степени Целзијуса","sr-latn":"100 stepeni Celzijusa"},{"en":"110 degrees Celsius","ro":"110 de grade Celsius","sr-cyrl":"110 степени Целзијуса","sr-latn":"110 stepeni Celzijusa"},{"en":"120 degrees Celsius","ro":"120 de grade Celsius","sr-cyrl":"120 степени Целзијуса","sr-latn":"120 stepeni Celzijusa"}],"q":{"en":"At sea level, water boils at about...","ro":"La nivelul mării, apa fierbe la aproximativ...","sr-cyrl":"На нивоу мора, вода кључа на око...","sr-latn":"Na nivou mora, voda ključa na oko..."},"source":"CRC Handbook of Chemistry and Physics","topic":"sci","why":{"en":"At normal pressure at sea level water boils at 100 degrees Celsius. Higher up, where the air is thinner, it boils at a lower temperature.","ro":"La presiunea normală de la nivelul mării, apa fierbe la 100 de grade Celsius. La altitudine, unde aerul e rar, fierbe la o temperatură mai mică.","sr-cyrl":"На нормалном притиску на нивоу мора вода кључа на 100 степени Целзијуса. На висини, где је ваздух ређи, кључа на нижој температури.","sr-latn":"Na normalnom pritisku na nivou mora voda ključa na 100 stepeni Celzijusa. Na visini, gde je vazduh ređi, ključa na nižoj temperaturi."}},{"checked":"2026-10-21","correct":2,"id":"sci-bones","options":[{"en":"106","ro":"106","sr-cyrl":"106","sr-latn":"106"},{"en":"186","ro":"186","sr-cyrl":"186","sr-latn":"186"},{"en":"206","ro":"206","sr-cyrl":"206","sr-latn":"206"},{"en":"256","ro":"256","sr-cyrl":"256","sr-latn":"256"}],"q":{"en":"How many bones does an adult human body have?","ro":"Câte oase are corpul unui adult?","sr-cyrl":"Колико костију има тело одраслог човека?","sr-latn":"Koliko kostiju ima telo odraslog čoveka?"},"source":"Gray's Anatomy","topic":"sci","why":{"en":"An adult body has 206 bones. A baby is born with far more, and many of them fuse as the body grows.","ro":"Un corp adult are 206 oase. Un bebeluș se naște cu mult mai multe, iar multe se sudează pe măsură ce corpul crește.","sr-cyrl":"Одрасло тело има 206 костију. Беба се рађа са много више, а многе се срасту док тело расте.","sr-latn":"Odraslo telo ima 206 kostiju. Beba se rađa sa mnogo više, a mnoge se srastu dok telo raste."}},{"checked":"2026-10-21","correct":0,"id":"sci-carbon-protons","options":[{"en":"6","ro":"6","sr-cyrl":"6","sr-latn":"6"},{"en":"8","ro":"8","sr-cyrl":"8","sr-latn":"8"},{"en":"12","ro":"12","sr-cyrl":"12","sr-latn":"12"},{"en":"14","ro":"14","sr-cyrl":"14","sr-latn":"14"}],"q":{"en":"How many protons does a carbon atom have?","ro":"Câți protoni are un atom de carbon?","sr-cyrl":"Колико протона има атом угљеника?","sr-latn":"Koliko protona ima atom ugljenika?"},"source":"IUPAC, periodic table","topic":"sci","why":{"en":"The number of protons is the atomic number, and carbon sits at number 6 in the periodic table.","ro":"Numărul de protoni este numărul atomic, iar carbonul stă pe locul 6 în tabelul periodic.","sr-cyrl":"Број протона је атомски број, а угљеник је на шестом месту у периодном систему.","sr-latn":"Broj protona je atomski broj, a ugljenik je na šestom mestu u periodnom sistemu."}},{"checked":"2026-10-21","correct":0,"id":"sci-closest-planet","options":[{"en":"Mercury","ro":"Mercur","sr-cyrl":"Меркур","sr-latn":"Merkur"},{"en":"Venus","ro":"Venus","sr-cyrl":"Венера","sr-latn":"Venera"},{"en":"Earth","ro":"Pământ","sr-cyrl":"Земља","sr-latn":"Zemlja"},{"en":"Mars","ro":"Marte","sr-cyrl":"Марс","sr-latn":"Mars"}],"q":{"en":"Which planet orbits closest to the Sun?","ro":"Care planetă se învârte cel mai aproape de Soare?","sr-cyrl":"Која планета кружи најближе Сунцу?","sr-latn":"Koja planeta kruži najbliže Suncu?"},"source":"NASA, planetary fact sheet","topic":"sci","why":{"en":"Mercury circles the Sun at less than half the distance of the Earth's orbit.","ro":"Mercur se învârte în jurul Soarelui la mai puțin de jumătate din distanța orbitei Pământului.","sr-cyrl":"Меркур кружи око Сунца на мање од половине растојања Земљине орбите.","sr-latn":"Merkur kruži oko Sunca na manje od polovine rastojanja Zemljine orbite."}},{"checked":"2026-10-21","correct":0,"id":"sci-gold-symbol","options":[{"en":"Au","ro":"Au","sr-cyrl":"Ау","sr-latn":"Au"},{"en":"Ag","ro":"Ag","sr-cyrl":"Аг","sr-latn":"Ag"},{"en":"Go","ro":"Go","sr-cyrl":"Го","sr-latn":"Go"},{"en":"Gd","ro":"Gd","sr-cyrl":"Гд","sr-latn":"Gd"}],"q":{"en":"What is the chemical symbol for gold?","ro":"Care este simbolul chimic al aurului?","sr-cyrl":"Који је хемијски симбол злата?","sr-latn":"Koji je hemijski simbol zlata?"},"source":"IUPAC","topic":"sci","why":{"en":"Au comes from aurum, the Latin name for gold. Ag is silver, from argentum.","ro":"Au vine de la aurum, numele latin al aurului. Ag este argintul, de la argentum.","sr-cyrl":"Ау долази од аурум, латинског имена злата. Аг је сребро, од аргентум.","sr-latn":"Au dolazi od aurum, latinskog imena zlata. Ag je srebro, od argentum."}},{"checked":"2026-10-21","correct":0,"id":"sci-insulin","options":[{"en":"The pancreas","ro":"Pancreasul","sr-cyrl":"Панкреас","sr-latn":"Pankreas"},{"en":"The liver","ro":"Ficatul","sr-cyrl":"Јетра","sr-latn":"Jetra"},{"en":"The kidney","ro":"Rinichiul","sr-cyrl":"Бубрег","sr-latn":"Bubreg"},{"en":"The spleen","ro":"Splina","sr-cyrl":"Слезина","sr-latn":"Slezina"}],"q":{"en":"Which organ produces insulin?","ro":"Care organ produce insulină?","sr-cyrl":"Који орган производи инсулин?","sr-latn":"Koji organ proizvodi insulin?"},"source":"Gray's Anatomy","topic":"sci","why":{"en":"Insulin comes from the beta cells of the pancreas, which sits behind the stomach.","ro":"Insulina vine din celulele beta ale pancreasului, care stă în spatele stomacului.","sr-cyrl":"Инсулин стварају бета ћелије панкреаса, који лежи иза желуца.","sr-latn":"Insulin stvaraju beta ćelije pankreasa, koji leži iza želuca."}},{"checked":"2026-10-21","correct":0,"id":"sci-most-abundant-gas","options":[{"en":"Nitrogen","ro":"Azotul","sr-cyrl":"Азот","sr-latn":"Azot"},{"en":"Oxygen","ro":"Oxigenul","sr-cyrl":"Кисеоник","sr-latn":"Kiseonik"},{"en":"Carbon dioxide","ro":"Dioxidul de carbon","sr-cyrl":"Угљен-диоксид","sr-latn":"Ugljen-dioksid"},{"en":"Argon","ro":"Argonul","sr-cyrl":"Аргон","sr-latn":"Argon"}],"q":{"en":"Which gas is the most abundant in the air we breathe?","ro":"Care gaz este cel mai răspândit în aerul pe care îl respirăm?","sr-cyrl":"Који гас је најзаступљенији у ваздуху који удишемо?","sr-latn":"Koji gas je najzastupljeniji u vazduhu koji udišemo?"},"source":"NASA, Earth fact sheet","topic":"sci","why":{"en":"Dry air is about 78 percent nitrogen and 21 percent oxygen.","ro":"Aerul uscat este cam 78 la sută azot și 21 la sută oxigen.","sr-cyrl":"Сув ваздух је око 78 посто азот и 21 посто кисеоник.","sr-latn":"Suv vazduh je oko 78 posto azot i 21 posto kiseonik."}},{"checked":"2026-10-21","correct":1,"id":"sci-oxygen-number","options":[{"en":"6","ro":"6","sr-cyrl":"6","sr-latn":"6"},{"en":"8","ro":"8","sr-cyrl":"8","sr-latn":"8"},{"en":"16","ro":"16","sr-cyrl":"16","sr-latn":"16"},{"en":"18","ro":"18","sr-cyrl":"18","sr-latn":"18"}],"q":{"en":"What is the atomic number of oxygen?","ro":"Care este numărul atomic al oxigenului?","sr-cyrl":"Који је атомски број кисеоника?","sr-latn":"Koji je atomski broj kiseonika?"},"source":"IUPAC","topic":"sci","why":{"en":"Oxygen has eight protons. Sixteen is its usual mass number, which also counts the eight neutrons.","ro":"Oxigenul are opt protoni. Șaisprezece este numărul lui de masă obișnuit, care numără și cei opt neutroni.","sr-cyrl":"Кисеоник има осам протона. Шеснаест је његов уобичајен масени број, који броји и осам неутрона.","sr-latn":"Kiseonik ima osam protona. Šesnaest je njegov uobičajen maseni broj, koji broji i osam neutrona."}},{"checked":"2026-10-21","correct":0,"id":"sci-photosynthesis-gas","options":[{"en":"Carbon dioxide","ro":"Dioxidul de carbon","sr-cyrl":"Угљен-диоксид","sr-latn":"Ugljen-dioksid"},{"en":"Oxygen","ro":"Oxigenul","sr-cyrl":"Кисеоник","sr-latn":"Kiseonik"},{"en":"Nitrogen","ro":"Azotul","sr-cyrl":"Азот","sr-latn":"Azot"},{"en":"Hydrogen","ro":"Hidrogenul","sr-cyrl":"Водоник","sr-latn":"Vodonik"}],"q":{"en":"Which gas do plants take from the air for photosynthesis?","ro":"Ce gaz iau plantele din aer pentru fotosinteză?","sr-cyrl":"Који гас биљке узимају из ваздуха за фотосинтезу?","sr-latn":"Koji gas biljke uzimaju iz vazduha za fotosintezu?"},"source":"Encyclopaedia Britannica","topic":"sci","why":{"en":"Plants take in carbon dioxide and water, and give back oxygen and sugar.","ro":"Plantele iau dioxid de carbon și apă și dau înapoi oxigen și zahăr.","sr-cyrl":"Биљке узимају угљен-диоксид и воду, а враћају кисеоник и шећер.","sr-latn":"Biljke uzimaju ugljen-dioksid i vodu, a vraćaju kiseonik i šećer."}},{"checked":"2026-10-21","correct":2,"id":"sci-speed-of-light","options":[{"en":"300 km per second","ro":"300 km pe secundă","sr-cyrl":"300 км у секунди","sr-latn":"300 km u sekundi"},{"en":"3,000 km per second","ro":"3.000 km pe secundă","sr-cyrl":"3.000 км у секунди","sr-latn":"3.000 km u sekundi"},{"en":"300,000 km per second","ro":"300.000 km pe secundă","sr-cyrl":"300.000 км у секунди","sr-latn":"300.000 km u sekundi"},{"en":"3,000,000 km per second","ro":"3.000.000 km pe secundă","sr-cyrl":"3.000.000 км у секунди","sr-latn":"3.000.000 km u sekundi"}],"q":{"en":"In a vacuum, light travels at about...","ro":"În vid, lumina se deplasează cu aproximativ...","sr-cyrl":"У вакууму, светлост путује брзином од око...","sr-latn":"U vakuumu, svetlost putuje brzinom od oko..."},"source":"BIPM, SI Brochure","topic":"sci","why":{"en":"Light covers 299,792 kilometres every second, which is close to 300,000.","ro":"Lumina parcurge 299.792 de kilometri pe secundă, adică aproape 300.000.","sr-cyrl":"Светлост пређе 299.792 километра у секунди, што је близу 300.000.","sr-latn":"Svetlost pređe 299.792 kilometra u sekundi, što je blizu 300.000."}},{"checked":"2026-10-21","correct":0,"id":"sci-water-formula","options":[{"en":"H2O","ro":"H2O","sr-cyrl":"Х2О","sr-latn":"H2O"},{"en":"CO2","ro":"CO2","sr-cyrl":"ЦО2","sr-latn":"CO2"},{"en":"O2","ro":"O2","sr-cyrl":"О2","sr-latn":"O2"},{"en":"H2O2","ro":"H2O2","sr-cyrl":"Х2О2","sr-latn":"H2O2"}],"q":{"en":"What is the chemical formula of water?","ro":"Care este formula chimică a apei?","sr-cyrl":"Која је хемијска формула воде?","sr-latn":"Koja je hemijska formula vode?"},"source":"IUPAC","topic":"sci","why":{"en":"Two hydrogen atoms and one oxygen atom: H2O. CO2 is carbon dioxide.","ro":"Doi atomi de hidrogen și unul de oxigen: H2O. CO2 este dioxidul de carbon.","sr-cyrl":"Два атома водоника и један атом кисеоника: Х2О. ЦО2 је угљен-диоксид.","sr-latn":"Dva atoma vodonika i jedan atom kiseonika: H2O. CO2 je ugljen-dioksid."}},{"checked":"2026-10-21","correct":0,"id":"sci-what-keeps-orbit","options":[{"en":"Gravity","ro":"Gravitația","sr-cyrl":"Гравитација","sr-latn":"Gravitacija"},{"en":"Magnetism","ro":"Magnetismul","sr-cyrl":"Магнетизам","sr-latn":"Magnetizam"},{"en":"The solar wind","ro":"Vântul solar","sr-cyrl":"Сунчев ветар","sr-latn":"Sunčev vetar"},{"en":"Their own spin","ro":"Rotația lor","sr-cyrl":"Њихова ротација","sr-latn":"Njihova rotacija"}],"q":{"en":"What keeps the planets in orbit around the Sun?","ro":"Ce ține planetele pe orbită în jurul Soarelui?","sr-cyrl":"Шта држи планете у орбити око Сунца?","sr-latn":"Šta drži planete u orbiti oko Sunca?"},"source":"Isaac Newton, Principia","topic":"sci","why":{"en":"The gravity of the Sun pulls the planets inward, and their sideways speed stops them from falling in. Together those two make an orbit.","ro":"Gravitația Soarelui trage planetele spre interior, iar viteza lor laterală le oprește să cadă. Împreună fac o orbită.","sr-cyrl":"Гравитација Сунца вуче планете унутра, а њихова бочна брзина их спречава да падну. Заједно чине орбиту.","sr-latn":"Gravitacija Sunca vuče planete unutra, a njihova bočna brzina ih sprečava da padnu. Zajedno čine orbitu."}},{"checked":"2026-10-21","correct":0,"id":"word-algebra","options":[{"en":"Restoring something broken","ro":"Repararea a ceva stricat","sr-cyrl":"Поправљање нечега сломљеног","sr-latn":"Popravljanje nečega slomljenog"},{"en":"Counting on fingers","ro":"Număratul pe degete","sr-cyrl":"Бројање на прсте","sr-latn":"Brojanje na prste"},{"en":"Drawing circles","ro":"Desenarea cercurilor","sr-cyrl":"Цртање кругова","sr-latn":"Crtanje krugova"},{"en":"Measuring the stars","ro":"Măsurarea stelelor","sr-cyrl":"Мерјење звезда","sr-latn":"Merjenje zvezda"}],"q":{"en":"The word algebra comes from Arabic, where al-jabr meant...","ro":"Cuvântul algebră vine din arabă, unde al-jabr însemna...","sr-cyrl":"Реч алгебра долази из арапског, где је ал-џабр значило...","sr-latn":"Reč algebra dolazi iz arapskog, gde je al-džabr značilo..."},"source":"Encyclopaedia Britannica","topic":"words","why":{"en":"Al-Khwarizmi wrote a book in the ninth century about al-jabr, the restoring of broken parts, and the word reached Europe from there.","ro":"Al-Khwarizmi a scris în secolul al nouălea o carte despre al-jabr, refacerea părților rupte, iar cuvântul a ajuns de acolo în Europa.","sr-cyrl":"Ал-Хорезми је у деветом веку написао књигу о ал-џабру, поновном спајању сломљених делова, и одатле је реч стигла у Европу.","sr-latn":"Al-Horezmi je u devetom veku napisao knjigu o al-džabru, ponovnom spajanju slomljenih delova, i odatle je reč stigla u Evropu."}},{"checked":"2026-10-21","correct":0,"id":"word-antonym","options":[{"en":"An antonym","ro":"Antonim","sr-cyrl":"Антоним","sr-latn":"Antonim"},{"en":"A synonym","ro":"Sinonim","sr-cyrl":"Синоним","sr-latn":"Sinonim"},{"en":"A homonym","ro":"Omonim","sr-cyrl":"Хомоним","sr-latn":"Homonim"},{"en":"An acronym","ro":"Acronim","sr-cyrl":"Акроним","sr-latn":"Akronim"}],"q":{"en":"A word with the opposite meaning to another word is called...","ro":"Un cuvânt cu sens opus altui cuvânt se numește...","sr-cyrl":"Реч са супротним значењем од друге речи зове се...","sr-latn":"Reč sa suprotnim značenjem od druge reči zove se..."},"source":"Oxford English Dictionary","topic":"words","why":{"en":"Anti means against and onoma means name. A synonym shares the meaning, an antonym goes against it.","ro":"Anti înseamnă împotrivă, iar onoma înseamnă nume. Sinonimul are același sens, antonimul îl contrazice.","sr-cyrl":"Анти значи против, а онома значи име. Синоним има исто значење, антоним му се супротставља.","sr-latn":"Anti znači protiv, a onoma znači ime. Sinonim ima isto značenje, antonim mu se suprotstavlja."}},{"checked":"2026-10-21","correct":0,"id":"word-aqua","options":[{"en":"Water","ro":"Apă","sr-cyrl":"Вода","sr-latn":"Voda"},{"en":"Earth","ro":"Pământ","sr-cyrl":"Земља","sr-latn":"Zemlja"},{"en":"Fire","ro":"Foc","sr-cyrl":"Ватра","sr-latn":"Vatra"},{"en":"Air","ro":"Aer","sr-cyrl":"Ваздух","sr-latn":"Vazduh"}],"q":{"en":"In Latin, aqua means...","ro":"În latină, aqua înseamnă...","sr-cyrl":"На латинском, aqua значи...","sr-latn":"Na latinskom, aqua znači..."},"source":"Oxford English Dictionary","topic":"words","why":{"en":"Latin aqua is water, which is why an aqueduct carries water and an aquarium holds it.","ro":"Aqua este apa în latină, deci un apeduct cară apă, iar un acvariu ține apă.","sr-cyrl":"Aqua је вода на латинском, зато аквадукт носи воду, а акваријум је држи.","sr-latn":"Aqua je voda na latinskom, zato akvadukt nosi vodu, a akvarijum je drži."}},{"checked":"2026-10-21","correct":0,"id":"word-bibliophile","options":[{"en":"Books","ro":"Cărțile","sr-cyrl":"Књиге","sr-latn":"Knjige"},{"en":"Water","ro":"Apa","sr-cyrl":"Воду","sr-latn":"Vodu"},{"en":"Horses","ro":"Caii","sr-cyrl":"Коње","sr-latn":"Konje"},{"en":"Stamps","ro":"Timbrele","sr-cyrl":"Марке","sr-latn":"Marke"}],"q":{"en":"A bibliophile is someone who loves...","ro":"Un bibliofil este cineva care iubește...","sr-cyrl":"Библиофил је неко ко воли...","sr-latn":"Bibliofil je neko ko voli..."},"source":"Oxford English Dictionary","topic":"words","why":{"en":"Biblion is the Greek word for book, and philos means loving.","ro":"Biblion este cuvântul grecesc pentru carte, iar philos înseamnă iubitor.","sr-cyrl":"Библион је грчка реч за књигу, а пхилос значи онај који воли.","sr-latn":"Biblion je grčka reč za knjigu, a philos znači onaj koji voli."}},{"checked":"2026-10-21","correct":0,"id":"word-bio-prefix","options":[{"en":"Life","ro":"Viață","sr-cyrl":"Живот","sr-latn":"Život"},{"en":"Water","ro":"Apă","sr-cyrl":"Вода","sr-latn":"Voda"},{"en":"Light","ro":"Lumină","sr-cyrl":"Светлост","sr-latn":"Svetlost"},{"en":"Small","ro":"Mic","sr-cyrl":"Мали","sr-latn":"Mali"}],"q":{"en":"The Greek prefix bio- means...","ro":"Prefixul grecesc bio- înseamnă...","sr-cyrl":"Грчки префикс био- значи...","sr-latn":"Grčki prefiks bio- znači..."},"source":"Oxford English Dictionary","topic":"words","why":{"en":"Biology is the study of life, and a biography is a written life.","ro":"Biologia este studiul vieții, iar biografia este o viață scrisă.","sr-cyrl":"Биологија је наука о животу, а биографија је записан живот.","sr-latn":"Biologija je nauka o životu, a biografija je zapisan život."}},{"checked":"2026-10-21","correct":0,"id":"word-cyrillic-language","options":[{"en":"Russian","ro":"Rusa","sr-cyrl":"Руски","sr-latn":"Ruski"},{"en":"Spanish","ro":"Spaniola","sr-cyrl":"Шпански","sr-latn":"Španski"},{"en":"Turkish","ro":"Turca","sr-cyrl":"Турски","sr-latn":"Turski"},{"en":"Dutch","ro":"Olandeza","sr-cyrl":"Холандски","sr-latn":"Holandski"}],"q":{"en":"Which of these languages is written with the Cyrillic alphabet?","ro":"Care dintre aceste limbi se scrie cu alfabetul chirilic?","sr-cyrl":"Који од ових језика се пише ћирилицом?","sr-latn":"Koji od ovih jezika se piše ćirilicom?"},"source":"Encyclopaedia Britannica","topic":"words","why":{"en":"Russian, Serbian, Bulgarian and Ukrainian are written in Cyrillic. Spanish, Turkish and Dutch use the Latin alphabet.","ro":"Rusa, sârba, bulgara și ucraineana se scriu cu chirilice. Spaniola, turca și olandeza folosesc alfabetul latin.","sr-cyrl":"Руски, српски, бугарски и украјински се пишу ћирилицом. Шпански, турски и холандски користе латиницу.","sr-latn":"Ruski, srpski, bugarski i ukrajinski se pišu ćirilicom. Španski, turski i holandski koriste latinicu."}},{"checked":"2026-10-21","correct":1,"id":"word-english-alphabet","options":[{"en":"24","ro":"24","sr-cyrl":"24","sr-latn":"24"},{"en":"26","ro":"26","sr-cyrl":"26","sr-latn":"26"},{"en":"28","ro":"28","sr-cyrl":"28","sr-latn":"28"},{"en":"30","ro":"30","sr-cyrl":"30","sr-latn":"30"}],"q":{"en":"How many letters are in the English alphabet?","ro":"Câte litere are alfabetul englez?","sr-cyrl":"Колико слова има енглески алфабет?","sr-latn":"Koliko slova ima engleski alfabet?"},"source":"Oxford English Dictionary","topic":"words","why":{"en":"The English alphabet has 26 letters.","ro":"Alfabetul englez are 26 de litere.","sr-cyrl":"Енглески алфабет има 26 слова.","sr-latn":"Engleski alfabet ima 26 slova."}},{"checked":"2026-10-21","correct":0,"id":"word-palindrome","options":[{"en":"A palindrome","ro":"Palindrom","sr-cyrl":"Палиндром","sr-latn":"Palindrom"},{"en":"An anagram","ro":"Anagramă","sr-cyrl":"Анаграм","sr-latn":"Anagram"},{"en":"A synonym","ro":"Sinonim","sr-cyrl":"Синоним","sr-latn":"Sinonim"},{"en":"A homophone","ro":"Omofon","sr-cyrl":"Хомофон","sr-latn":"Homofon"}],"q":{"en":"A word or a number that reads the same forwards and backwards is called...","ro":"Un cuvânt sau un număr care se citește la fel în ambele sensuri se numește...","sr-cyrl":"Реч или број који се чита исто у оба смера зове се...","sr-latn":"Reč ili broj koji se čita isto u oba smera zove se..."},"source":"Oxford English Dictionary","topic":"words","why":{"en":"The word comes from Greek and means running back again.","ro":"Cuvântul vine din greacă și înseamnă a alerga înapoi.","sr-cyrl":"Реч долази из грчког и значи трчати натраг.","sr-latn":"Reč dolazi iz grčkog i znači trčati natrag."}},{"checked":"2026-10-21","correct":0,"id":"word-phone-root","options":[{"en":"Voice","ro":"Voce","sr-cyrl":"Глас","sr-latn":"Glas"},{"en":"Light","ro":"Lumină","sr-cyrl":"Светлост","sr-latn":"Svetlost"},{"en":"Distance","ro":"Distanță","sr-cyrl":"Растојање","sr-latn":"Rastojanje"},{"en":"Wire","ro":"Fir","sr-cyrl":"Жица","sr-latn":"Žica"}],"q":{"en":"The Greek root phone, as in telephone, means...","ro":"Rădăcina grecească phone, ca în telefon, înseamnă...","sr-cyrl":"Грчки корен фон, као у речи телефон, значи...","sr-latn":"Grčki koren fon, kao u reči telefon, znači..."},"source":"Oxford English Dictionary","topic":"words","why":{"en":"Tele means far and phone means voice, so a telephone is a voice from far away.","ro":"Tele înseamnă departe, iar phone înseamnă voce, deci telefonul este o voce de departe.","sr-cyrl":"Теле значи далеко, а фон значи глас, па је телефон глас из даљине.","sr-latn":"Tele znači daleko, a fon znači glas, pa je telefon glas iz daljine."}},{"checked":"2026-10-21","correct":0,"id":"word-polyglot","options":[{"en":"Speaks several languages","ro":"Vorbește mai multe limbi","sr-cyrl":"Говори више језика","sr-latn":"Govori više jezika"},{"en":"Writes with both hands","ro":"Scrie cu ambele mâini","sr-cyrl":"Пише обема рукама","sr-latn":"Piše obema rukama"},{"en":"Works in several countries","ro":"Lucrează în mai multe țări","sr-cyrl":"Ради у више земаља","sr-latn":"Radi u više zemalja"},{"en":"Studies old books","ro":"Studiază cărți vechi","sr-cyrl":"Проучава старе књиге","sr-latn":"Proučava stare knjige"}],"q":{"en":"A polyglot is someone who...","ro":"Un poliglot este cineva care...","sr-cyrl":"Полиглота је неко ко...","sr-latn":"Poliglota je neko ko..."},"source":"Oxford English Dictionary","topic":"words","why":{"en":"Poly means many and glotta means tongue, so the word counts tongues, not passports.","ro":"Poly înseamnă multe, iar glotta înseamnă limbă, deci cuvântul numără limbi, nu pașapoarte.","sr-cyrl":"Поли значи много, а глота значи језик, па реч броји језике, а не пасоше.","sr-latn":"Poli znači mnogo, a glota znači jezik, pa reč broji jezike, a ne pasoše."}},{"checked":"2026-10-21","correct":1,"id":"word-serbian-alphabet","options":[{"en":"28","ro":"28","sr-cyrl":"28","sr-latn":"28"},{"en":"30","ro":"30","sr-cyrl":"30","sr-latn":"30"},{"en":"32","ro":"32","sr-cyrl":"32","sr-latn":"32"},{"en":"26","ro":"26","sr-cyrl":"26","sr-latn":"26"}],"q":{"en":"How many letters does the Serbian Cyrillic alphabet have?","ro":"Câte litere are alfabetul chirilic sârbesc?","sr-cyrl":"Колико слова има српска ћирилица?","sr-latn":"Koliko slova ima srpska ćirilica?"},"source":"Matica srpska, Serbian orthography","topic":"words","why":{"en":"Serbian Cyrillic has 30 letters, one for every sound, and no silent letters.","ro":"Chirilica sârbă are 30 de litere, una pentru fiecare sunet, și nicio literă mută.","sr-cyrl":"Српска ћирилица има 30 слова, по једно за сваки глас, и нема нијемих слова.","sr-latn":"Srpska ćirilica ima 30 slova, po jedno za svaki glas, i nema nijemih slova."}},{"checked":"2026-10-21","correct":0,"id":"word-sub-prefix","options":[{"en":"Under","ro":"Sub","sr-cyrl":"Испод","sr-latn":"Ispod"},{"en":"Above","ro":"Deasupra","sr-cyrl":"Изнад","sr-latn":"Iznad"},{"en":"Between","ro":"Între","sr-cyrl":"Између","sr-latn":"Između"},{"en":"Again","ro":"Din nou","sr-cyrl":"Поново","sr-latn":"Ponovo"}],"q":{"en":"The prefix sub- means...","ro":"Prefixul sub- înseamnă...","sr-cyrl":"Префикс суб- значи...","sr-latn":"Prefiks sub- znači..."},"source":"Oxford English Dictionary","topic":"words","why":{"en":"A submarine goes under the sea, and sub- comes from the Latin word for under.","ro":"Un submarin merge sub mare, iar sub- vine din latinescul pentru sub.","sr-cyrl":"Субмарин иде испод мора, а суб- долази од латинске речи за испод.","sr-latn":"Submarin ide ispod mora, a sub- dolazi od latinske reči za ispod."}}],"version":1};
+window.TD_N = 12;
+</script>
+<script>
+/* Quiz-Deck · pure helpers, no DOM.
+   Shared by the page and by the Node tests. */
+(function (root, factory) {
+  var api = factory();
+  if (typeof module === 'object' && module.exports) { module.exports = api; }
+  if (root) { root.QuizDeck = api; }
+}(typeof window !== 'undefined' ? window : globalThis, function () {
+  'use strict';
+
+  var DAY_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  function ymd(date) {
+    return date.getFullYear() + '-' + pad(date.getMonth() + 1) + '-' + pad(date.getDate());
+  }
+
+  function today() { return ymd(new Date()); }
+
+  function parseYmd(value) {
+    var m = DAY_RE.exec(String(value || ''));
+    if (!m) { return null; }
+    var d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+    if (d.getFullYear() !== Number(m[1]) || d.getMonth() !== Number(m[2]) - 1 || d.getDate() !== Number(m[3])) {
+      return null;
+    }
+    return d;
+  }
+
+  function shiftDay(value, delta) {
+    var d = parseYmd(value);
+    if (!d) { return value; }
+    d.setDate(d.getDate() + delta);
+    return ymd(d);
+  }
+
+  /* FNV-1a, 32 bit. Small, stable and the same in every browser. */
+  function hash(text) {
+    var h = 2166136261 >>> 0;
+    for (var i = 0; i < text.length; i += 1) {
+      h ^= text.charCodeAt(i);
+      h = Math.imul(h, 16777619) >>> 0;
+    }
+    return h >>> 0;
+  }
+
+  /* xorshift32 driven by a string, so the same seed always deals the same round. */
+  function rng(seed) {
+    var s = hash(String(seed)) || 0x9e3779b9;
+    return function () {
+      s ^= s << 13; s >>>= 0;
+      s ^= s >>> 17;
+      s ^= s << 5; s >>>= 0;
+      return s / 4294967296;
+    };
+  }
+
+  function shuffle(list, random) {
+    var a = list.slice();
+    for (var i = a.length - 1; i > 0; i -= 1) {
+      var j = Math.floor(random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  /* One question per topic in turn, so a round never leans on a single subject. */
+  function pickRound(items, count, seed) {
+    var random = rng(seed);
+    var byTopic = {};
+    items.forEach(function (item) {
+      if (!byTopic[item.topic]) { byTopic[item.topic] = []; }
+      byTopic[item.topic].push(item.id);
+    });
+    var topics = shuffle(Object.keys(byTopic).sort(), random);
+    var pools = {};
+    topics.forEach(function (topic) { pools[topic] = shuffle(byTopic[topic], random); });
+
+    var out = [];
+    var step = 0;
+    while (out.length < count && step < count * 40) {
+      var topic = topics[step % topics.length];
+      if (pools[topic].length) { out.push(pools[topic].pop()); }
+      step += 1;
+    }
+    return out;
+  }
+
+  /* Four positions, shuffled. The correct answer moves with them. */
+  function ordersFor(ids, seed) {
+    return ids.map(function (id) {
+      return shuffle([0, 1, 2, 3], rng('opts:' + id + ':' + seed));
+    });
+  }
+
+  function formatTime(seconds) {
+    var s = Math.max(0, Math.round(Number(seconds) || 0));
+    var h = Math.floor(s / 3600);
+    var m = Math.floor((s % 3600) / 60);
+    var rest = s % 60;
+    if (h > 0) { return h + ':' + pad(m) + ':' + pad(rest); }
+    return m + ':' + pad(rest);
+  }
+
+  function medal(score, total) {
+    if (!total) { return ''; }
+    var part = score / total;
+    if (part === 1) { return 'gold'; }
+    if (part >= 0.75) { return 'silver'; }
+    if (part >= 0.5) { return 'bronze'; }
+    return 'none';
+  }
+
+  function emptyProgress() {
+    return { v: 1, d: {}, best: { s: 0, t: 0 } };
+  }
+
+  function cleanEntry(entry, total) {
+    if (!entry || typeof entry !== 'object') { return null; }
+    var s = Math.round(Number(entry.s));
+    var t = Math.round(Number(entry.t));
+    if (!isFinite(s) || !isFinite(t)) { return null; }
+    if (s < 0 || s > total || t < 0 || t > 86400) { return null; }
+    return { s: s, t: t };
+  }
+
+  function bestOf(progress, total) {
+    var best = { s: 0, t: 0 };
+    Object.keys(progress.d || {}).forEach(function (day) {
+      var e = progress.d[day];
+      if (!e) { return; }
+      if (e.s > best.s || (e.s === best.s && e.s > 0 && (!best.t || e.t < best.t))) {
+        best = { s: e.s, t: e.t };
+      }
+    });
+    if (best.s === 0) { return { s: 0, t: 0 }; }
+    return best;
+  }
+
+  function streakOf(progress, fromDay, total) {
+    var days = progress.d || {};
+    var cursor = days[fromDay] ? fromDay : shiftDay(fromDay, -1);
+    var count = 0;
+    while (days[cursor] && count < 4000) {
+      count += 1;
+      cursor = shiftDay(cursor, -1);
+    }
+    return count;
+  }
+
+  function sanitizeProgress(raw, total) {
+    var out = emptyProgress();
+    if (!raw || typeof raw !== 'object' || !raw.d || typeof raw.d !== 'object') { return out; }
+    var keys = Object.keys(raw.d).filter(function (day) { return parseYmd(day); }).sort();
+    keys.slice(-400).forEach(function (day) {
+      var clean = cleanEntry(raw.d[day], total);
+      if (clean) { out.d[day] = clean; }
+    });
+    out.best = bestOf(out, total);
+    return out;
+  }
+
+  function mergeProgress(local, incoming, total) {
+    var a = sanitizeProgress(local, total);
+    var b = sanitizeProgress(incoming, total);
+    var out = emptyProgress();
+    [a.d, b.d].forEach(function (days) {
+      Object.keys(days).forEach(function (day) {
+        var next = days[day];
+        var prev = out.d[day];
+        if (!prev || next.s > prev.s || (next.s === prev.s && next.t < prev.t)) {
+          out.d[day] = { s: next.s, t: next.t };
+        }
+      });
+    });
+    var keys = Object.keys(out.d).sort().slice(-400);
+    var trimmed = emptyProgress();
+    keys.forEach(function (day) { trimmed.d[day] = out.d[day]; });
+    trimmed.best = bestOf(trimmed, total);
+    return trimmed;
+  }
+
+  function recordDay(progress, day, score, seconds, total) {
+    var clean = cleanEntry({ s: score, t: seconds }, total);
+    if (!clean || !parseYmd(day)) { return sanitizeProgress(progress, total); }
+    var out = sanitizeProgress(progress, total);
+    var prev = out.d[day];
+    if (!prev || clean.s > prev.s || (clean.s === prev.s && clean.t < prev.t)) {
+      out.d[day] = clean;
+    }
+    out.best = bestOf(out, total);
+    return out;
+  }
+
+  function parseChallenge(search) {
+    var params = new URLSearchParams(search || '');
+    var day = params.get('d');
+    var score = params.get('s');
+    var time = params.get('t');
+    if (!parseYmd(day)) { return null; }
+    if (!/^\d{1,2}$/.test(score || '') || !/^\d{1,6}$/.test(time || '')) { return null; }
+    var s = Number(score);
+    var t = Number(time);
+    if (s < 0 || s > 99 || t < 0 || t > 86400) { return null; }
+    return { day: day, score: s, time: t };
+  }
+
+  function challengeUrl(base, day, score, seconds) {
+    var head = String(base).split('#')[0].split('?')[0];
+    return head + '?d=' + day + '&s=' + score + '&t=' + Math.round(seconds);
+  }
+
+  return {
+    pad: pad,
+    ymd: ymd,
+    today: today,
+    parseYmd: parseYmd,
+    shiftDay: shiftDay,
+    hash: hash,
+    rng: rng,
+    shuffle: shuffle,
+    pickRound: pickRound,
+    ordersFor: ordersFor,
+    formatTime: formatTime,
+    medal: medal,
+    emptyProgress: emptyProgress,
+    bestOf: bestOf,
+    streakOf: streakOf,
+    sanitizeProgress: sanitizeProgress,
+    mergeProgress: mergeProgress,
+    recordDay: recordDay,
+    parseChallenge: parseChallenge,
+    challengeUrl: challengeUrl
+  };
+}));
+</script>
+<script>
+/* Quiz-Deck · the page. Everything runs in this tab. */
+(function () {
+  'use strict';
+
+  var Core = window.QuizDeck;
+  var DICT = window.TD_LOCALES;
+  var BANK = window.TD_BANK;
+  var N = window.TD_N || 12;
+  var TOTAL = BANK.items.length;
+  var CHECKED = BANK.checked;
+
+  var LANGS = [
+    { code: 'ro', label: 'Română', html: 'ro', intl: 'ro-RO' },
+    { code: 'en', label: 'English', html: 'en', intl: 'en-GB' },
+    { code: 'sr-latn', label: 'Srpski', html: 'sr-Latn', intl: 'sr-Latn-RS' },
+    { code: 'sr-cyrl', label: 'Српски', html: 'sr-Cyrl', intl: 'sr-Cyrl-RS' }
+  ];
+
+  var KEY = {
+    theme: 'quiz-deck:theme',
+    lang: 'quiz-deck:lang',
+    progress: 'quiz-deck:progress'
+  };
+
+  var byId = {};
+  BANK.items.forEach(function (item) { byId[item.id] = item; });
+
+  var el = {};
+  ['lang', 'theme', 'screen-start', 'screen-quiz', 'screen-end', 'h1', 'lede', 'challenge',
+   'challenge-title', 'challenge-bad', 'btn-challenge', 'btn-challenge-close',
+   'btn-daily', 'btn-practice', 'daily-meta', 'bank-line', 'stat-streak', 'stat-best',
+   'btn-export', 'btn-import', 'file-import', 'btn-reset', 'confirm', 'btn-reset-yes',
+   'btn-reset-no', 'local-status', 'q-progress', 'btn-quit', 'bar-fill', 'q-topic', 'q-text',
+   'q-options', 'q-feedback', 'fb-verdict', 'fb-why', 'fb-source', 'fb-checked', 'btn-next',
+   'end-kicker', 'end-score', 'end-time', 'end-note', 'end-challenge', 'btn-share',
+   'btn-replay', 'btn-again', 'share-note', 'share-status', 'share-link', 'review-title',
+   'review-list', 'btn-home'].forEach(function (id) { el[id] = document.getElementById(id); });
+
+  var state = {
+    lang: 'en',
+    theme: 'light',
+    mode: null,
+    date: null,
+    seed: null,
+    ids: [],
+    orders: [],
+    i: 0,
+    given: [],
+    locked: false,
+    started: 0,
+    ended: 0,
+    result: null,
+    challenge: null,
+    replayIds: []
+  };
+
+  function storeGet(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+
+  function storeSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) { /* private mode, nothing to do */ }
+  }
+
+  function storeDrop(key) {
+    try { localStorage.removeItem(key); } catch (e) { /* ignore */ }
+  }
+
+  function langMeta(code) {
+    for (var i = 0; i < LANGS.length; i += 1) {
+      if (LANGS[i].code === code) { return LANGS[i]; }
+    }
+    return LANGS[1];
+  }
+
+  function t(key, params) {
+    var dict = DICT[state.lang] || DICT.en;
+    var text = dict[key];
+    if (text === undefined) { text = DICT.en[key]; }
+    if (text === undefined) { return key; }
+    return text.replace(/\{(\w+)\}/g, function (match, name) {
+      return params && params[name] !== undefined ? String(params[name]) : match;
+    });
+  }
+
+  function params(extra) {
+    var base = { n: N, total: TOTAL };
+    if (extra) {
+      Object.keys(extra).forEach(function (key) { base[key] = extra[key]; });
+    }
+    return base;
+  }
+
+  function formatDate(day) {
+    var date = Core.parseYmd(day) || new Date();
+    try {
+      return new Intl.DateTimeFormat(langMeta(state.lang).intl, {
+        day: 'numeric', month: 'long', year: 'numeric'
+      }).format(date);
+    } catch (e) {
+      return day;
+    }
+  }
+
+  /* ---------- preferences ---------- */
+
+  function pickLang() {
+    var saved = storeGet(KEY.lang);
+    if (saved && DICT[saved]) { return saved; }
+    var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+    for (var i = 0; i < list.length; i += 1) {
+      var tag = String(list[i] || '').toLowerCase();
+      if (tag.indexOf('ro') === 0) { return 'ro'; }
+      if (tag.indexOf('sr') === 0) { return tag.indexOf('latn') > -1 ? 'sr-latn' : 'sr-cyrl'; }
+      if (tag.indexOf('en') === 0) { return 'en'; }
+    }
+    return 'en';
+  }
+
+  function setTheme(theme, save) {
+    state.theme = theme === 'dark' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', state.theme);
+    if (save) { storeSet(KEY.theme, state.theme); }
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) { meta.setAttribute('content', state.theme === 'dark' ? '#0f1116' : '#f6f7f9'); }
+  }
+
+  function setLang(code, save) {
+    state.lang = DICT[code] ? code : 'en';
+    if (save) { storeSet(KEY.lang, state.lang); }
+    var meta = langMeta(state.lang);
+    document.documentElement.setAttribute('lang', meta.html);
+    el.lang.value = state.lang;
+    document.title = t('title');
+    var desc = document.querySelector('meta[name="description"]');
+    if (desc) { desc.setAttribute('content', t('metaDesc')); }
+    applyStatic();
+    renderChallenge();
+    renderStats();
+    renderStart();
+    if (!el['screen-quiz'].hidden) { renderQuestion(); }
+    if (!el['screen-end'].hidden) { renderEnd(); }
+  }
+
+  function applyStatic() {
+    var list = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < list.length; i += 1) {
+      list[i].textContent = t(list[i].getAttribute('data-i18n'), params());
+    }
+    var labelled = document.querySelectorAll('[data-i18n-aria-label]');
+    for (var j = 0; j < labelled.length; j += 1) {
+      labelled[j].setAttribute('aria-label', t(labelled[j].getAttribute('data-i18n-aria-label')));
+    }
+  }
+
+  /* ---------- progress ---------- */
+
+  function loadProgress() {
+    try {
+      return Core.sanitizeProgress(JSON.parse(storeGet(KEY.progress) || 'null'), N);
+    } catch (e) {
+      return Core.emptyProgress();
+    }
+  }
+
+  function saveProgress(progress) {
+    storeSet(KEY.progress, JSON.stringify(progress));
+    renderStats();
+    renderStart();
+  }
+
+  function renderStats() {
+    var progress = loadProgress();
+    var best = Core.bestOf(progress, N);
+    el['stat-streak'].textContent = String(Core.streakOf(progress, Core.today(), N));
+    el['stat-best'].textContent = best.s > 0
+      ? t('bestValue', params({ s: best.s }))
+      : t('bestValue', params({ s: 0 }));
+  }
+
+  function renderChallenge() {
+    if (!state.challenge) { return; }
+    el['challenge-title'].textContent = t('challengeTitle', {
+      s: state.challenge.score, n: N, t: Core.formatTime(state.challenge.time)
+    });
+  }
+
+  function renderStart() {
+    var today = Core.today();
+    var played = loadProgress().d[today];
+    var line = t('dailyOn', params({ date: formatDate(today) }));
+    if (played) { line += ' · ' + t('playedToday', params({ s: played.s })); }
+    el['daily-meta'].textContent = line;
+    el['bank-line'].textContent = t('bankLine', params());
+  }
+
+  /* ---------- screens ---------- */
+
+  function show(name) {
+    el['screen-start'].hidden = name !== 'start';
+    el['screen-quiz'].hidden = name !== 'quiz';
+    el['screen-end'].hidden = name !== 'end';
+  }
+
+  function toTop() {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    try { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); }
+    catch (e) { window.scrollTo(0, 0); }
+  }
+
+  /* ---------- the round ---------- */
+
+  function start(mode, extra) {
+    var ids = [];
+    var seed = '';
+    var date = null;
+
+    if (mode === 'daily') {
+      date = Core.today();
+      seed = 'daily:' + date;
+      ids = Core.pickRound(BANK.items, N, seed);
+    } else if (mode === 'challenge') {
+      date = state.challenge.day;
+      seed = 'daily:' + date;
+      ids = Core.pickRound(BANK.items, N, seed);
+    } else if (mode === 'replay') {
+      ids = (extra && extra.ids ? extra.ids : []).filter(function (id) { return byId[id]; });
+      seed = 'replay:' + Date.now().toString(36);
+    } else {
+      seed = 'practice:' + Date.now().toString(36) + ':' + Math.random().toString(36).slice(2);
+      ids = Core.pickRound(BANK.items, N, seed);
+    }
+
+    if (!ids.length) { return; }
+
+    state.mode = mode;
+    state.date = date;
+    state.seed = seed;
+    state.ids = ids;
+    state.orders = Core.ordersFor(ids, seed);
+    state.i = 0;
+    state.given = [];
+    state.locked = false;
+    state.started = Date.now();
+    state.ended = 0;
+    state.result = null;
+
+    show('quiz');
+    renderQuestion();
+    toTop();
+  }
+
+  function currentItem() { return byId[state.ids[state.i]]; }
+
+  function sourceText(item) {
+    var source = item.source;
+    if (source && typeof source === "object") { return source[state.lang] || source.en; }
+    return String(source || "");
+  }
+
+  function renderQuestion() {
+    var item = currentItem();
+    var order = state.orders[state.i];
+    var total = state.ids.length;
+
+    el['q-progress'].textContent = t('counter', { i: state.i + 1, n: total });
+    el['screen-quiz'].setAttribute('aria-label', t('progressLabel', { i: state.i + 1, n: total }));
+    el['q-topic'].textContent = t('topic.' + item.topic);
+    el['q-text'].textContent = item.q[state.lang] || item.q.en;
+
+    var box = el['q-options'];
+    box.replaceChildren();
+    order.forEach(function (optionIndex, pos) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'option';
+      button.setAttribute('data-pos', String(pos));
+
+      var key = document.createElement('span');
+      key.className = 'key';
+      key.setAttribute('aria-hidden', 'true');
+      key.textContent = String(pos + 1);
+
+      var label = document.createElement('span');
+      label.className = 'label';
+      label.textContent = item.options[optionIndex][state.lang] || item.options[optionIndex].en;
+
+      button.append(key, label);
+      button.addEventListener('click', function () { choose(pos); });
+      box.appendChild(button);
+    });
+
+    var given = state.given[state.i];
+    if (given) {
+      state.locked = true;
+      paintAnswer(given);
+      showFeedback(item, given);
+    } else {
+      state.locked = false;
+      el['q-feedback'].hidden = true;
+      el['btn-next'].hidden = true;
+    }
+
+    var done = given ? state.i + 1 : state.i;
+    el['bar-fill'].style.width = Math.round((done / total) * 100) + '%';
+  }
+
+  function paintAnswer(given) {
+    var item = currentItem();
+    var order = state.orders[state.i];
+    var buttons = el['q-options'].querySelectorAll('.option');
+    for (var i = 0; i < buttons.length; i += 1) {
+      var pos = Number(buttons[i].getAttribute('data-pos'));
+      var optionIndex = order[pos];
+      buttons[i].disabled = true;
+      if (optionIndex === item.correct) {
+        buttons[i].classList.add('ok');
+      } else if (pos === given.pos) {
+        buttons[i].classList.add('bad');
+      } else {
+        buttons[i].classList.add('dim');
+      }
+      if (pos === given.pos) { buttons[i].setAttribute('aria-current', 'true'); }
+    }
+  }
+
+  function showFeedback(item, given) {
+    var correctText = item.options[item.correct][state.lang] || item.options[item.correct].en;
+    el['fb-verdict'].textContent = given.ok ? t('correct') : t('wrong', { a: correctText });
+    el['fb-verdict'].className = 'verdict ' + (given.ok ? 'ok' : 'bad');
+    el['fb-why'].textContent = item.why[state.lang] || item.why.en;
+    el['fb-source'].textContent = t('sourceLine', { s: sourceText(item) });
+    el['fb-checked'].textContent = t('checkedLine', { d: formatDate(CHECKED) });
+    el['q-feedback'].hidden = false;
+    var last = state.i === state.ids.length - 1;
+    el['btn-next'].textContent = last ? t('finish') : t('next');
+    el['btn-next'].hidden = false;
+    el['btn-next'].focus();
+  }
+
+  function choose(pos) {
+    if (state.locked || !state.ids.length) { return; }
+    var item = currentItem();
+    var optionIndex = state.orders[state.i][pos];
+    var given = { pos: pos, chosen: optionIndex, ok: optionIndex === item.correct };
+    state.given[state.i] = given;
+    state.locked = true;
+    paintAnswer(given);
+    showFeedback(item, given);
+    if (state.i === state.ids.length - 1 && !state.ended) { state.ended = Date.now(); }
+    el['bar-fill'].style.width = Math.round(((state.i + 1) / state.ids.length) * 100) + '%';
+  }
+
+  function nextStep() {
+    if (!state.locked) { return; }
+    if (state.i >= state.ids.length - 1) { finish(); return; }
+    state.i += 1;
+    renderQuestion();
+    toTop();
+    el['q-text'].focus();
+  }
+
+  function score() {
+    return state.given.filter(function (g) { return g && g.ok; }).length;
+  }
+
+  function finish() {
+    var secs = Math.round(((state.ended || Date.now()) - state.started) / 1000);
+    var got = score();
+    var wrong = [];
+    state.given.forEach(function (given, index) {
+      if (given && !given.ok) { wrong.push({ id: state.ids[index], chosen: given.chosen }); }
+    });
+    state.result = { score: got, total: state.ids.length, secs: secs, wrong: wrong, mode: state.mode, date: state.date };
+
+    if (state.mode === 'daily' && state.date === Core.today()) {
+      saveProgress(Core.recordDay(loadProgress(), state.date, got, secs, N));
+    }
+
+    show('end');
+    renderEnd();
+    toTop();
+  }
+
+  function renderEnd() {
+    var result = state.result;
+    if (!result) { return; }
+    var wrongItems = result.wrong.map(function (entry) {
+      var item = byId[entry.id];
+      return item ? { item: item, chosen: entry.chosen } : null;
+    }).filter(Boolean);
+
+    var kicker = result.mode === 'daily' ? t('startDaily')
+      : result.mode === 'challenge' ? t('challengePlay')
+        : result.mode === 'replay' ? t('replayWrong') : t('startPractice');
+    el['end-kicker'].textContent = kicker;
+
+    el['end-score'].textContent = t('endScore', { s: result.score, n: result.total });
+    el['end-time'].textContent = t('endTime', { t: Core.formatTime(result.secs) });
+    el['end-note'].textContent = result.mode === 'daily' ? t('dailySaved') : t('noRecord');
+
+    if (result.mode === 'challenge' && state.challenge) {
+      el['end-challenge'].hidden = false;
+      el['end-challenge'].replaceChildren();
+      var you = document.createElement('span');
+      you.textContent = t('challengeYou', { s: result.score, n: result.total });
+      var them = document.createElement('span');
+      them.textContent = t('challengeThem', {
+        s: state.challenge.score, n: N, t: Core.formatTime(state.challenge.time)
+      });
+      el['end-challenge'].append(you, them);
+    } else {
+      el['end-challenge'].hidden = true;
+      el['end-challenge'].replaceChildren();
+    }
+
+    el['btn-share'].hidden = !result.date;
+    el['share-note'].hidden = !result.date;
+    el['share-link'].hidden = true;
+    el['share-status'].textContent = '';
+
+    el['btn-replay'].hidden = wrongItems.length === 0;
+    el['btn-again'].hidden = false;
+    el['btn-home'].hidden = false;
+
+    var list = el['review-list'];
+    list.replaceChildren();
+    if (!wrongItems.length) {
+      var empty = document.createElement('li');
+      empty.className = 'review-empty';
+      empty.textContent = t('reviewNone');
+      list.appendChild(empty);
+      return;
+    }
+    wrongItems.forEach(function (entry) {
+      var item = entry.item;
+      var row = document.createElement('li');
+
+      var question = document.createElement('p');
+      question.className = 'review-q';
+      question.textContent = item.q[state.lang] || item.q.en;
+
+      var mine = document.createElement('p');
+      mine.className = 'review-line';
+      mine.textContent = t('yourAnswer', { a: item.options[entry.chosen][state.lang] || item.options[entry.chosen].en });
+
+      var right = document.createElement('p');
+      right.className = 'review-line review-right';
+      right.textContent = t('rightAnswer', { a: item.options[item.correct][state.lang] || item.options[item.correct].en });
+
+      var why = document.createElement('p');
+      why.className = 'review-why';
+      why.textContent = item.why[state.lang] || item.why.en;
+
+      var src = document.createElement('p');
+      src.className = 'review-src';
+      src.textContent = t('sourceLine', { s: sourceText(item) }) + ' · ' + t('checkedLine', { d: formatDate(CHECKED) });
+
+      row.append(question, mine, right, why, src);
+      list.appendChild(row);
+    });
+  }
+
+  function share() {
+    if (!state.result || !state.result.date) { return; }
+    var url = Core.challengeUrl(location.href, state.result.date, state.result.score, state.result.secs);
+    el['share-link'].value = url;
+    var done = function (ok) {
+      if (ok) {
+        el['share-status'].textContent = t('copied');
+        el['share-link'].hidden = true;
+      } else {
+        el['share-status'].textContent = t('copyFail');
+        el['share-link'].hidden = false;
+        el['share-link'].select();
+      }
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () { done(true); }, function () { done(false); });
+    } else {
+      done(false);
+    }
+  }
+
+  /* ---------- export, import, reset ---------- */
+
+  function exportProgress() {
+    var payload = {
+      app: 'Quiz-Deck',
+      v: 1,
+      exported: Core.today(),
+      lang: state.lang,
+      theme: state.theme,
+      progress: loadProgress()
+    };
+    var blob = new Blob([JSON.stringify(payload, null, 1)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = 'quiz-deck-' + Core.today() + '.json';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  }
+
+  function importProgress(file) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var data = null;
+      try { data = JSON.parse(String(reader.result)); } catch (e) { data = null; }
+      var incoming = data && data.progress ? data.progress : data;
+      if (!incoming || typeof incoming !== 'object' || !incoming.d || typeof incoming.d !== 'object') {
+        el['local-status'].textContent = t('importBad');
+        return;
+      }
+      var merged = Core.mergeProgress(loadProgress(), incoming, N);
+      saveProgress(merged);
+      el['local-status'].textContent = t('importOk');
+    };
+    reader.onerror = function () { el['local-status'].textContent = t('importBad'); };
+    reader.readAsText(file);
+  }
+
+  /* ---------- wiring ---------- */
+
+  function wire() {
+    el.lang.replaceChildren();
+    LANGS.forEach(function (meta) {
+      var option = document.createElement('option');
+      option.value = meta.code;
+      option.textContent = meta.label;
+      el.lang.appendChild(option);
+    });
+
+    el.lang.addEventListener('change', function () { setLang(el.lang.value, true); });
+
+    el.theme.addEventListener('click', function () {
+      setTheme(state.theme === 'dark' ? 'light' : 'dark', true);
+    });
+
+    el['btn-daily'].addEventListener('click', function () { start('daily'); });
+    el['btn-practice'].addEventListener('click', function () { start('practice'); });
+    el['btn-challenge'].addEventListener('click', function () { start('challenge'); });
+    el['btn-challenge-close'].addEventListener('click', function () {
+      el.challenge.hidden = true;
+      if (history.replaceState) { history.replaceState(null, '', location.pathname + location.hash); }
+    });
+
+    el['btn-next'].addEventListener('click', nextStep);
+    el['btn-quit'].addEventListener('click', function () {
+      show('start');
+      renderStats();
+      toTop();
+    });
+
+    el['btn-share'].addEventListener('click', share);
+    el['btn-replay'].addEventListener('click', function () {
+      if (state.result && state.result.wrong.length) {
+        start('replay', { ids: state.result.wrong.map(function (entry) { return entry.id; }) });
+      }
+    });
+    el['btn-again'].addEventListener('click', function () { start('practice'); });
+    el['btn-home'].addEventListener('click', function () { show('start'); renderStats(); toTop(); });
+
+    el['btn-export'].addEventListener('click', exportProgress);
+    el['btn-import'].addEventListener('click', function () { el['file-import'].click(); });
+    el['file-import'].addEventListener('change', function () {
+      var file = el['file-import'].files && el['file-import'].files[0];
+      if (file) { importProgress(file); }
+      el['file-import'].value = '';
+    });
+
+    el['btn-reset'].addEventListener('click', function () { el.confirm.hidden = false; });
+    el['btn-reset-no'].addEventListener('click', function () { el.confirm.hidden = true; });
+    el['btn-reset-yes'].addEventListener('click', function () {
+      storeDrop(KEY.progress);
+      el.confirm.hidden = true;
+      el['local-status'].textContent = t('resetDone');
+      renderStats();
+      renderStart();
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.ctrlKey || event.metaKey || event.altKey) { return; }
+      var tag = (event.target && event.target.tagName) || '';
+      if (tag === 'SELECT' || tag === 'INPUT' || tag === 'TEXTAREA') { return; }
+      if (el['screen-quiz'].hidden) { return; }
+      if (!state.locked && event.key >= '1' && event.key <= '4') {
+        var pos = Number(event.key) - 1;
+        if (pos < state.orders[state.i].length) { event.preventDefault(); choose(pos); }
+        return;
+      }
+      if (state.locked && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        nextStep();
+      }
+    });
+  }
+
+  function boot() {
+    setTheme(storeGet(KEY.theme) || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'), false);
+
+    var challenge = Core.parseChallenge(location.search || '');
+    if (challenge && challenge.score <= N) {
+      state.challenge = challenge;
+      el.challenge.hidden = false;
+    } else if ((location.search || '').indexOf('d=') > -1) {
+      el['challenge-bad'].hidden = false;
+    }
+
+    wire();
+    setLang(pickLang(), false);
+    renderStart();
+    show('start');
+    renderStats();
+
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      navigator.serviceWorker.register('sw.js').catch(function () { /* offline copy simply stays as it is */ });
+    }
+  }
+
+  boot();
+}());
+</script>
+<!-- Quiz-Deck · single file build · bank checked 2026-10-21 -->
+</body>
+</html>

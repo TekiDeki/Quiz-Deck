@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Quiz-Deck">
+  <rect width="32" height="32" rx="7" fill="#4338ca"/>
+  <rect x="7.7" y="5.1" width="16.6" height="21.8" rx="2.4" fill="#ffffff"/>
+  <g fill="#4338ca">
+    <rect x="10.6" y="10.2" width="10.8" height="2.4" rx="1.2"/>
+    <rect x="10.6" y="15.2" width="10.8" height="2.4" rx="1.2"/>
+    <rect x="10.6" y="20.2" width="6.4" height="2.4" rx="1.2"/>
+  </g>
+</svg>
