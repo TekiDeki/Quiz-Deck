@@ -169,6 +169,12 @@ def main() -> int:
         check("Fără greșeli." in page.inner_text("#review-list"), "no mistakes, nothing to review")
         check(page.is_visible("#btn-share"), "the daily round can be shared")
         check(page.is_hidden("#btn-replay"), "no replay of mistakes when there are none")
+        gap = page.evaluate("""() => {
+          const list = document.getElementById('review-list').getBoundingClientRect();
+          const home = document.getElementById('btn-home').getBoundingClientRect();
+          return Math.round(home.top - list.bottom);
+        }""")
+        check(gap >= 16, "the button under the review keeps its distance (gap %d px)" % gap)
 
         saved = storage(page, "quiz-deck:progress")
         today = page.evaluate("() => window.QuizDeck.today()")
