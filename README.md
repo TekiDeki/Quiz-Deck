@@ -21,6 +21,7 @@ No account, no upload, no tracking, no advertising. One HTML file, and it works 
 - **The mistakes again.** After a round, the wrong answers are listed with the right one, the explanation and the source, and can be replayed as a short round.
 - **Keyboard and theme.** Keys 1 to 4 pick an answer, Enter moves on. Light and dark, remembered between visits.
 - **Four languages.** English, Romanian, Serbian Latin and Serbian Cyrillic. The questions themselves exist in all four, not just the buttons.
+- **A quiet, editorial look.** Questions and explanations are set in a serif, like a printed quiz book; the interface stays sans. Light as paper, dark as ink.
 
 ## Where the questions come from
 

@@ -266,6 +266,9 @@
     var order = state.orders[state.i];
     var total = state.ids.length;
 
+    /* The progress bar is cut in as many segments as the round has questions. */
+    el['bar-fill'].parentNode.style.setProperty('--segs', String(total));
+
     el['q-progress'].textContent = t('counter', { i: state.i + 1, n: total });
     el['screen-quiz'].setAttribute('aria-label', t('progressLabel', { i: state.i + 1, n: total }));
     el['q-topic'].textContent = t('topic.' + item.topic);
