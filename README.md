@@ -68,3 +68,5 @@ python3 build.py            # writes index.html from src/, byte for byte
 ## License
 
 Apache 2.0. The questions are written for this project; the sources named next to them belong to their authors.
+
+Every tool here is free and stays free, with no account, no ads and no tracking. If you want to support the work, [paypal.me/TekiDeki](https://paypal.me/TekiDeki) is in the footer of the app.

@@ -279,6 +279,8 @@ main { padding: 2.2rem 0 3rem; }
 
 /* footer */
 .foot { border-top: 1px solid var(--line); padding: 1.3rem 0 2rem; }
+.foot .support { font-size: .92rem; margin-bottom: .55rem; }
+.foot .support a { font-weight: 600; }
 .foot .fine { margin-top: .25rem; }
 .foot .fine:first-child { margin-top: 0; }
 

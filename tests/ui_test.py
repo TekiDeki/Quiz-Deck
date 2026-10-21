@@ -122,6 +122,12 @@ def main() -> int:
         check(page.eval_on_selector_all("#lang option", "els => els.map((e) => e.value)") ==
               ["ro", "en", "sr-latn", "sr-cyrl"], "the four expected locales")
 
+        check(page.locator(".foot .support a").get_attribute("href") == "https://paypal.me/TekiDeki",
+              "the footer links to the support page")
+        check("gratuite" in page.inner_text(".foot .support"),
+              "the support link sits next to the sentence that the tools are free")
+        check(page.inner_text(".foot .support a") == "Susține munca", "the support link is in Romanian")
+
         page.screenshot(path=str(SHOTS / "desktop.png"))
 
         # --- a full daily round ----------------------------------------------
@@ -205,6 +211,8 @@ def main() -> int:
 
         check(page2.evaluate("document.documentElement.lang") == "en", "an English browser gets English")
         check(page2.inner_text("h1") == "Short questions, checked answers", "the English heading")
+        check(page2.inner_text(".foot .support a") == "Support the work", "the support link is in English")
+        check("stay free" in page2.inner_text(".foot .support"), "the English sentence says the tools stay free")
         check(page2.evaluate("document.documentElement.dataset.theme") == "light", "light by default")
 
         page2.click("#theme")
@@ -267,6 +275,8 @@ def main() -> int:
         check(page2.evaluate("document.documentElement.lang") == "sr-Cyrl", "the Cyrillic locale is declared")
         check(page2.inner_text("h1") == "Кратка питања, проверени одговори", "the heading is in Cyrillic")
         check(page2.inner_text("#btn-daily").startswith("Данашња рунда"), "the buttons are in Cyrillic")
+        check(page2.inner_text(".foot .support a") == "Подржи рад", "the support link is in Cyrillic")
+        check("бесплатни" in page2.inner_text(".foot .support"), "the Cyrillic sentence says the tools are free")
 
         page2.select_option("#lang", "sr-latn")
         page2.click("#btn-practice")
@@ -276,6 +286,7 @@ def main() -> int:
           return { latin: /[A-Za-z]/.test(q), text: q };
         }""")
         check(cyrillic["latin"], "the Latin script is used for Serbian Latin")
+        check(page2.inner_text(".foot .support a") == "Podrži rad", "the support link is in Serbian Latin")
         page2.select_option("#lang", "sr-cyrl")
         cyrillic = page2.evaluate("""() => {
           const q = document.getElementById('q-text').textContent;
