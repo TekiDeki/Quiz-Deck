@@ -22,6 +22,8 @@
     progress: 'quiz-deck:progress'
   };
 
+  var shownDay = '';
+
   var byId = {};
   BANK.items.forEach(function (item) { byId[item.id] = item; });
 
@@ -187,6 +189,7 @@
 
   function renderStart() {
     var today = Core.today();
+    shownDay = today;
     var played = loadProgress().d[today];
     var line = t('dailyOn', params({ date: formatDate(today) }));
     if (played) { line += ' · ' + t('playedToday', params({ s: played.s })); }
@@ -614,6 +617,18 @@
     renderStart();
     show('start');
     renderStats();
+
+    /* A tab left open overnight would keep yesterday's date, and the round under
+       it. When the page comes back, the day is read again from the clock. */
+    function checkDay() {
+      if (Core.today() === shownDay) { return; }
+      renderStart();
+      renderStats();
+    }
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) { checkDay(); }
+    });
+    window.addEventListener('focus', checkDay);
 
     if ('serviceWorker' in navigator && location.protocol !== 'file:') {
       navigator.serviceWorker.register('sw.js').catch(function () { /* offline copy simply stays as it is */ });

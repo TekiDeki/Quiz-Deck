@@ -23,6 +23,21 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parent.parent
 SHOTS = ROOT / "screenshots"
 
+
+# A browser whose clock can be moved from the test, to prove that the date on the
+# start screen comes from the reader's clock and not from the built file.
+MOVING_CLOCK = """
+(() => {
+  const Real = Date;
+  window.__now = new Real('%sT09:00:00').getTime();
+  class Fake extends Real {
+    constructor(...a) { if (a.length === 0) { super(window.__now); } else { super(...a); } }
+    static now() { return window.__now; }
+  }
+  window.Date = Fake;
+})();
+"""
+
 CHECKS = 0
 
 
@@ -316,6 +331,34 @@ def main() -> int:
         }""")
         check(report["bad"] == [], "every question is complete in four languages")
         check(report["total"] >= 60, "the bank is deep enough for the daily round")
+
+        # --- the date comes from the clock ------------------------------------
+        for day, expected in (("2026-10-22", "22 octombrie 2026"),
+                              ("2026-12-31", "31 decembrie 2026"),
+                              ("2027-01-01", "1 ianuarie 2027"),
+                              ("2024-02-29", "29 februarie 2024")):
+            frozen = browser.new_context(locale="ro-RO")
+            frozen.add_init_script(MOVING_CLOCK % day)
+            page4 = frozen.new_page()
+            page4.goto(base + "/index.html", wait_until="load")
+            check(expected in page4.inner_text("#daily-meta"),
+                  "the date on the start line is %r, read from the clock" % expected)
+            frozen.close()
+
+        # the tab left open overnight: midnight passes, the reader comes back
+        ctx3 = browser.new_context(locale="ro-RO")
+        ctx3.add_init_script(MOVING_CLOCK % "2026-10-21")
+        page4 = ctx3.new_page()
+        page4.goto(base + "/index.html", wait_until="load")
+        check("21 octombrie 2026" in page4.inner_text("#daily-meta"), "the tab opens on the 21st")
+        page4.evaluate("""() => {
+          window.__now = new Date('2026-10-22T00:05:00').getTime();
+          window.dispatchEvent(new Event('focus'));
+        }""")
+        page4.wait_for_timeout(150)
+        check("22 octombrie 2026" in page4.inner_text("#daily-meta"),
+              "after midnight the same tab shows the new day, without a reload")
+        ctx3.close()
 
         # --- offline ----------------------------------------------------------
         page3 = browser.new_context(locale="ro-RO").new_page()
