@@ -26,6 +26,7 @@ CORE_JS = SRC / "core.js"
 APP_JS = SRC / "app.js"
 LOCALES = SRC / "i18n" / "locales.json"
 BANK = SRC / "bank" / "items.json"
+INSTALL = SRC / "install.html"
 OUT = ROOT / "index.html"
 
 AUTHORED = ("en", "ro", "sr-latn")
@@ -321,7 +322,9 @@ def main() -> None:
             fail(f"template is missing {src}")
         html = html.replace(src, "<script>\n" + body.rstrip() + "\n</script>", 1)
 
-    html = html.replace("</body>", "<!-- Quiz-Deck · single file build · bank checked " + bank["checked"] + " -->\n</body>", 1)
+    install = read(INSTALL)
+    check_text("install.html", install)
+    html = html.replace("</body>", "<!-- Quiz-Deck · single file build · bank checked " + bank["checked"] + " -->\n" + install + "</body>", 1)
 
     check_text("index.html", html)
 

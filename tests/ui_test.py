@@ -245,6 +245,7 @@ def main() -> int:
 
         page2.click("#btn-practice")
         page2.wait_for_selector("#q-options .option")
+        check(page2.is_hidden("#btn-next"), "Next stays hidden before an answer on the touch layout")
         answer(page2, right=False)
         check(page2.inner_text("#fb-verdict").startswith("Not this one."), "a wrong answer says so and gives the right one")
         for _ in range(11):
@@ -256,6 +257,7 @@ def main() -> int:
         check(page2.inner_text("#end-score") == "11 of 12", "practice counts the one wrong answer")
         check("does not enter the streak" in page2.inner_text("#end-note"), "practice says it is not recorded")
         check("Where it went wrong" in page2.inner_text(".review"), "the mistakes are listed")
+        check(page2.is_hidden("#btn-share"), "practice does not expose the daily Share button on the touch layout")
         check(storage(page2, "quiz-deck:progress") is None, "practice writes nothing to the record")
 
         # --- export, import, reset -------------------------------------------

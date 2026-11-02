@@ -4,7 +4,7 @@
 
    index.html is the whole application, so one entry covers the game itself.
    The icons are cached for the install prompt. */
-const VERSION = 'quiz-deck-v5';
+const VERSION = 'quiz-deck-v6';
 const SHELL = [
   './',
   'index.html',

@@ -50,6 +50,7 @@ If a fact is still wrong, the footer links to the issue tracker. That is the hon
 ## Tests
 
 ```bash
+python3 tests/build_test.py   # the committed page must match the source rebuild byte for byte
 node tests/logic_test.cjs     # the bank, the generator, the streak, the import, the built page
 python3 tests/ui_test.py      # the page in Chromium, played through, served from a local folder
 ```
